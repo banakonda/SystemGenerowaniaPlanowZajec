@@ -4,5 +4,11 @@
 @import "./styles/variables.scss";
 @import "./styles/layout.scss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// TODO: Delete in official app
+p.todo {
+  color: red;
+  font-size: 3rem;
+  min-height: 6rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+}

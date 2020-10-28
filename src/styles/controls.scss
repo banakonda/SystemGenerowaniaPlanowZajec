@@ -1,0 +1,99 @@
+// TEXT
+a {
+  text-decoration: none;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+h1.page-title {
+  font-size: 3rem;
+  min-height: 3rem;
+  letter-spacing: 3px;
+}
+h3.form-request {
+  font-size: 1.5rem;
+  min-height: 1.5rem;
+  font-weight: 300;
+}
+h5.step {
+  font-size: 1rem;
+  min-height: 1rem;
+  align-items: flex-end;
+  display: flex;
+}
+.text-shadow {
+  text-shadow: 0 0 10px $simple_black;
+}
+.white-color {
+  color: $simple_white !important;
+}
+.red-color {
+  color: $simple_red !important;
+}
+.light-color {
+  color: $simple_gray_2 !important;
+}
+.primary-color {
+  color: $primary_color !important;
+}
+
+// INPUTS
+.buttons {
+  margin: 0 3rem;
+  height: 10%;
+  text-align: right;
+  a.button,
+  button {
+    // TODO: change style of this  cvbutton
+    width: 8rem;
+    min-height: 3rem;
+    font-size: 1.2rem;
+    line-height: 3rem;
+  }
+  a.link-button {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    margin-right: 2.5rem;
+    @extend .clickable, .primary-color, .weight-500;
+  }
+}
+
+.app-input {
+  border: none;
+  border-bottom: 1px solid $simple_gray;
+  outline: none;
+  padding: 3px 0;
+  margin: 8px 0 0 0;
+  font-size: 1rem;
+  min-height: 1rem;
+}
+.app-input-hint {
+  font-size: 0.7rem;
+  min-height: 0.8rem;
+  color: $simple_gray;
+}
+.long-input {
+  width: 360px;
+}
+.normal-input {
+  width: 240px;
+}
+.tiny-input {
+  width: 120px;
+}
+.micro-input {
+  width: 80px;
+}
+input::placeholder {
+  color: $simple_gray_2;
+}
+mat-checkbox,
+mat-radio-button {
+  font-size: 1rem;
+}
