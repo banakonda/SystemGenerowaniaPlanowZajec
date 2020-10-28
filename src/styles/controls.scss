@@ -45,6 +45,12 @@ h5.step {
 .primary-color {
   color: $primary_color !important;
 }
+.weight-400 {
+  font-weight: 400;
+}
+.weight-500 {
+  font-weight: 500;
+}
 
 // INPUTS
 .buttons {
@@ -63,6 +69,7 @@ h5.step {
     font-size: 1.2rem;
     line-height: 1.2rem;
     margin-right: 2.5rem;
+    cursor: pointer;
     @extend .clickable, .primary-color, .weight-500;
   }
 }
