@@ -98,7 +98,7 @@ body {
 .spaced-b-s {
   margin-bottom: 8px !important;
 }
-.spaced-v-s {
+.spaced-h-s {
   @extend .spaced-l-s, .spaced-r-s;
 }
 .spaced-l {
@@ -113,6 +113,9 @@ body {
 .spaced-b {
   margin-bottom: 16px !important;
 }
+.spaced-h {
+  @extend .spaced-b, .spaced-l;
+}
 .spaced-l-l {
   margin-left: 24px !important;
 }
@@ -124,4 +127,7 @@ body {
 }
 .spaced-b-l {
   margin-bottom: 24px !important;
+}
+.spaced-h-l {
+  @extend .spaced-b-l, .spaced-l-l;
 }
