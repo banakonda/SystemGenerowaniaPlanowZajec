@@ -101,6 +101,9 @@ body {
 .spaced-h-s {
   @extend .spaced-l-s, .spaced-r-s;
 }
+.spaced-v-s {
+  @extend .spaced-t-s, .spaced-b-s;
+}
 .spaced-l {
   margin-left: 16px !important;
 }
@@ -116,6 +119,9 @@ body {
 .spaced-h {
   @extend .spaced-b, .spaced-l;
 }
+.spaced-v {
+  @extend .spaced-t, .spaced-b;
+}
 .spaced-l-l {
   margin-left: 24px !important;
 }
@@ -130,4 +136,7 @@ body {
 }
 .spaced-h-l {
   @extend .spaced-b-l, .spaced-l-l;
+}
+.spaced-h-l {
+  @extend .spaced-t-l, .spaced-b-l;
 }
