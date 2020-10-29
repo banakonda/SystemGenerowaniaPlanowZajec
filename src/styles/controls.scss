@@ -110,3 +110,9 @@ mat-checkbox,
 mat-radio-button {
   font-size: 1rem;
 }
+
+.selected {
+  background-color: $simple_gray_2;
+  font-weight: 400;
+  box-shadow: none;
+}
