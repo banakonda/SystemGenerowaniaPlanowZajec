@@ -1,0 +1,17 @@
+<form #f="ngForm" (ngSubmit)="lastStep === step ? createTeacher() : step = step + 1">
+
+  <div class="content">
+    <div class="row">
+      <h1 class="page-title">Dodaj nauczyciela akademickiego</h1>
+      <div class="space"></div>
+      <h5 class="step">Krok: {{step}}/{{lastStep}}</h5>
+    </div>
+
+    <div class="sub-content">
+      <app-create-teacher-step-one [(newTeacher)]="newTeacher" *ngIf="step==1"></app-create-teacher-step-one>
+      <app-create-teacher-step-two [(newTeacher)]="newTeacher" *ngIf="step==2"></app-create-teacher-step-two>
+    </div>
+  </div>
+
+  <app-create-buttons [(step)]="step" [lastStep]="lastStep" [f]="f" [cancelLink]="'fields'"></app-create-buttons>
+</form>

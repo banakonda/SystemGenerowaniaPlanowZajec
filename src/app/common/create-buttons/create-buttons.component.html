@@ -1,7 +1,7 @@
 <div class="buttons">
-  <a class="link-button" [routerLink]="cancelLink">Anuluj</a>
-  <a class="link-button" *ngIf="step > 1" (click)="setStepValue(step - 1)">Wstecz</a>
+  <a mat-button class="a-text-button" color="primary" [routerLink]="cancelLink">Anuluj</a>
+  <a mat-button class="a-text-button" color="primary" *ngIf="step > 1" (click)="setStepValue(step - 1)">Wstecz</a>
 
-  <button type="submit" mat-raised-button color="primary"
+  <button type="submit" mat-raised-button color="primary" class="a-raised-button spaced-l"
     [disabled]="f.invalid">{{step === lastStep ? "Stwórz" : "Dalej"}}</button>
 </div>

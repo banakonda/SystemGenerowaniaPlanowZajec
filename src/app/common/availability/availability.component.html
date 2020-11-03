@@ -1,0 +1,30 @@
+<div class="column spaced-t">
+  <div class="row weekdays">
+    <button mat-raised-button color="primary" type="button" [class.selected]="selected !== 'monday'" class="spaced-h-s"
+      (click)="selected = 'monday'">Poniedziałek</button>
+    <button mat-raised-button color="primary" type="button" [class.selected]="selected !== 'tuesday'" class="spaced-h-s"
+      (click)="selected = 'tuesday'">Wtorek</button>
+    <button mat-raised-button color="primary" type="button" [class.selected]="selected !== 'wednesday'"
+      class="spaced-h-s" (click)="selected = 'wednesday'">Środa</button>
+    <button mat-raised-button color="primary" type="button" [class.selected]="selected !== 'thursday'"
+      class="spaced-h-s" (click)="selected = 'thursday'">Czwartek</button>
+    <button mat-raised-button color="primary" type="button" [class.selected]="selected !== 'friday'" class="spaced-h-s"
+      (click)="selected = 'friday'">Piątek</button>
+  </div>
+  <div class="spaced-t spaced-l-l w-90">
+    <div mat-raised-button type="button" *ngFor="let time of availabilityTime[selected]; let i = index" color="primary"
+      class="time-box white-color clickable" [class.disabled]="!time" (click)="availabilityTime[selected][i] = !time">
+      <p>{{clockTime[i]}}</p>
+    </div>
+  </div>
+
+  <div class="spaced-t-s spaced-l">
+    <button mat-button color="primary" type="button" (click)="setAvailabilityTo(true, selected)">Zaznacz
+      wszystko</button>
+    <button mat-button color="primary" type="button" (click)="setAvailabilityTo(false, selected)">Odznacz
+      wszystko</button>
+  </div>
+
+
+
+</div>

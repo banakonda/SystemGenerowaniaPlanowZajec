@@ -1,0 +1,26 @@
+<div class="h-100 content">
+  <h1 class="page-title">Przedmioty</h1>
+
+  <div class="sub-content">
+    <div class="center-row">
+      <app-type-buttons [buttons]="buttons" [(selected)]="selected"></app-type-buttons>
+      <span class="material-icons clickable" (click)="refreshList()">refresh</span>
+    </div>
+
+    <div class="spaced-t" *ngIf="listItems$ | async as listItems">
+      <div *ngFor="let item of listItems">
+        <div *ngIf="selected === item.id" class="center-row list-row w-80">
+          <span class="spaced-l weight-500">{{ item.name }}</span>
+          <span class="spaced-l-s weight-500 light-color">
+            ({{ item.eligibility ? "obieralny" : "obowiązkowy"}},
+            {{ item.students.semester }} semestr)</span>
+          <div class="space"></div>
+          <span class="material-icons clickable red-color">delete_forever</span>
+          <span class="spaced-l-s primary-color clickable weight-500">Edytuj</span>
+        </div>
+      </div>
+    </div>
+    <a mat-button color="primary" class="a-text-button spaced-t-s weight-300" routerLink="/create-subject">Dodaj
+      przedmiot</a>
+  </div>
+</div>

@@ -1,1 +1,16 @@
-<p>create-field works!</p>
+<form #f="ngForm" (ngSubmit)="lastStep === step ? createStudyField() : step = step + 1">
+
+  <div class="content">
+    <div class="row">
+      <h1 class="page-title">Dodaj kierunek studiów</h1>
+      <div class="space"></div>
+      <h5 class="step">Krok: {{step}}/{{lastStep}}</h5>
+    </div>
+
+    <div class="sub-content">
+      <app-create-field-step-one *ngIf="step==1" [(newStudyField)]="newStudyField"></app-create-field-step-one>
+    </div>
+  </div>
+
+  <app-create-buttons [(step)]="step" [lastStep]="lastStep" [f]="f" [cancelLink]="'fields'"></app-create-buttons>
+</form>

@@ -1,29 +1,24 @@
-<div class="page-content-height">
-  <div class="content">
-    <h1 class="page-title">Kierunki studiów</h1>
-    <div class="row">
-      <app-type-buttons [buttons]="buttons" [(selected)]="selected"></app-type-buttons>
-      <span class="spaced-t-l material-icons clickable" (click)="refreshList()">refresh</span>
-    </div>
-    <div class="spaced-l-l spaced-t" *ngIf="listItems$ | async as listItems">
-      <div *ngFor="let item of listItems">
-        <div *ngIf="selected === item.departmentID">
-          <div class="center-row list-row w-60">
-            <span class="spaced-l-s weight-500">{{ item.name }} </span>
-            <span class="light-color spaced-l">({{item.degree}} stopień, {{item.numberOfSemesters}} semestrów)</span>
+<div class="h-100 content">
+  <h1 class="page-title">Kierunki studiów</h1>
 
-            <div class="space"></div>
-            <span class="material-icons red-color clickable" (click)="deleteStudyField(item.id)">delete_forever</span>
-            <!-- TODO: Edit form -->
-            <span class="spaced-l-s primary-color clickable weight-500" hidden>Edytuj</span>
-          </div>
+  <div class="sub-content">
+    <div class="center-row">
+      <app-type-buttons [buttons]="buttons" [(selected)]="selected"></app-type-buttons>
+      <span class="material-icons clickable" (click)="refreshList()">refresh</span>
+    </div>
+
+    <div class="spaced-t" *ngIf="listItems$ | async as listItems">
+      <div *ngFor="let item of listItems">
+        <div *ngIf="selected === item.departmentID" class="center-row list-row w-80">
+          <span class="spaced-l-s weight-500">{{ item.name }} </span>
+          <span class="light-color spaced-l">({{item.degree}} stopień, {{item.numberOfSemesters}} semestrów)</span>
+          <div class="space"></div>
+          <span class="material-icons red-color clickable" (click)="deleteStudyField(item.id)">delete_forever</span>
+          <span class="spaced-l-s primary-color clickable weight-500">Edytuj</span>
         </div>
       </div>
     </div>
-
-  </div>
-
-  <div class="buttons">
-    <a class="button" mat-raised-button color="primary" routerLink="/create-field">Dodaj</a>
+    <a mat-button color="primary" class="a-text-button spaced-t-s weight-300" routerLink="/create-field">Dodaj
+      kierunek</a>
   </div>
 </div>

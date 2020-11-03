@@ -1,6 +1,4 @@
-<div class="spaced-l spaced-t">
-  <button mat-raised-button color="primary" class="spaced-h-s"
-    *ngFor="let button of buttons" 
-    [class.selected]="button.id!=selected"
-    (click)="change(button.id)">{{ button.name }}</button>
-</div>
+<button mat-raised-button color="primary" class="spaced-r" 
+  *ngFor="let button of buttons"
+  [class.unselected]="button.id != selected" 
+  (click)="change(button.id)">{{ button.name }}</button>

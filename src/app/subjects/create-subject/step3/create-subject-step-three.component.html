@@ -1,0 +1,55 @@
+<h3 class="form-request">Zdefiniuj zajęcia wchodzące w skład przedmiotu ({{newSubject.name}})</h3>
+
+<div class="spaced-l-l spaced-t column">
+  <div class="center-row checkbox-label">
+    <mat-checkbox class="example-margin" color="primary" [(ngModel)]="newSubject.schedule.lectures.enabled"
+      name="lectures">
+      <span class="spaced-l-s">Wykłady</span>
+    </mat-checkbox>
+
+    <span *ngIf="newSubject.schedule.lectures.enabled" class="spaced-l">
+      <input type="number" class="app-input micro-input" type="number" placeholder="30" name="hourLectures"
+        [(ngModel)]="hourLectures" required>
+      <p class="app-input-hint">Ilość godzin</p>
+    </span>
+  </div>
+
+  <div class="center-row checkbox-label">
+    <mat-checkbox class="example-margin" color="primary" [(ngModel)]="newSubject.schedule.exercise.enabled"
+      name="exercise">
+      <span class="spaced-l-s">Ćwiczenia</span>
+    </mat-checkbox>
+
+    <span *ngIf="newSubject.schedule.exercise.enabled" class="spaced-l">
+      <input class="app-input micro-input" type="number" placeholder="30" name="hourExercise" [(ngModel)]="hourExercise"
+        required>
+      <p class="app-input-hint">Ilość godzin</p>
+    </span>
+  </div>
+
+  <div class="center-row checkbox-label">
+    <mat-checkbox class="example-margin" color="primary" [(ngModel)]="newSubject.schedule.laboratories.enabled"
+      name="laboratories">
+      <span class="spaced-l-s">Labolatoria</span>
+    </mat-checkbox>
+
+    <span *ngIf="newSubject.schedule.laboratories.enabled" class="spaced-l">
+      <input type="number" class="app-input micro-input" type="number" placeholder="30" name="hourLaboratories"
+        [(ngModel)]="hourLaboratories" required>
+      <p class="app-input-hint">Ilość godzin</p>
+    </span>
+  </div>
+
+  <div class="center-row checkbox-label">
+    <mat-checkbox class="example-margin" color="primary" [(ngModel)]="newSubject.schedule.seminars.enabled"
+      name="seminars">
+      <span class="spaced-l-s">Seminaria</span>
+    </mat-checkbox>
+
+    <span *ngIf="newSubject.schedule.seminars.enabled" class="spaced-l">
+      <input type="number" class="app-input micro-input" type="number" placeholder="30" name="hourSeminars"
+        [(ngModel)]="hourSeminars" required>
+      <p class="app-input-hint">Ilość godzin</p>
+    </span>
+  </div>
+</div>

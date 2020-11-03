@@ -1,0 +1,19 @@
+<form #f="ngForm" (ngSubmit)="lastStep === step ? createSubject() : step = step + 1">
+
+  <div class="content">
+    <div class="row">
+      <h1 class="page-title">Dodaj przedmiot</h1>
+      <div class="space"></div>
+      <h5 class="step">Krok: {{step}}/{{lastStep}}</h5>
+    </div>
+
+    <div class="sub-content">
+      <app-create-subject-step-one [(newSubject)]="newSubject" *ngIf="step===1"></app-create-subject-step-one>
+      <app-create-subject-step-two [(newSubject)]="newSubject" *ngIf="step===2"></app-create-subject-step-two>
+      <app-create-subject-step-three [(newSubject)]="newSubject" *ngIf="step===3"></app-create-subject-step-three>
+      <app-create-subject-step-four [(newSubject)]="newSubject" *ngIf="step===4"></app-create-subject-step-four>
+    </div>
+  </div>
+
+  <app-create-buttons [(step)]="step" [lastStep]="lastStep" [f]="f" [cancelLink]="'subjects'"></app-create-buttons>
+</form>

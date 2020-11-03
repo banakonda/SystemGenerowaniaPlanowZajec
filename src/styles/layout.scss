@@ -9,6 +9,14 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.content {
+  margin: 2.5% 3.5%;
+}
+
+.sub-content {
+  margin: 1% 2%;
+}
+
 .box-shadow {
   box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.4);
 }
@@ -46,17 +54,6 @@ body {
 
 .clickable {
   cursor: pointer;
-}
-
-.content {
-  margin: 2rem 3rem 0 3rem;
-  height: calc(100% - 10%);
-}
-.sub-content {
-  margin: 3rem 3rem;
-}
-.page-content-height {
-  height: calc(100% - 2rem);
 }
 
 // WIDTHS & HEIGHTS

@@ -1,0 +1,36 @@
+<h3 class="form-request">Zdefiniuj prowadzących przedmiot ({{newSubject.name}})</h3>
+
+<div class="spaced-l-l spaced-t center-row">
+  <div>
+    <select name="studyField" id="studyField" class="app-input long-input" [(ngModel)]="newSubjectTeacher.teacher">
+      <option *ngFor="let teacher of teachers" [ngValue]="teacher">{{teacher.name}}</option>
+    </select>
+    <p class="app-input-hint">Imie i nazwisko nauczyciela akademickiego</p>
+  </div>
+
+  <div class="spaced-l-s">
+    <mat-checkbox class="spaced-l-l" color="primary" name="lectures" [(ngModel)]="newSubjectTeacher.lecturesEnable"> 
+      W </mat-checkbox>
+    <mat-checkbox class="spaced-l-l" color="primary" name="lectures" [(ngModel)]="newSubjectTeacher.exerciseEnable"> 
+      Ć </mat-checkbox>
+    <mat-checkbox class="spaced-l-l" color="primary" name="lectures" [(ngModel)]="newSubjectTeacher.laboratoriesEnable">
+      L </mat-checkbox>
+    <mat-checkbox class="spaced-l-l" color="primary" name="lectures" [(ngModel)]="newSubjectTeacher.seminarsEnable"> 
+      S </mat-checkbox>
+  </div>
+  <span class="a-text-button spaced-l primary-color clickable weight-500" (click)="addTeacher()">Dodaj</span>
+</div>
+
+
+<div class="column spaced-l-l spaced-t-l">
+  <div class="spaced-l-l center-row list-row w-60" *ngFor="let teacher of newSubject.teachers">
+    <span class="light-color w-10">{{ getTitleToDisplay(teacher.teacher) }}</span>
+    <span>{{ teacher.teacher.name }}</span>
+    <span class="light-color spaced-l-l">
+      {{ teacher.lecturesEnable ? "[W]" : "" }}
+      {{ teacher.exerciseEnable ? "[Ć]" : "" }}
+      {{ teacher.laboratoriesEnable ? "[L]" : "" }}
+      {{ teacher.seminarsEnable ? "[S]" : "" }}
+    </span>
+  </div>
+</div>

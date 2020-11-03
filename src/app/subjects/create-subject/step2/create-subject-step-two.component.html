@@ -1,0 +1,30 @@
+<div class="column">
+  <h3 class="form-request">Zdefiniuj kto ma się go uczyć przedmiotu ({{newSubject.name}})</h3>
+
+  <div class="row spaced-l-l spaced-t">
+    <div>
+      <select name="studyField" id="studyField" class="app-input normal-input"
+        [(ngModel)]="newSubject.students.studyFieldID">
+        <option *ngFor="let field of studyFields" [ngValue]="field.id">{{field.name}}</option>
+      </select>
+      <p class="app-input-hint">Nazwa kierunku</p>
+    </div>
+
+    <div class="spaced-l-l">
+      <select name="cars" id="cars" class="app-input tiny-input" [(ngModel)]="newSubject.students.semester">
+        <option *ngFor="let semester of getSemesters" [value]="semester">{{semester}}</option>
+      </select>
+      <p class="app-input-hint">Semestr</p>
+    </div>
+  </div>
+
+  <h3 class="form-request spaced-t-l">Zdefiniuj profil przedmiotu</h3>
+  <mat-radio-group class="column spaced-t spaced-l-l" [(ngModel)]="newSubject.eligibility" name="eligibility">
+    <mat-radio-button color="primary" [value]="false">Obowiązkowy</mat-radio-button>
+    <mat-radio-button color="primary" class="spaced-t" [value]="true">Obieralny</mat-radio-button>
+  </mat-radio-group>
+
+  <!-- TODO: Should be precise how many ppl can take part in lessons. -->
+  <h3 class="form-request" hidden>Czy przedmiot jest obieralny?</h3>
+
+</div>

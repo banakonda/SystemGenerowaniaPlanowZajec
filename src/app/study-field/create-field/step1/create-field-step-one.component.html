@@ -1,0 +1,19 @@
+<div class="column">
+  <h3 class="form-request spaced-b">Podaj nazwę kierunku</h3>
+  <input [(ngModel)]="newStudyField.name" 
+    class="app-input long-input spaced-l-l" placeholder="Informatyka" 
+    name="name"type="text" required>
+  <p class="app-input-hint spaced-l-l">Nazwa nowego kierunku</p>
+
+  <h3 class="form-request spaced-t-l spaced-b">Podaj stopień studiów</h3>
+  <input [(ngModel)]="newStudyField.degree" 
+    class="app-input tiny-input spaced-l-l" placeholder="1" 
+    name="degree" type="number" min="1" required>
+  <p class="app-input-hint spaced-l-l">Stopień studiów</p>
+
+  <h3 class="form-request spaced-t-l spaced-b">Podaj ilość semestrów</h3>
+  <input [(ngModel)]="newStudyField.numberOfSemesters" 
+    class="app-input tiny-input spaced-l-l" placeholder="6" 
+    name="numberOfSemesters" type="number" min="1" required>
+  <p class="app-input-hint spaced-l-l">Ilość semestrów</p>
+</div>

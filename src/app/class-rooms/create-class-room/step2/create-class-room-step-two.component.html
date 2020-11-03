@@ -1,0 +1,18 @@
+<h3 class="form-request">Dodaj dyspozycyjność ({{newClassRoom.name}})</h3>
+<mat-radio-group class="column spaced-t" [(ngModel)]="newClassRoom.availability.oneWeek">
+  <mat-radio-button color="primary" class="spaced-b h-100" [value]="true">Dyspozycyjność
+    tygodniowa</mat-radio-button>
+  <span>
+    <mat-radio-button color="primary" class="spaced-b-s" [value]="false">Dyspozycyjność
+      dwutygodniowa</mat-radio-button>
+    <span *ngIf="!newClassRoom.availability.oneWeek">
+      <button mat-raised-button color="primary" class="spaced-l-l" type="button" [class.unselected]="week != 'even'"
+        (click)="week = 'even'">Tygodnie parzyste</button>
+      <button mat-raised-button color="primary" class="spaced-l" type="button" [class.unselected]="week != 'odd'"
+        (click)="week = 'odd'">Tygodnie nieparzyste</button>
+    </span>
+  </span>
+</mat-radio-group>
+
+
+<app-availability [availabilityTime]="classRoomAvailability"></app-availability>

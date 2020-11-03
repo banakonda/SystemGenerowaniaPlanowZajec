@@ -1,0 +1,32 @@
+@import "../../../styles.scss";
+
+.selected {
+  background-color: $simple_gray_2;
+  font-weight: 400;
+  box-shadow: none;
+}
+
+.weekdays {
+  button {
+    min-width: 8rem;
+    margin: 0 8px;
+  }
+}
+
+.time-box {
+  width: calc(calc(100% / 14) - 8px);
+  height: 2rem;
+  background: $primary_color;
+  border-radius: 3px;
+  margin: 8px 4px 0 4px;
+  display: inline-block;
+  transition-duration: 1s;
+  p {
+    text-align: center;
+    padding: 6px 0 !important;
+  }
+}
+
+.disabled {
+  background-color: $simple_gray_2;
+}

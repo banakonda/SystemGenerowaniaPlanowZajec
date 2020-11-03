@@ -1,0 +1,15 @@
+<form class="page-content-height" #f="ngForm" (ngSubmit)="lastStep === step ? createClassRoom() : step = step + 1">
+  <div class="content">
+    <div class="row">
+      <h1 class="page-title">Dodaj salę</h1>
+      <div class="space"></div>
+      <h5 class="step">Krok: {{step}}/{{lastStep}}</h5>
+    </div>
+    <div class="sub-content">
+      <app-create-class-room-step-one [(newClassRoom)]="newClassRoom" *ngIf="step===1"></app-create-class-room-step-one>
+      <app-create-class-room-step-two [(newClassRoom)]="newClassRoom" *ngIf="step===2"></app-create-class-room-step-two>
+    </div>
+  </div>
+
+  <app-create-buttons [(step)]="step" [lastStep]="lastStep" [f]="f" [cancelLink]="'class-rooms'"></app-create-buttons>
+</form>
