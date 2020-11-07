@@ -8,37 +8,37 @@ import { TitleAPI } from './models/Title';
 })
 export class TitleService {
   titles: TitleAPI[] = [{
-    id: 1,
+    id: '1',
     name: 'inż.',
   }, {
-    id: 2,
+    id: '2',
     name: 'mgr',
   }, {
-    id: 3,
+    id: '3',
     name: 'mgr inż.',
   }, {
-    id: 4,
+    id: '4',
     name: 'dr',
   }, {
-    id: 5,
+    id: '5',
     name: 'dr inż.',
   }, {
-    id: 6,
+    id: '6',
     name: 'dr hab.',
   }, {
-    id: 7,
+    id: '7',
     name: 'dr hab. inż.',
   }, {
-    id: 8,
+    id: '8',
     name: 'dr hab. prof PK',
   }, {
-    id: 9,
+    id: '9',
     name: 'dr hab. inż prof PK',
   }, {
-    id: 10,
+    id: '10',
     name: 'prof. dr hab.',
   }, {
-    id: 11,
+    id: '11',
     name: 'prof. dr hab. inż.',
   }];
 

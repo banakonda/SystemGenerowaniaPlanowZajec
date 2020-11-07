@@ -2,9 +2,9 @@ export interface StudyField {
   name: string;
   degree: number;
   numberOfSemesters: number;
-  departmentID: number;
+  departmentID: string;
 }
 
 export interface StudyFieldAPI extends StudyField {
-  id: number;
+  id: string;
 }

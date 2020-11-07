@@ -23,7 +23,7 @@ export class CreateSubjectComponent {
   createSubject(): void {
     let error = 0;
     try {
-      this.subjectsService.createSubjects(this.newSubject);
+      this.subjectsService.createSubjects(this.newSubject).subscribe();
     } catch {
       error = 1;
     } finally {

@@ -1,15 +1,16 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { ClassRoomAPI } from '../data/models/ClassRoom';
+import { ClassRoom, ClassRoomAPI } from '../data/models/ClassRoom';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClassRoomService {
   classRooms: ClassRoomAPI[] = [{
-    id: 1,
+    id: '1',
     name: 'D 1/15',
-    studyFieldID: 1,
+    studyFieldID: '1',
     availability: {
       oneWeek: true,
       allWeeks: {
@@ -21,9 +22,9 @@ export class ClassRoomService {
       }
     },
   }, {
-    id: 2,
+    id: '2',
     name: 'F 10',
-    studyFieldID: 1,
+    studyFieldID: '1',
     availability: {
       oneWeek: true,
       allWeeks: {
@@ -35,9 +36,9 @@ export class ClassRoomService {
       }
     },
   }, {
-    id: 3,
+    id: '3',
     name: '136',
-    studyFieldID: 2,
+    studyFieldID: '2',
     availability: {
       oneWeek: true,
       allWeeks: {
@@ -49,19 +50,26 @@ export class ClassRoomService {
       }
     },
   }];
-  constructor() { }
+  baseUrl = 'http://localhost:8888/classroom';
 
-  getClassRooms(): Observable<any> {
-    return of(this.classRooms);
+  constructor(
+    private httpClient: HttpClient,
+  ) { }
+
+  getClassRooms(): Observable<ClassRoomAPI[]> {
+    // return of(this.classRooms);
+    return this.httpClient.get<ClassRoomAPI[]>(`${this.baseUrl}/findAllClassRooms`);
   }
 
-  createClassRooms(classRooms: any): void {
-    console.log(classRooms);
+  createClassRooms(classRoom: any): Observable<ClassRoom> {
+    const url = `${this.baseUrl}/addClassRoom`;
+    return this.httpClient.post<ClassRoom>(url, classRoom);
   }
-  editClassRooms(classRooms: any): void {
+  editClassRooms(classRoom: any): void {
 
   }
-  deleteClassRooms(classRooms: number): void {
-
+  deleteClassRooms(id: number): Observable<{}> {
+    const url = `${this.baseUrl}/delete/${id}`;
+    return this.httpClient.delete(url);
   }
 }

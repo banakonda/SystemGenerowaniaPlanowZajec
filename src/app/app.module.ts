@@ -33,6 +33,7 @@ import { ClassRoomsComponent } from './class-rooms/class-rooms.component';
 import { CreateClassRoomComponent } from './class-rooms/create-class-room/create-class-room.component';
 import { CreateClassRoomStepOneComponent } from './class-rooms/create-class-room/step1/create-class-room-step-one.component';
 import { CreateClassRoomStepTwoComponent } from './class-rooms/create-class-room/step2/create-class-room-step-two.component';
+import { SchedulesComponent } from './schedules/schedules.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +58,7 @@ import { CreateClassRoomStepTwoComponent } from './class-rooms/create-class-room
     CreateClassRoomComponent,
     CreateClassRoomStepOneComponent,
     CreateClassRoomStepTwoComponent,
+    SchedulesComponent,
   ],
   imports: [
     BrowserModule,

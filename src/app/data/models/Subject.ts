@@ -1,7 +1,7 @@
 import { TeacherAPI } from './Teacher';
 
 interface StudyStudents {
-  studyFieldID: number;
+  studyFieldID: string;
   semester: number;
 }
 
@@ -36,5 +36,5 @@ export interface Subject {
 }
 
 export interface SubjectAPI extends Subject {
-  id: number;
+  id: string;
 }

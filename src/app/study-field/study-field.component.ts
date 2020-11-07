@@ -26,7 +26,7 @@ export class StudyFieldComponent implements OnInit {
   }
 
   deleteStudyField(id: number): void {
-    this.studyFieldService.deleteStudyField(id);
+    this.studyFieldService.deleteStudyField(id).subscribe();
   }
 
   refreshList(): void {

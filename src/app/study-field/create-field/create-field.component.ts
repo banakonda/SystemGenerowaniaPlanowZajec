@@ -22,7 +22,7 @@ export class CreateFieldComponent {
   createStudyField(): void {
     let error = 0;
     try {
-      this.studyFieldService.createStudyField(this.newStudyField);
+      this.studyFieldService.createStudyField(this.newStudyField).subscribe();
     } catch {
       error = 1;
     } finally {

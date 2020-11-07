@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
@@ -8,10 +9,10 @@ import { Subject, SubjectAPI } from '../data/models/Subject';
 })
 export class SubjectsService {
   subjects: SubjectAPI[] = [{
-    id: 1,
+    id: '1',
     name: 'Metody Obliczeniowe',
     students: {
-      studyFieldID: 1,
+      studyFieldID: '1',
       semester: 1,
     },
     schedule: {
@@ -32,10 +33,10 @@ export class SubjectsService {
     },
     teachers: [{
       teacher: {
-        id: 1,
-        titleID: 2,
+        id: '1',
+        titleID: '2',
         name: 'Jan Kowalski',
-        studyField: 1,
+        studyField: '1',
         availability: {
           oneWeek: true,
           allWeeks: {
@@ -53,10 +54,10 @@ export class SubjectsService {
       seminarsEnable: false,
     }, {
       teacher: {
-        id: 2,
-        titleID: 6,
+        id: '2',
+        titleID: '6',
         name: 'Anna Nowak',
-        studyField: 1,
+        studyField: '1',
         availability: {
           oneWeek: true,
           allWeeks: {
@@ -75,10 +76,10 @@ export class SubjectsService {
     }],
     eligibility: true,
   }, {
-    id: 2,
+    id: '2',
     name: 'Wstęp do programowania',
     students: {
-      studyFieldID: 1,
+      studyFieldID: '1',
       semester: 2,
     },
     schedule: {
@@ -100,10 +101,10 @@ export class SubjectsService {
     },
     teachers: [{
       teacher: {
-        id: 1,
-        titleID: 2,
+        id: '1',
+        titleID: '2',
         name: 'Jan Kowalski',
-        studyField: 1,
+        studyField: '1',
         availability: {
           oneWeek: true,
           allWeeks: {
@@ -121,10 +122,10 @@ export class SubjectsService {
       seminarsEnable: false,
     }, {
       teacher: {
-        id: 2,
-        titleID: 6,
+        id: '2',
+        titleID: '6',
         name: 'Anna Nowak',
-        studyField: 1,
+        studyField: '1',
         availability: {
           oneWeek: true,
           allWeeks: {
@@ -144,19 +145,26 @@ export class SubjectsService {
     eligibility: false,
   }];
 
-  constructor() { }
+  baseUrl = 'http://localhost:8888/subject';
+
+  constructor(
+    private httpClient: HttpClient,
+  ) { }
 
   getSubjects(): Observable<SubjectAPI[]> {
-    return of(this.subjects);
+    // return of(this.subjects);
+    return this.httpClient.get<SubjectAPI[]>(`${this.baseUrl}/findAllSubjects`);
   }
 
-  createSubjects(studyField: Subject): void {
-    console.log(studyField);
+  createSubjects(studyField: Subject): Observable<Subject> {
+    const url = `${this.baseUrl}/addSubject`;
+    return this.httpClient.post<Subject>(url, studyField);
   }
   editSubjects(studyField: SubjectAPI): void {
 
   }
-  deleteSubjects(id: number): void {
-
+  deleteSubjects(id: number): Observable<{}> {
+    const url = `${this.baseUrl}/delete/${id}`;
+    return this.httpClient.delete(url);
   }
 }

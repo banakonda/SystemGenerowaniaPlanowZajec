@@ -12,7 +12,7 @@ import { ClassRoomService } from './class-rooms.service';
 })
 export class ClassRoomsComponent implements OnInit {
   buttons: StudyFieldAPI[] = [];
-  selected: number;
+  selected: any;
   listItems$: Observable<ClassRoomAPI[]>;
   constructor(
     private studyFieldService: StudyFieldService,
@@ -30,6 +30,6 @@ export class ClassRoomsComponent implements OnInit {
   }
 
   deleteClassRooms(id: number): void {
-    this.classRoomsService.deleteClassRooms(id);
+    this.classRoomsService.deleteClassRooms(id).subscribe();
   }
 }

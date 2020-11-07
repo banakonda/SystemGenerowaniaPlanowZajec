@@ -9,7 +9,7 @@
 
     <div class="spaced-t" *ngIf="listItems$ | async as listItems">
       <div *ngFor="let item of listItems">
-        <div *ngIf="selected === item.id" class="center-row list-row w-80">
+        <div *ngIf="selected === item.students.studyFieldID" class="center-row list-row w-80">
           <span class="spaced-l weight-500">{{ item.name }}</span>
           <span class="spaced-l-s weight-500 light-color">
             ({{ item.eligibility ? "obieralny" : "obowiązkowy"}},

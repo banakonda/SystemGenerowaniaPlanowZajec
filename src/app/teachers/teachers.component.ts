@@ -13,7 +13,7 @@ import { TeachersService } from './teachers.service';
 })
 export class TeachersComponent implements OnInit {
   buttons: StudyFieldAPI[] = [];
-  selected: number;
+  selected: any;
   listItems$: Observable<TeacherAPI[]>;
   titles: TitleAPI[];
 
@@ -36,6 +36,10 @@ export class TeachersComponent implements OnInit {
 
   refreshList(): void {
     this.listItems$ = this.teachersService.getTeachers();
+  }
+  deleteTeacher(id: number): void {
+    this.teachersService.deleteTeacher(id).subscribe();
+    this.refreshList();
   }
 
 }

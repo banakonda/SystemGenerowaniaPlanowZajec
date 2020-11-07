@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StudyFieldAPI } from '../data/models/StudyField';
-import { SubjectAPI } from '../data/models/Subject';
 import { StudyFieldService } from '../study-field/study-field.service';
-import { SubjectsService } from './subjects.service';
+import { SchedulesService } from './schedules.service';
 
 @Component({
-  selector: 'app-subjects',
-  templateUrl: './subjects.component.html',
+  selector: 'app-schedules',
+  templateUrl: './schedules.component.html',
 })
-export class SubjectsComponent implements OnInit {
+export class SchedulesComponent implements OnInit {
   buttons: StudyFieldAPI[] = [];
   selected: any;
-  listItems$: Observable<SubjectAPI[]>;
+  listItems$: Observable<any[]>; // Observable<ScheduleAPI[]>
 
   constructor(
-    private subjectsService: SubjectsService,
+    private schedulesService: SchedulesService,
     private studyFieldService: StudyFieldService,
   ) { }
 
@@ -26,10 +25,11 @@ export class SubjectsComponent implements OnInit {
   }
 
   deleteSubject(id: number): void {
-    this.subjectsService.deleteSubjects(id).subscribe();
+    this.schedulesService.deleteSchedule(id);
   }
 
   refreshList(): void {
-    this.listItems$ = this.subjectsService.getSubjects();
+    this.listItems$ = this.schedulesService.getSchedules();
   }
+
 }

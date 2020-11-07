@@ -23,7 +23,7 @@ export class CreateClassRoomComponent {
   createClassRoom(): void {
     let error = 0;
     try {
-      this.classRoomsService.createClassRooms(this.newClassRoom);
+      this.classRoomsService.createClassRooms(this.newClassRoom).subscribe();
     } catch {
       error = 1;
     } finally {

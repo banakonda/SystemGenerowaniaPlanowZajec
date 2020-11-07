@@ -23,7 +23,7 @@ export class CreateTeacherComponent {
     let error = 0;
     try {
       // TODO: Delete (evenWeeks && oddWeeks) || allWeeks
-      this.teachersService.createTeacher(this.newTeacher);
+      this.teachersService.createTeacher(this.newTeacher).subscribe();
     } catch {
       error = 1;
     } finally {

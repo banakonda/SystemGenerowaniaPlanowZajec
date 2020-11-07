@@ -3,9 +3,9 @@ import { WeekAvailability } from './Availability';
 export interface ClassRoom {
   name: string;
   availability: WeekAvailability;
-  studyFieldID: number;
+  studyFieldID: string;
 }
 
 export interface ClassRoomAPI extends ClassRoom {
-  id: number;
+  id: string;
 }

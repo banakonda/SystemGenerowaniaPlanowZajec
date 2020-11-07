@@ -7,7 +7,7 @@ import { DepartmentAPI } from './models/Department';
 })
 export class DepartmentService {
   departments: DepartmentAPI = {
-    id: 1,
+    id: '1',
     name: 'Wydział Informatyki i Telekomunikacji',
   };
 

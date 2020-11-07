@@ -3,7 +3,7 @@ import { ClassRoom } from 'src/app/data/models/ClassRoom';
 
 export const newClassRoom: ClassRoom = {
   name: '',
-  studyFieldID: 1,
+  studyFieldID: '1',
   availability: {
     oneWeek: true,
     allWeeks: getWeekAvailability(),

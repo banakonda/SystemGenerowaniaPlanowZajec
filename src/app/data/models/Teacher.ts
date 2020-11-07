@@ -1,12 +1,12 @@
 import { WeekAvailability } from './Availability';
 
 export interface Teacher {
-  titleID: number;
+  titleID: string;
   name: string;
-  studyField: number;
+  studyField: string; // this is id actually
   availability: WeekAvailability;
 }
 
 export interface TeacherAPI extends Teacher {
-  id: number;
+  id: string;
 }

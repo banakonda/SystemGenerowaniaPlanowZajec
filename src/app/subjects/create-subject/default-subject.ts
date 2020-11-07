@@ -3,7 +3,7 @@ import { Subject, SubjectTeachers } from 'src/app/data/models/Subject';
 export const newSubject: Subject = {
   name: '',
   students: {
-    studyFieldID: 1,
+    studyFieldID: '1',
     semester: 1,
   },
   schedule: {

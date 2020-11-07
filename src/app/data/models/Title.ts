@@ -1,4 +1,4 @@
 export interface TitleAPI {
-  id: number;
+  id: string;
   name: string;
 }
