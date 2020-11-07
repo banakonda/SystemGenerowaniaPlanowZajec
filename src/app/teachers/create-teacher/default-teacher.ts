@@ -2,9 +2,9 @@ import { Availability } from 'src/app/data/models/Availability';
 import { Teacher } from 'src/app/data/models/Teacher';
 
 export const newTeacher: Teacher = {
-  titleID: "1",
+  titleID: '1',
   name: '',
-  studyField: "1",
+  studyField: '1',
   availability: {
     oneWeek: true,
     allWeeks: getWeekAvailability(),
