@@ -21,7 +21,7 @@ export class SubjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.studyFieldService.getStudyFields().subscribe(departments => this.buttons = departments);
-    this.selected = this.buttons[0].id;
+    setTimeout(() => this.selected = this.buttons[0].id, 0);
     this.refreshList();
   }
 

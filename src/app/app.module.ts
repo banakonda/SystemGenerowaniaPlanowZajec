@@ -34,6 +34,7 @@ import { CreateClassRoomComponent } from './class-rooms/create-class-room/create
 import { CreateClassRoomStepOneComponent } from './class-rooms/create-class-room/step1/create-class-room-step-one.component';
 import { CreateClassRoomStepTwoComponent } from './class-rooms/create-class-room/step2/create-class-room-step-two.component';
 import { SchedulesComponent } from './schedules/schedules.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +70,7 @@ import { SchedulesComponent } from './schedules/schedules.component';
     MatCheckboxModule,
     MatRadioModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
