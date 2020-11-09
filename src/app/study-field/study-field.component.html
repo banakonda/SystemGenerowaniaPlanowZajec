@@ -9,7 +9,7 @@
 
     <div class="spaced-t" *ngIf="listItems$ | async as listItems">
       <div *ngFor="let item of listItems">
-        <div *ngIf="selected === item.departmentID" class="center-row list-row w-80">
+        <div class="center-row list-row w-80">
           <span class="spaced-l-s weight-500">{{ item.name }} </span>
           <span class="light-color spaced-l">({{item.degree}} stopień, {{item.numberOfSemesters}} semestrów)</span>
           <div class="space"></div>

@@ -38,9 +38,14 @@ export class StudyFieldService {
     return this.httpClient.get<StudyFieldAPI[]>(`${this.baseUrl}/findAllStudyFields`);
   }
 
-  createStudyField(studyField: StudyField): Observable<StudyField> {
+  createStudyField(studyField: StudyField): Observable<any> {
+    const requestOptions: Object = {
+      /* other options here */
+      responseType: 'text'
+    };
+
     const url = `${this.baseUrl}/addStudyField`;
-    return this.httpClient.post<StudyField>(url, studyField);
+    return this.httpClient.post<StudyField>(url, studyField, requestOptions);
   }
   editStudyField(studyField: StudyFieldAPI): void {
 

@@ -3,7 +3,7 @@ import { WeekAvailability } from './Availability';
 export interface Teacher {
   titleID: string;
   name: string;
-  studyField: string; // this is id actually
+  studyFieldId: string; // this is id actually
   availability: WeekAvailability;
 }
 

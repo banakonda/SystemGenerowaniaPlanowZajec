@@ -25,8 +25,11 @@ export class CreateSubjectStepFourComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.teachersService.getTeachers().subscribe(teachers => this.teachers = teachers);
-    this.newSubjectTeacher.teacher = this.teachers[0];
+    this.teachersService.getTeachers().subscribe(
+      teachers => this.teachers = teachers,
+      () => { },
+      () => this.newSubjectTeacher.teacher = this.teachers[0]);
+
     this.titleService.getTitles().subscribe(t => this.titles = t);
   }
 

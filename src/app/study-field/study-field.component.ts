@@ -20,13 +20,17 @@ export class StudyFieldComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.setDefault();
+  }
+
+  setDefault(): void {
     this.departmentService.getDepartments().subscribe(departments => this.buttons = departments);
     this.selected = this.buttons[0].id;
     this.refreshList();
   }
-
   deleteStudyField(id: number): void {
     this.studyFieldService.deleteStudyField(id).subscribe();
+    setTimeout(() => this.refreshList(), 10);
   }
 
   refreshList(): void {

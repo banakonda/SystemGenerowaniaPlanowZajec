@@ -15,6 +15,9 @@ export class CreateSubjectStepTwoComponent implements OnInit {
   studyFields: StudyFieldAPI[];
 
   get getSemesters(): number[] {
+    if (!this.studyFields || !this.studyFields.length) {
+      return [];
+    }
     const numberOfSemesters = this.studyFields.find(q => q.id === this.newSubject.students.studyFieldID).numberOfSemesters;
     const semesters: number[] = [];
 
@@ -26,10 +29,12 @@ export class CreateSubjectStepTwoComponent implements OnInit {
   }
 
   constructor(
-    private sfs: StudyFieldService,
+    private studyFieldService: StudyFieldService,
   ) { }
 
   ngOnInit(): void {
-    this.sfs.getStudyFields().subscribe(fields => this.studyFields = fields);
+    this.studyFieldService.getStudyFields().subscribe(fields => this.studyFields = fields,
+      () => { },
+      () => this.newSubject.students.studyFieldID = this.studyFields[0].id);
   }
 }

@@ -20,8 +20,10 @@ export class SubjectsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.studyFieldService.getStudyFields().subscribe(departments => this.buttons = departments);
-    setTimeout(() => this.selected = this.buttons[0].id, 0);
+    this.studyFieldService.getStudyFields().subscribe(
+      q => this.buttons = q,
+      () => { },
+      () => this.selected = this.buttons[0].id);
     this.refreshList();
   }
 

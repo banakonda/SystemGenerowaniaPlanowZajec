@@ -24,8 +24,14 @@ export class TeachersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.studyFieldService.getStudyFields().subscribe(q => this.buttons = q);
-    setTimeout(() => this.selected = this.buttons[0].id, 3000);
+    this.setDefault();
+  }
+
+  setDefault() {
+    this.studyFieldService.getStudyFields().subscribe(
+      q => this.buttons = q,
+      () => { },
+      () => this.selected = this.buttons[0].id);
     this.titleService.getTitles().subscribe(t => this.titles = t);
     this.refreshList();
   }

@@ -9,7 +9,7 @@
 
     <div class="spaced-t" *ngIf="listItems$ | async as listItems">
       <div *ngFor="let item of listItems">
-        <div *ngIf="selected === item.studyField" class="center-row list-row w-80">
+        <div *ngIf="selected === item.studyFieldId" class="center-row list-row w-80">
           <span class="spaced-l-s light-color">{{ getTitleToDisplay(item) }}</span>
           <span class="spaced-l weight-500">{{ item.name }}</span>
           <div class="space"></div>

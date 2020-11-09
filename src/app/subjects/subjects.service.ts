@@ -36,7 +36,7 @@ export class SubjectsService {
         id: '1',
         titleID: '2',
         name: 'Jan Kowalski',
-        studyField: '1',
+        studyFieldId: '1',
         availability: {
           oneWeek: true,
           allWeeks: {
@@ -57,7 +57,7 @@ export class SubjectsService {
         id: '2',
         titleID: '6',
         name: 'Anna Nowak',
-        studyField: '1',
+        studyFieldId: '1',
         availability: {
           oneWeek: true,
           allWeeks: {
@@ -104,7 +104,7 @@ export class SubjectsService {
         id: '1',
         titleID: '2',
         name: 'Jan Kowalski',
-        studyField: '1',
+        studyFieldId: '1',
         availability: {
           oneWeek: true,
           allWeeks: {
@@ -125,7 +125,7 @@ export class SubjectsService {
         id: '2',
         titleID: '6',
         name: 'Anna Nowak',
-        studyField: '1',
+        studyFieldId: '1',
         availability: {
           oneWeek: true,
           allWeeks: {
@@ -157,8 +157,9 @@ export class SubjectsService {
   }
 
   createSubjects(studyField: Subject): Observable<Subject> {
+    console.log(studyField);
     const url = `${this.baseUrl}/addSubject`;
-    return this.httpClient.post<Subject>(url, studyField);
+    return this.httpClient.post<Subject>(url, studyField, { responseType: 'text' } as Object);
   }
   editSubjects(studyField: SubjectAPI): void {
 

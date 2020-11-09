@@ -11,7 +11,7 @@ export class TeachersService {
     id: '1',
     titleID: '2',
     name: 'Jan Kowalski',
-    studyField: '1',
+    studyFieldId: '1',
     availability: {
       oneWeek: true,
       allWeeks: {
@@ -26,7 +26,7 @@ export class TeachersService {
     id: '2',
     titleID: '6',
     name: 'Anna Nowak',
-    studyField: '1',
+    studyFieldId: '1',
     availability: {
       oneWeek: true,
       allWeeks: {
@@ -41,7 +41,7 @@ export class TeachersService {
     id: '3',
     titleID: '8',
     name: 'Andrzej Lech',
-    studyField: '1',
+    studyFieldId: '1',
     availability: {
       oneWeek: true,
       allWeeks: {
@@ -56,7 +56,7 @@ export class TeachersService {
     id: '4',
     titleID: '11',
     name: 'Joanna Bańka',
-    studyField: '2',
+    studyFieldId: '2',
     availability: {
       oneWeek: true,
       allWeeks: {
@@ -81,8 +81,9 @@ export class TeachersService {
   }
 
   createTeacher(teacher: Teacher): Observable<Teacher> {
+    console.log(teacher);
     const url = `${this.baseUrl}/addTeacher`;
-    return this.httpClient.post<Teacher>(url, teacher);
+    return this.httpClient.post<Teacher>(url, teacher, { responseType: 'text' } as Object);
   }
   editTeacher(teacher: TeacherAPI): void {
 
