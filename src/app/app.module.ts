@@ -35,6 +35,9 @@ import { CreateClassRoomStepOneComponent } from './class-rooms/create-class-room
 import { CreateClassRoomStepTwoComponent } from './class-rooms/create-class-room/step2/create-class-room-step-two.component';
 import { SchedulesComponent } from './schedules/schedules.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CreateScheduleComponent } from './schedules/create-schedule/create-schedule.component';
+import { CreateScheduleStepOneComponent } from './schedules/create-schedule/step1/create-schedule-step-one.component';
+import { CreateScheduleStepTwoComponent } from './schedules/create-schedule/step2/create-schedule-step-two.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +63,9 @@ import { HttpClientModule } from '@angular/common/http';
     CreateClassRoomStepOneComponent,
     CreateClassRoomStepTwoComponent,
     SchedulesComponent,
+    CreateScheduleComponent,
+    CreateScheduleStepOneComponent,
+    CreateScheduleStepTwoComponent,
   ],
   imports: [
     BrowserModule,

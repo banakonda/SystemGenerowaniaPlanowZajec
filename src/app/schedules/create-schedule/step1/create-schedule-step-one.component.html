@@ -1,0 +1,7 @@
+<h3 class="form-request">Zdefiniuj kogo dotyczy plan</h3>
+<div>
+  <select name="studyField" id="studyField" class="app-input normal-input" [(ngModel)]="newSchedule.studyFieldID">
+    <option *ngFor="let field of studyFields" [ngValue]="field.id">{{field.name}}</option>
+  </select>
+  <p class="app-input-hint">Nazwa kierunku</p>
+</div>
