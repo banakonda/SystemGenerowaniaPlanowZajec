@@ -70,6 +70,6 @@ export class ClassRoomService {
   }
   deleteClassRooms(id: number): Observable<{}> {
     const url = `${this.baseUrl}/delete/${id}`;
-    return this.httpClient.delete(url);
+    return this.httpClient.delete(url, { responseType: 'text' } as Object);
   }
 }

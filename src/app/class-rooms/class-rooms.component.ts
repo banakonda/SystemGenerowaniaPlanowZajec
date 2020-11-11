@@ -32,6 +32,10 @@ export class ClassRoomsComponent implements OnInit {
   }
 
   deleteClassRooms(id: number): void {
-    this.classRoomsService.deleteClassRooms(id).subscribe();
+    this.classRoomsService.deleteClassRooms(id).subscribe(
+      () => { },
+      () => { },
+      () => this.refreshList(),
+    );
   }
 }
