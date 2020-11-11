@@ -9,11 +9,10 @@
 
     <div class="spaced-t" *ngIf="listItems$ | async as listItems">
       <div *ngFor="let item of listItems">
-        Selected: {{selected}}, Item: {{item.studyFieldID}}
         <div *ngIf="selected === item.studyFieldID" class="center-row list-row w-80">
           <span class="spaced-l-s weight-500">{{ item.name }}</span>
           <div class="space"></div>
-          <span class="material-icons clickable red-color">delete_forever</span>
+          <span (click)="deleteClassRooms(item.id)" class="material-icons clickable red-color">delete_forever</span>
           <span class="spaced-l-s primary-color clickable weight-500">Edytuj</span>
         </div>
       </div>

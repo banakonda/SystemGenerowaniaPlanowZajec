@@ -44,8 +44,11 @@ export class TeachersComponent implements OnInit {
     this.listItems$ = this.teachersService.getTeachers();
   }
   deleteTeacher(id: number): void {
-    this.teachersService.deleteTeacher(id).subscribe();
-    this.refreshList();
+    this.teachersService.deleteTeacher(id).subscribe(
+      () => { },
+      () => { },
+      () => this.refreshList(),
+    );
   }
 
 }

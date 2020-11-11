@@ -13,7 +13,7 @@
           <span class="spaced-l-s light-color">{{ getTitleToDisplay(item) }}</span>
           <span class="spaced-l weight-500">{{ item.name }}</span>
           <div class="space"></div>
-          <span class="material-icons clickable red-color">delete_forever</span>
+          <span (click)="deleteTeacher(item.id)" class="material-icons clickable red-color">delete_forever</span>
           <span class="spaced-l-s primary-color clickable weight-500">Edytuj</span>
         </div>
       </div>

@@ -15,7 +15,7 @@
             ({{ item.eligibility ? "obieralny" : "obowiązkowy"}},
             {{ item.students.semester }} semestr)</span>
           <div class="space"></div>
-          <span class="material-icons clickable red-color">delete_forever</span>
+          <span (click)="deleteSubject(item.id)" class="material-icons clickable red-color">delete_forever</span>
           <span class="spaced-l-s primary-color clickable weight-500">Edytuj</span>
         </div>
       </div>

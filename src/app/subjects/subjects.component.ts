@@ -28,8 +28,11 @@ export class SubjectsComponent implements OnInit {
   }
 
   deleteSubject(id: number): void {
-    this.subjectsService.deleteSubjects(id).subscribe();
-    this.refreshList();
+    this.subjectsService.deleteSubjects(id).subscribe(
+      () => { },
+      () => this.refreshList(),
+      () => { },
+    );
   }
 
   refreshList(): void {
