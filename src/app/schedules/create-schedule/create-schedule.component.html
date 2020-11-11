@@ -1,1 +1,17 @@
-<p>create-schedule works!</p>
+<form #f="ngForm" (ngSubmit)="lastStep === step ? createSchedule() : step = step + 1">
+
+  <div class="content">
+    <div class="row">
+      <h1 class="page-title">Dodaj plan zajęć</h1>
+      <div class="space"></div>
+      <h5 class="step">Krok: {{step}}/{{lastStep}}</h5>
+    </div>
+
+    <div class="sub-content">
+      <app-create-schedule-step-one *ngIf="step==1" [(newSchedule)]="newSchedule"></app-create-schedule-step-one>
+      <app-create-schedule-step-two *ngIf="step==2" [(newSchedule)]="newSchedule"></app-create-schedule-step-two>
+    </div>
+  </div>
+
+  <app-create-buttons [(step)]="step" [lastStep]="lastStep" [f]="f" [cancelLink]="'fields'"></app-create-buttons>
+</form>

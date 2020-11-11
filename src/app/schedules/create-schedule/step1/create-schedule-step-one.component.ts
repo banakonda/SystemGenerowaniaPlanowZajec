@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { StudyFieldAPI } from 'src/app/data/models/StudyField';
 import { StudyFieldService } from 'src/app/study-field/study-field.service';
 
@@ -7,10 +7,8 @@ import { StudyFieldService } from 'src/app/study-field/study-field.service';
   templateUrl: './create-schedule-step-one.component.html',
 })
 export class CreateScheduleStepOneComponent implements OnInit {
+  @Input() newSchedule: any;
   studyFields: StudyFieldAPI[];
-  newSchedule: any = {
-    studyFieldID: 1,
-  };
 
   constructor(
     private studyFieldService: StudyFieldService,

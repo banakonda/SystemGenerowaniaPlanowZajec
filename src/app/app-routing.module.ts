@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ClassRoomsComponent } from './class-rooms/class-rooms.component';
 import { CreateClassRoomComponent } from './class-rooms/create-class-room/create-class-room.component';
+import { CreateScheduleComponent } from './schedules/create-schedule/create-schedule.component';
 import { SchedulesComponent } from './schedules/schedules.component';
 import { CreateFieldComponent } from './study-field/create-field/create-field.component';
 import { StudyFieldComponent } from './study-field/study-field.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'class-rooms', component: ClassRoomsComponent },
   { path: 'create-class-room', component: CreateClassRoomComponent },
   { path: 'schedules', component: SchedulesComponent },
+  { path: 'create-schedule', component: CreateScheduleComponent },
 ];
 
 @NgModule({

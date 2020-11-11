@@ -1,7 +1,16 @@
 <h3 class="form-request">Zdefiniuj kogo dotyczy plan</h3>
-<div>
+<div class="spaced-t spaced-l-l">
   <select name="studyField" id="studyField" class="app-input normal-input" [(ngModel)]="newSchedule.studyFieldID">
     <option *ngFor="let field of studyFields" [ngValue]="field.id">{{field.name}}</option>
+  </select>
+  <p class="app-input-hint">Nazwa kierunku</p>
+</div>
+
+<h3 class="form-request spaced-t">Wybierz semestr</h3>
+<div class="spaced-t spaced-l-l">
+  <select name="semester" id="semester" class="app-input normal-input" [(ngModel)]="newSchedule.semester">
+    <option [ngValue]="1">Zimowy</option>
+    <option [ngValue]="2">Letni</option>
   </select>
   <p class="app-input-hint">Nazwa kierunku</p>
 </div>
