@@ -63,7 +63,7 @@ export class ClassRoomService {
 
   createClassRooms(classRoom: any): Observable<ClassRoom> {
     const url = `${this.baseUrl}/addClassRoom`;
-    return this.httpClient.post<ClassRoom>(url, classRoom);
+    return this.httpClient.post<ClassRoom>(url, classRoom, { responseType: 'text' } as Object);
   }
   editClassRooms(classRoom: any): void {
 

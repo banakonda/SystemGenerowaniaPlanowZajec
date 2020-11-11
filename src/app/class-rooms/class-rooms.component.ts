@@ -20,8 +20,10 @@ export class ClassRoomsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.studyFieldService.getStudyFields().subscribe(q => this.buttons = q);
-    this.selected = this.buttons[0].id;
+    this.studyFieldService.getStudyFields().subscribe(
+      q => this.buttons = q,
+      () => { },
+      () => this.selected = this.buttons[0].id);
     this.refreshList();
   }
 

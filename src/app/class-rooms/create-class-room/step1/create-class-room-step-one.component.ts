@@ -17,6 +17,8 @@ export class CreateClassRoomStepOneComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.studyFieldService.getStudyFields().subscribe(q => this.studyFields = q);
+    this.studyFieldService.getStudyFields().subscribe(q => this.studyFields = q,
+      () => { },
+      () => this.newClassRoom.studyFieldID = this.studyFields[0].id);
   }
 }

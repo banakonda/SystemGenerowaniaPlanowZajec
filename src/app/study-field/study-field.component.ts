@@ -29,11 +29,15 @@ export class StudyFieldComponent implements OnInit {
     this.refreshList();
   }
   deleteStudyField(id: number): void {
-    this.studyFieldService.deleteStudyField(id).subscribe();
-    setTimeout(() => this.refreshList(), 10);
+    this.studyFieldService.deleteStudyField(id).subscribe(
+      () => { },
+      () => this.refreshList(),
+      () => { },
+    );
   }
 
   refreshList(): void {
     this.listItems$ = this.studyFieldService.getStudyFields();
+    console.log(11)
   }
 }
