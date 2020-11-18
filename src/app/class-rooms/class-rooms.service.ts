@@ -58,11 +58,11 @@ export class ClassRoomService {
 
   getClassRooms(): Observable<ClassRoomAPI[]> {
     // return of(this.classRooms);
-    return this.httpClient.get<ClassRoomAPI[]>(`${this.baseUrl}/findAllClassRooms`);
+    return this.httpClient.get<ClassRoomAPI[]>(`${this.baseUrl}/get`);
   }
 
   createClassRooms(classRoom: any): Observable<ClassRoom> {
-    const url = `${this.baseUrl}/addClassRoom`;
+    const url = `${this.baseUrl}/post`;
     return this.httpClient.post<ClassRoom>(url, classRoom, { responseType: 'text' } as Object);
   }
   editClassRooms(classRoom: any): void {

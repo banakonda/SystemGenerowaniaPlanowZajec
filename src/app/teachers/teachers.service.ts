@@ -77,12 +77,13 @@ export class TeachersService {
 
   getTeachers(): Observable<TeacherAPI[]> {
     // return of(this.teachers);
-    return this.httpClient.get<TeacherAPI[]>(`${this.baseUrl}/findAllTeachers`);
+    const url = `${this.baseUrl}/get`;
+    return this.httpClient.get<TeacherAPI[]>(url);
   }
 
   createTeacher(teacher: Teacher): Observable<Teacher> {
     console.log(teacher);
-    const url = `${this.baseUrl}/addTeacher`;
+    const url = `${this.baseUrl}/post`;
     return this.httpClient.post<Teacher>(url, teacher, { responseType: 'text' } as Object);
   }
   editTeacher(teacher: TeacherAPI): void {

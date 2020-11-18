@@ -153,12 +153,13 @@ export class SubjectsService {
 
   getSubjects(): Observable<SubjectAPI[]> {
     // return of(this.subjects);
-    return this.httpClient.get<SubjectAPI[]>(`${this.baseUrl}/findAllSubjects`);
+    const url = `${this.baseUrl}/get`;
+    return this.httpClient.get<SubjectAPI[]>(url);
   }
 
   createSubjects(studyField: Subject): Observable<Subject> {
     console.log(studyField);
-    const url = `${this.baseUrl}/addSubject`;
+    const url = `${this.baseUrl}/post`;
     return this.httpClient.post<Subject>(url, studyField, { responseType: 'text' } as Object);
   }
   editSubjects(studyField: SubjectAPI): void {
