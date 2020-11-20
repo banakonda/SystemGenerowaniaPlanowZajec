@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ClassRoomAPI } from '../data/models/ClassRoom';
-import { DepartmentAPI } from '../data/models/Department';
 import { StudyFieldAPI } from '../data/models/StudyField';
 import { StudyFieldService } from '../study-field/study-field.service';
 import { ClassRoomService } from './class-rooms.service';
@@ -11,8 +10,6 @@ import { ClassRoomService } from './class-rooms.service';
   templateUrl: './class-rooms.component.html',
 })
 export class ClassRoomsComponent implements OnInit {
-  buttons: StudyFieldAPI[] = [];
-  selected: any;
   listItems$: Observable<ClassRoomAPI[]>;
   constructor(
     private studyFieldService: StudyFieldService,
@@ -20,10 +17,6 @@ export class ClassRoomsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.studyFieldService.getStudyFields().subscribe(
-      q => this.buttons = q,
-      () => { },
-      () => this.selected = this.buttons[0].id);
     this.refreshList();
   }
 

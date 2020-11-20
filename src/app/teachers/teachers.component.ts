@@ -12,14 +12,11 @@ import { TeachersService } from './teachers.service';
   templateUrl: './teachers.component.html',
 })
 export class TeachersComponent implements OnInit {
-  buttons: StudyFieldAPI[] = [];
-  selected: any;
   listItems$: Observable<TeacherAPI[]>;
   titles: TitleAPI[];
 
   constructor(
     private teachersService: TeachersService,
-    private studyFieldService: StudyFieldService,
     private titleService: TitleService,
   ) { }
 
@@ -28,10 +25,6 @@ export class TeachersComponent implements OnInit {
   }
 
   setDefault() {
-    this.studyFieldService.getStudyFields().subscribe(
-      q => this.buttons = q,
-      () => { },
-      () => this.selected = this.buttons[0].id);
     this.titleService.getTitles().subscribe(t => this.titles = t);
     this.refreshList();
   }

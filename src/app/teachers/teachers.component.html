@@ -1,21 +1,18 @@
 <div class="h-100 content">
-  <h1 class="page-title">Nauczyciele akademiccy</h1>
-
+  <div class="center-row">
+    <h1 class="page-title">Nauczyciele akademiccy</h1>
+    <span class="material-icons clickable spaced-l-l" (click)="refreshList()">refresh</span>
+  </div>
   <div class="sub-content">
-    <div class="center-row">
-      <app-type-buttons [buttons]="buttons" [(selected)]="selected"></app-type-buttons>
-      <span class="material-icons clickable" (click)="refreshList()">refresh</span>
-    </div>
+
 
     <div class="spaced-t" *ngIf="listItems$ | async as listItems">
-      <div *ngFor="let item of listItems">
-        <div *ngIf="selected === item.studyFieldId" class="center-row list-row w-80">
-          <span class="spaced-l-s light-color">{{ getTitleToDisplay(item) }}</span>
-          <span class="spaced-l weight-500">{{ item.name }}</span>
-          <div class="space"></div>
-          <span (click)="deleteTeacher(item.id)" class="material-icons clickable red-color">delete_forever</span>
-          <span class="spaced-l-s primary-color clickable weight-500">Edytuj</span>
-        </div>
+      <div *ngFor="let item of listItems" class="center-row list-row w-80">
+        <span class="spaced-l-s light-color">{{ getTitleToDisplay(item) }}</span>
+        <span class="spaced-l weight-500">{{ item.name }}</span>
+        <div class="space"></div>
+        <span (click)="deleteTeacher(item.id)" class="material-icons clickable red-color">delete_forever</span>
+        <span class="spaced-l-s primary-color clickable weight-500">Edytuj</span>
       </div>
     </div>
     <a mat-button color="primary" class="a-text-button spaced-t-s weight-300" routerLink="/create-teacher">Dodaj

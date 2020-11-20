@@ -1,12 +1,10 @@
 <div class="h-100 content">
-  <h1 class="page-title">Kierunki studiów</h1>
+  <div class="center-row">
+    <h1 class="page-title">Kierunki studiów</h1>
+    <span class="material-icons clickable spaced-l-l" (click)="refreshList()">refresh</span>
+  </div>
 
   <div class="sub-content">
-    <div class="center-row">
-      <app-type-buttons [buttons]="buttons" [(selected)]="selected"></app-type-buttons>
-      <span class="material-icons clickable" (click)="refreshList()">refresh</span>
-    </div>
-
     <div class="spaced-t" *ngIf="listItems$ | async as listItems">
       <div *ngFor="let item of listItems">
         <div class="center-row list-row w-80">

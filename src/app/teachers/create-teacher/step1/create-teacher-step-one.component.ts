@@ -14,17 +14,16 @@ import { StudyFieldService } from 'src/app/study-field/study-field.service';
 export class CreateTeacherStepOneComponent implements OnInit {
   @Input() newTeacher: Teacher;
   titles: TitleAPI[] = [];
-  studyFields: StudyFieldAPI[];
 
   constructor(
     private titleService: TitleService,
-    private studyFieldService: StudyFieldService,
   ) { }
 
   ngOnInit(): void {
-    this.titleService.getTitles().subscribe(t => this.titles = t);
-    this.studyFieldService.getStudyFields().subscribe(fields => this.studyFields = fields,
+    this.titleService.getTitles().subscribe(
+      t => this.titles = t,
       () => { },
-      () => this.newTeacher.studyFieldId = this.studyFields[0].id);
+      () => this.newTeacher.titleID = this.titles[0].id,
+    );
   }
 }

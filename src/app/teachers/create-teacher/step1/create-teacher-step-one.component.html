@@ -3,7 +3,8 @@
 <div class="spaced-l-l row">
   <div class="column">
     <select name="studyField" id="studyField" class="app-input tiny-input" [(ngModel)]="newTeacher.titleID">
-      <option *ngFor="let title of titles" [ngValue]="title.id">{{title.name}}</option>
+      <option *ngFor="let title of titles" [ngValue]="title.id">{{title.name}}
+      </option>
     </select>
     <p class="app-input-hint">Tytuł naukowy</p>
   </div>
@@ -12,13 +13,4 @@
       minlength="1" required>
     <p class="app-input-hint">Imię i nazwisko prowadzącego</p>
   </div>
-</div>
-
-<h3 class="form-request spaced-t-l spaced-b">Podaj tytuł, imię i nazwisko nauczyciela akademickiego</h3>
-
-<div class="spaced-l-l">
-  <select name="studyField" id="studyField" class="app-input normal-input" [(ngModel)]="newTeacher.studyFieldId">
-    <option *ngFor="let field of studyFields" [ngValue]="field.id">{{field.name}}</option>
-  </select>
-  <p class="app-input-hint">Nazwa kierunku</p>
 </div>

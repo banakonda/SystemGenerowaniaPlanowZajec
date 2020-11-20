@@ -7,68 +7,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class TeachersService {
-  teachers: TeacherAPI[] = [{
-    id: '1',
-    titleID: '2',
-    name: 'Jan Kowalski',
-    studyFieldId: '1',
-    availability: {
-      oneWeek: true,
-      allWeeks: {
-        monday: [true],
-        tuesday: [true],
-        wednesday: [true],
-        thursday: [true],
-        friday: [true],
-      }
-    },
-  }, {
-    id: '2',
-    titleID: '6',
-    name: 'Anna Nowak',
-    studyFieldId: '1',
-    availability: {
-      oneWeek: true,
-      allWeeks: {
-        monday: [true],
-        tuesday: [true],
-        wednesday: [true],
-        thursday: [true],
-        friday: [true],
-      }
-    },
-  }, {
-    id: '3',
-    titleID: '8',
-    name: 'Andrzej Lech',
-    studyFieldId: '1',
-    availability: {
-      oneWeek: true,
-      allWeeks: {
-        monday: [true],
-        tuesday: [true],
-        wednesday: [true],
-        thursday: [true],
-        friday: [true],
-      }
-    },
-  }, {
-    id: '4',
-    titleID: '11',
-    name: 'Joanna Bańka',
-    studyFieldId: '2',
-    availability: {
-      oneWeek: true,
-      allWeeks: {
-        monday: [true],
-        tuesday: [true],
-        wednesday: [true],
-        thursday: [true],
-        friday: [true],
-      }
-    },
-  }];
-
   baseUrl = 'http://localhost:8888/teachers';
 
   constructor(

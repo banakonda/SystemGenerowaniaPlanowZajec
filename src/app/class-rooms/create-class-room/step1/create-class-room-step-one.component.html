@@ -4,11 +4,3 @@
   <input class="app-input normal-input" placeholder="D 1/15" name="name" [(ngModel)]="newClassRoom.name" required>
   <p class="app-input-hint">Nazwa sali</p>
 </div>
-
-<h3 class="form-request spaced-t">Podaj kierunek, do którego należy sala</h3>
-<div class="spaced-l-l spaced-t-s">
-  <select name="studyField" id="studyField" class="app-input normal-input" [(ngModel)]="newClassRoom.studyFieldID">
-    <option *ngFor="let field of studyFields" [ngValue]="field.id">{{field.name}}</option>
-  </select>
-  <p class="app-input-hint">Nazwa kierunku</p>
-</div>

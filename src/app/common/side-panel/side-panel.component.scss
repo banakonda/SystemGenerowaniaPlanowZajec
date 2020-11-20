@@ -1,14 +1,12 @@
 @import "../../../styles/variables.scss";
 @import "../../../styles/controls.scss";
 
-.side-panel {
-  background-color: $primary_color;
+.titles {
+  justify-content: center;
 }
 
-h1.side-panel-title {
-  font-size: 1.8rem;
-  min-height: 1.8rem;
-  letter-spacing: 3px;
+.side-panel {
+  background-color: $primary_color;
 }
 
 a {

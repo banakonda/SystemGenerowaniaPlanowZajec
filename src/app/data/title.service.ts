@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { DepartmentAPI } from './models/Department';
 import { TitleAPI } from './models/Title';
 
 @Injectable({
@@ -44,7 +43,7 @@ export class TitleService {
 
   constructor() { }
 
-  getTitles(): Observable<DepartmentAPI[]> {
+  getTitles(): Observable<TitleAPI[]> {
     return of(this.titles);
   }
 }
