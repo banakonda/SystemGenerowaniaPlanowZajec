@@ -12,7 +12,7 @@ export class CreateSubjectComponent {
   step = 1;
   lastStep = 4;
 
-  newSubject = { ...newSubject };
+  newSubject = newSubject();
 
   constructor(
     private subjectsService: SubjectsService,

@@ -1,15 +1,17 @@
 import { Availability } from 'src/app/data/models/Availability';
 import { Teacher } from 'src/app/data/models/Teacher';
 
-export const newTeacher: Teacher = {
-  titleID: '1',
-  name: '',
-  studyFieldId: '1',
-  availability: {
-    oneWeek: true,
-    allWeeks: getWeekAvailability(),
-  }
-};
+export function newTeacher(): Teacher {
+  return {
+    titleID: '1',
+    name: '',
+    studyFieldId: '1',
+    availability: {
+      oneWeek: true,
+      allWeeks: getWeekAvailability(),
+    }
+  };
+}
 
 export function getWeekAvailability(): Availability {
   return {

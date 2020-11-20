@@ -1,14 +1,16 @@
 import { Availability } from 'src/app/data/models/Availability';
 import { ClassRoom } from 'src/app/data/models/ClassRoom';
 
-export const newClassRoom: ClassRoom = {
-  name: '',
-  studyFieldID: '1',
-  availability: {
-    oneWeek: true,
-    allWeeks: getWeekAvailability(),
-  }
-};
+export function newClassRoom(): ClassRoom {
+  return {
+    name: '',
+    studyFieldID: '1',
+    availability: {
+      oneWeek: true,
+      allWeeks: getWeekAvailability(),
+    }
+  };
+}
 
 export function getWeekAvailability(): Availability {
   return {

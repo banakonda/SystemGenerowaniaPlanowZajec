@@ -11,7 +11,7 @@ import { newStudyField } from './default-field';
 export class CreateFieldComponent {
   step = 1;
   lastStep = 1;
-  newStudyField = { ...newStudyField };
+  newStudyField = newStudyField();
 
   constructor(
     private studyFieldService: StudyFieldService,

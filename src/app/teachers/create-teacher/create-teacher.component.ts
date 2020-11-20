@@ -12,7 +12,7 @@ import { newTeacher } from './default-teacher';
 export class CreateTeacherComponent {
   step = 1;
   lastStep = 2;
-  newTeacher: Teacher = { ...newTeacher };
+  newTeacher: Teacher = newTeacher();
 
   constructor(
     private teachersService: TeachersService,
