@@ -18,7 +18,7 @@ export class CreateClassRoomComponent {
     private _snackBar: MatSnackBar,
   ) { }
 
-  newClassRoom: ClassRoom = { ...newClassRoom };
+  newClassRoom: ClassRoom = newClassRoom();
 
   createClassRoom(): void {
     let error = 0;
