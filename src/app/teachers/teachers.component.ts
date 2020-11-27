@@ -14,7 +14,7 @@ import { TeachersService } from './teachers.service';
 export class TeachersComponent implements OnInit {
   listItems$: Observable<TeacherAPI[]>;
   titles: TitleAPI[];
-
+  testowyInput: number;
   constructor(
     private teachersService: TeachersService,
     private titleService: TitleService,

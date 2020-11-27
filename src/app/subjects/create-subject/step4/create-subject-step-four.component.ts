@@ -47,5 +47,7 @@ export class CreateSubjectStepFourComponent implements OnInit {
     return this.titles.find(q => q.id === item.titleID).name;
   }
 
-
+  deleteTeacher(id: number): void {
+    this.newSubject.teachers.splice(id, 1);
+  }
 }

@@ -8,8 +8,10 @@ interface StudyStudents {
 type ScheduleActivities = {
   enabled: false;
 } | {
-  enabled: true,
+  enabled: true;
   hours: number;
+  online: boolean;
+  classRooms: string[];
 };
 
 interface SubjectSchedule {
@@ -22,9 +24,13 @@ interface SubjectSchedule {
 export interface SubjectTeachers {
   teacher: TeacherAPI;
   lecturesEnable: boolean;
+  lecturesHours: number;
   exerciseEnable: boolean;
+  exerciseHours: number;
   laboratoriesEnable: boolean;
+  laboratoriesHours: number;
   seminarsEnable: boolean;
+  seminarsHours: number;
 }
 
 export interface Subject {

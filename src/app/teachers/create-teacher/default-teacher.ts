@@ -5,6 +5,7 @@ export function newTeacher(): Teacher {
   return {
     titleID: '1',
     name: '',
+    email: '@pk.edu.pl',
     studyFieldId: '1',
     availability: {
       oneWeek: true,

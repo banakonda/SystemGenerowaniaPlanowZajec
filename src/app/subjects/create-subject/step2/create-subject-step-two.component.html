@@ -5,7 +5,8 @@
     <div>
       <select name="studyField" id="studyField" class="app-input normal-input"
         [(ngModel)]="newSubject.students.studyFieldID">
-        <option *ngFor="let field of studyFields" [ngValue]="field.id">{{field.name}}</option>
+        <option *ngFor="let field of studyFields" [ngValue]="field.id">
+          {{field.name}} ({{field.degree}} stopień)</option>
       </select>
       <p class="app-input-hint">Nazwa kierunku</p>
     </div>

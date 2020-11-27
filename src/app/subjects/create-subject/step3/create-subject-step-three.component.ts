@@ -11,45 +11,49 @@ import { Subject } from 'src/app/data/models/Subject';
 export class CreateSubjectStepThreeComponent {
   @Input() newSubject: Subject;
 
-  get hourLectures(): number {
+  get classL(): string {
     if (this.newSubject.schedule.lectures.enabled) {
-      return this.newSubject.schedule.lectures.hours;
+      return this.newSubject.schedule.lectures.classRooms.join(', ');
     }
   }
-  set hourLectures(value: number) {
+  set classL(value: string) {
     if (this.newSubject.schedule.lectures.enabled) {
-      this.newSubject.schedule.lectures.hours = value;
+      this.newSubject.schedule.lectures.classRooms = value.replace(' ', '').split(',');
     }
   }
-  get hourExercise(): number {
+
+  get classE(): string {
     if (this.newSubject.schedule.exercise.enabled) {
-      return this.newSubject.schedule.exercise.hours;
+      return this.newSubject.schedule.exercise.classRooms.join(', ');
     }
   }
-  set hourExercise(value: number) {
+  set classE(value: string) {
     if (this.newSubject.schedule.exercise.enabled) {
-      this.newSubject.schedule.exercise.hours = value;
+      this.newSubject.schedule.exercise.classRooms = value.replace(' ', '').split(',');
     }
   }
-  get hourLaboratories(): number {
+
+  get classLab(): string {
     if (this.newSubject.schedule.laboratories.enabled) {
-      return this.newSubject.schedule.laboratories.hours;
+      return this.newSubject.schedule.laboratories.classRooms.join(', ');
     }
   }
-  set hourLaboratories(value: number) {
+  set classLab(value: string) {
     if (this.newSubject.schedule.laboratories.enabled) {
-      this.newSubject.schedule.laboratories.hours = value;
+      this.newSubject.schedule.laboratories.classRooms = value.replace(' ', '').split(',');
     }
   }
-  get hourSeminars(): number {
+
+  get classS(): string {
     if (this.newSubject.schedule.seminars.enabled) {
-      return this.newSubject.schedule.seminars.hours;
+      return this.newSubject.schedule.seminars.classRooms.join(', ');
     }
   }
-  set hourSeminars(value: number) {
+  set classS(value: string) {
     if (this.newSubject.schedule.seminars.enabled) {
-      this.newSubject.schedule.seminars.hours = value;
+      this.newSubject.schedule.seminars.classRooms = value.replace(' ', '').split(',');
     }
   }
+
   constructor() { }
 }

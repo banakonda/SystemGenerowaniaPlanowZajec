@@ -8,7 +8,7 @@ export function newSubject(): Subject {
       semester: 1,
     },
     schedule: {
-      lectures: { enabled: true, hours: 30 },
+      lectures: { enabled: true, hours: 30, online: false, classRooms: [] },
       exercise: { enabled: false },
       laboratories: { enabled: false },
       seminars: { enabled: false },
@@ -21,7 +21,11 @@ export function newSubject(): Subject {
 export const newSubjectTeacher: SubjectTeachers = {
   teacher: null,
   lecturesEnable: false,
+  lecturesHours: 30,
   exerciseEnable: false,
+  exerciseHours: 30,
   laboratoriesEnable: false,
+  laboratoriesHours: 30,
   seminarsEnable: false,
+  seminarsHours: 30,
 };
