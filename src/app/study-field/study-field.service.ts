@@ -14,9 +14,7 @@ export class StudyFieldService {
   ) { }
 
   getStudyFields(): Observable<StudyFieldAPI[]> {
-    // return of(this.studyFields);
-    const url = `${this.baseUrl}/get`;
-    return this.httpClient.get<StudyFieldAPI[]>(url);
+    return this.httpClient.get<StudyFieldAPI[]>(this.baseUrl);
   }
 
   createStudyField(studyField: StudyField): Observable<any> {
@@ -25,14 +23,13 @@ export class StudyFieldService {
       responseType: 'text'
     };
 
-    const url = `${this.baseUrl}/post`;
-    return this.httpClient.post<StudyField>(url, studyField, requestOptions);
+    return this.httpClient.post<StudyField>(this.baseUrl, studyField, requestOptions);
   }
   editStudyField(studyField: StudyFieldAPI): void {
 
   }
   deleteStudyField(id: number): Observable<{}> {
-    const url = `${this.baseUrl}/delete/${id}`;
+    const url = `${this.baseUrl}/${id}`;
     return this.httpClient.delete(url);
   }
 }

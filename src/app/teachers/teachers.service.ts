@@ -14,21 +14,18 @@ export class TeachersService {
   ) { }
 
   getTeachers(): Observable<TeacherAPI[]> {
-    // return of(this.teachers);
-    const url = `${this.baseUrl}/get`;
-    return this.httpClient.get<TeacherAPI[]>(url);
+    return this.httpClient.get<TeacherAPI[]>(this.baseUrl);
   }
 
   createTeacher(teacher: Teacher): Observable<Teacher> {
     console.log(teacher);
-    const url = `${this.baseUrl}/post`;
-    return this.httpClient.post<Teacher>(url, teacher, { responseType: 'text' } as Object);
+    return this.httpClient.post<Teacher>(this.baseUrl, teacher, { responseType: 'text' } as Object);
   }
   editTeacher(teacher: TeacherAPI): void {
 
   }
   deleteTeacher(id: number): Observable<{}> {
-    const url = `${this.baseUrl}/delete/${id}`;
+    const url = `${this.baseUrl}/${id}`;
     return this.httpClient.delete(url, { responseType: 'text' } as Object);
   }
 

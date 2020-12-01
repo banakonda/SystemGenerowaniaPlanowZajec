@@ -14,19 +14,17 @@ export class ClassRoomService {
   ) { }
 
   getClassRooms(): Observable<ClassRoomAPI[]> {
-    // return of(this.classRooms);
-    return this.httpClient.get<ClassRoomAPI[]>(`${this.baseUrl}/get`);
+    return this.httpClient.get<ClassRoomAPI[]>(this.baseUrl);
   }
 
   createClassRooms(classRoom: any): Observable<ClassRoom> {
-    const url = `${this.baseUrl}/post`;
-    return this.httpClient.post<ClassRoom>(url, classRoom, { responseType: 'text' } as Object);
+    return this.httpClient.post<ClassRoom>(this.baseUrl, classRoom, { responseType: 'text' } as Object);
   }
   editClassRooms(classRoom: any): void {
 
   }
   deleteClassRooms(id: number): Observable<{}> {
-    const url = `${this.baseUrl}/delete/${id}`;
+    const url = `${this.baseUrl}/${id}`;
     return this.httpClient.delete(url, { responseType: 'text' } as Object);
   }
 }

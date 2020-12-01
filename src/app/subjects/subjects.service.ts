@@ -15,21 +15,18 @@ export class SubjectsService {
   ) { }
 
   getSubjects(): Observable<SubjectAPI[]> {
-    // return of(this.subjects);
-    const url = `${this.baseUrl}/get`;
-    return this.httpClient.get<SubjectAPI[]>(url);
+    return this.httpClient.get<SubjectAPI[]>(this.baseUrl);
   }
 
   createSubjects(studyField: Subject): Observable<Subject> {
     console.log(studyField);
-    const url = `${this.baseUrl}/post`;
-    return this.httpClient.post<Subject>(url, studyField, { responseType: 'text' } as Object);
+    return this.httpClient.post<Subject>(this.baseUrl, studyField, { responseType: 'text' } as Object);
   }
   editSubjects(studyField: SubjectAPI): void {
 
   }
   deleteSubjects(id: number): Observable<{}> {
-    const url = `${this.baseUrl}/delete/${id}`;
+    const url = `${this.baseUrl}/${id}`;
     return this.httpClient.delete(url, { responseType: 'text' } as Object);
   }
 }
