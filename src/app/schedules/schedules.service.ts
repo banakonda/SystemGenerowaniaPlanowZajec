@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
@@ -5,23 +6,18 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class SchedulesService {
-  subjects: any[] = [{
+  baseUrl = 'http://localhost:8888/subject';
 
-  }];
-
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient,
+  ) { }
 
   getSchedules(): Observable<any[]> {
-    return of(this.subjects);
+    return of();
   }
 
-  createSchedule(studyField: any): void {
-    console.log(studyField);
-  }
-  editSchedule(studyField: any): void {
-
-  }
-  deleteSchedule(id: number): void {
-
+  createSchedule(schedule: any): void {
+    console.log(schedule);
+    this.httpClient.post<any>(this.baseUrl, schedule, { responseType: 'text' } as Object);
   }
 }

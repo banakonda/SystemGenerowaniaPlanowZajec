@@ -26,9 +26,9 @@ export class SchedulesComponent implements OnInit {
     this.refreshList();
   }
 
-  deleteSubject(id: number): void {
-    this.schedulesService.deleteSchedule(id);
-  }
+  // deleteSubject(id: number): void {
+  //   this.schedulesService.deleteSchedule(id);
+  // }
 
   refreshList(): void {
     this.listItems$ = this.schedulesService.getSchedules();

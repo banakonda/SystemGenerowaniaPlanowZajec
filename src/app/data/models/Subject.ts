@@ -11,7 +11,7 @@ type ScheduleActivities = {
   enabled: true;
   hours: number;
   online: boolean;
-  classRooms: string[];
+  classroom: string[];
 };
 
 interface SubjectSchedule {

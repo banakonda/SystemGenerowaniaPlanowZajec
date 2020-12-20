@@ -12,46 +12,46 @@ export class CreateSubjectStepThreeComponent {
   @Input() newSubject: Subject;
 
   get classL(): string {
-    if (this.newSubject.schedule.lectures.enabled && this.newSubject.schedule.lectures.classRooms) {
-      return this.newSubject.schedule.lectures.classRooms.join(', ');
+    if (this.newSubject.schedule.lectures.enabled && this.newSubject.schedule.lectures.classroom) {
+      return this.newSubject.schedule.lectures.classroom.join(', ');
     }
   }
   set classL(value: string) {
-    if (this.newSubject.schedule.lectures.enabled && this.newSubject.schedule.lectures.classRooms) {
-      this.newSubject.schedule.lectures.classRooms = value.replace(' ', '').split(',');
+    if (this.newSubject.schedule.lectures.enabled && this.newSubject.schedule.lectures.classroom) {
+      this.newSubject.schedule.lectures.classroom = value.replace(' ', '').split(',');
     }
   }
 
   get classE(): string {
-    if (this.newSubject.schedule.exercise.enabled && this.newSubject.schedule.exercise.classRooms) {
-      return this.newSubject.schedule.exercise.classRooms.join(', ');
+    if (this.newSubject.schedule.exercise.enabled && this.newSubject.schedule.exercise.classroom) {
+      return this.newSubject.schedule.exercise.classroom.join(', ');
     }
   }
   set classE(value: string) {
-    if (this.newSubject.schedule.exercise.enabled && this.newSubject.schedule.exercise.classRooms) {
-      this.newSubject.schedule.exercise.classRooms = value.replace(' ', '').split(',');
+    if (this.newSubject.schedule.exercise.enabled && this.newSubject.schedule.exercise.classroom) {
+      this.newSubject.schedule.exercise.classroom = value.replace(' ', '').split(',');
     }
   }
 
   get classLab(): string {
-    if (this.newSubject.schedule.laboratories.enabled && this.newSubject.schedule.laboratories.classRooms) {
-      return this.newSubject.schedule.laboratories.classRooms.join(', ');
+    if (this.newSubject.schedule.laboratories.enabled && this.newSubject.schedule.laboratories.classroom) {
+      return this.newSubject.schedule.laboratories.classroom.join(', ');
     }
   }
   set classLab(value: string) {
-    if (this.newSubject.schedule.laboratories.enabled && this.newSubject.schedule.laboratories.classRooms) {
-      this.newSubject.schedule.laboratories.classRooms = value.replace(' ', '').split(',');
+    if (this.newSubject.schedule.laboratories.enabled && this.newSubject.schedule.laboratories.classroom) {
+      this.newSubject.schedule.laboratories.classroom = value.replace(' ', '').split(',');
     }
   }
 
   get classS(): string {
-    if (this.newSubject.schedule.seminars.enabled && this.newSubject.schedule.seminars.classRooms) {
-      return this.newSubject.schedule.seminars.classRooms.join(', ');
+    if (this.newSubject.schedule.seminars.enabled && this.newSubject.schedule.seminars.classroom) {
+      return this.newSubject.schedule.seminars.classroom.join(', ');
     }
   }
   set classS(value: string) {
-    if (this.newSubject.schedule.seminars.enabled && this.newSubject.schedule.seminars.classRooms) {
-      this.newSubject.schedule.seminars.classRooms = value.replace(' ', '').split(',');
+    if (this.newSubject.schedule.seminars.enabled && this.newSubject.schedule.seminars.classroom) {
+      this.newSubject.schedule.seminars.classroom = value.replace(' ', '').split(',');
     }
   }
 
