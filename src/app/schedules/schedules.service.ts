@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class SchedulesService {
-  baseUrl = 'http://localhost:8888/subject';
+  baseUrl = 'http://localhost:8888/schedule';
 
   constructor(
     private httpClient: HttpClient,
@@ -16,8 +16,8 @@ export class SchedulesService {
     return of();
   }
 
-  createSchedule(schedule: any): void {
+  createSchedule(schedule: any): Observable<any> {
     console.log(schedule);
-    this.httpClient.post<any>(this.baseUrl, schedule, { responseType: 'text' } as Object);
+    return this.httpClient.post<any>(this.baseUrl, schedule, { responseType: 'text' } as Object);
   }
 }

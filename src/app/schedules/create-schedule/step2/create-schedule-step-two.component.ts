@@ -100,7 +100,9 @@ export class CreateScheduleStepTwoComponent implements OnInit {
     // private String className;
 
     this.subjectsService.getSubjects().subscribe(allSubjects => {
-      const filteredSubjects = allSubjects.filter(a => a.students.studyFieldID === this.newSchedule.studyFieldID);
+      const filteredSubjects = allSubjects.filter(a => {
+        return a.students.studyFieldID === this.newSchedule.studyFieldID
+      });
 
       let teachers = [];
       const flatTeacher = filteredSubjects.map(q => q.teachers).flat();
@@ -179,6 +181,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
         numberOfSemester: this.newSchedule.numberOfSemesters,
         classroomsData: this.preparedClassRooms,
         teachersData: this.preparedSubjects,
-      }), 0)
+      }).subscribe(), 0);
   }
+
 }
