@@ -168,7 +168,6 @@ export class CreateScheduleStepTwoComponent implements OnInit {
             }
           }));
       }
-      this.preparedSubjects = filteredSubjects;
     });
   }
 
