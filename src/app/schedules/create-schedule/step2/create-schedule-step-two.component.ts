@@ -51,7 +51,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
     this.classRoomsService.getClassRooms().subscribe(q => this.classRooms = q);
   }
 
-  async prepareClassRooms() {
+  prepareClassRooms() {
     this.classRoomsService.getClassRooms().subscribe(allClassRooms => {
       this.classRooms = allClassRooms;
       const values = this.classRooms.map(q => {
@@ -173,7 +173,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
   }
 
   sendRequest() {
-    setTimeout(() =>
+    this.sleep(1000).then(() => {
       this.schedulesService.createSchedule({
         name: "TymczasowyBrak",
         ifWinter: this.newSchedule.semester === 1 ? true : false,
@@ -181,7 +181,12 @@ export class CreateScheduleStepTwoComponent implements OnInit {
         numberOfSemester: this.newSchedule.numberOfSemesters,
         classroomsData: this.preparedClassRooms,
         teachersData: this.preparedSubjects,
-      }).subscribe(), 0);
+      }).subscribe();
+    });
+  }
+
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
 }
