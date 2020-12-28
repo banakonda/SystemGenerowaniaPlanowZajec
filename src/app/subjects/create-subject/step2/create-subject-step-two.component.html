@@ -4,7 +4,7 @@
   <div class="row spaced-l-l spaced-t">
     <app-dropdown [(ngModel)]="newSubject.students.studyFieldID" name="studyField"
     [data]="studyFields" additionalDescription="stopień" additionalDisplay="degree"
-    description="Nazwa kierunku" required></app-dropdown>
+    description="Nazwa kierunku" class="long-input" required></app-dropdown>
     <app-dropdown [(ngModel)]="newSubject.students.semester" name="semester"
     [data]="getSemesters" value="" display="" description="Semester"
       class="spaced-l-l tiny-input" required></app-dropdown>

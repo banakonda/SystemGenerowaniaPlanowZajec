@@ -6,34 +6,33 @@
     description="Imie i nazwisko nauczyciela akademickiego"></app-dropdown>
 
   <div class="center-row spaced-l-s">
-    <mat-checkbox class="spaced-l-l" color="primary" name="lectures" [(ngModel)]="newSubjectTeacher.lecturesEnable">
-      W </mat-checkbox>
-    <div *ngIf="newSubjectTeacher.lecturesEnable" class="spaced-l">
-      <input type="number" class="app-input micro-input" placeholder="30" name="lecturesHours"
-        [(ngModel)]="newSubjectTeacher.lecturesHours" required>
-      <p class="app-input-hint">Ilość godzin</p>
-    </div>
-    <mat-checkbox class="spaced-l-l" color="primary" name="lectures" [(ngModel)]="newSubjectTeacher.exerciseEnable">
-      Ć </mat-checkbox>
-    <div *ngIf="newSubjectTeacher.exerciseEnable" class="spaced-l">
-      <input type="number" class="app-input micro-input" placeholder="30" name="exerciseHours"
-        [(ngModel)]="newSubjectTeacher.exerciseHours" required>
-      <p class="app-input-hint">Ilość godzin</p>
-    </div>
-    <mat-checkbox class="spaced-l-l" color="primary" name="lectures" [(ngModel)]="newSubjectTeacher.laboratoriesEnable">
-      L </mat-checkbox>
-    <div *ngIf="newSubjectTeacher.laboratoriesEnable" class="spaced-l">
-      <input type="number" class="app-input micro-input" placeholder="30" name="laboratoriesHours"
-        [(ngModel)]="newSubjectTeacher.laboratoriesHours" required>
-      <p class="app-input-hint">Ilość godzin</p>
-    </div>
-    <mat-checkbox class="spaced-l-l" color="primary" name="lectures" [(ngModel)]="newSubjectTeacher.seminarsEnable">
-      S </mat-checkbox>
-    <div *ngIf="newSubjectTeacher.seminarsEnable" class="spaced-l">
-      <input type="number" class="app-input micro-input" placeholder="30" name="seminarsHours"
-        [(ngModel)]="newSubjectTeacher.seminarsHours" required>
-      <p class="app-input-hint">Ilość godzin</p>
-    </div>
+    <mat-checkbox class="spaced-l-l" color="primary" name="lectures" 
+      [(ngModel)]="newSubjectTeacher.lecturesEnable">W</mat-checkbox>
+    <app-input *ngIf="newSubjectTeacher.lecturesEnable" type="number"
+      [(ngModel)]="newSubjectTeacher.lecturesHours" name="lecturesHours"  
+      placeholder="1" class="micro-input spaced-l" description="Ilość grup" 
+      [min]="1" required></app-input>
+
+    <mat-checkbox class="spaced-l-l" color="primary" name="exercises" 
+      [(ngModel)]="newSubjectTeacher.exerciseEnable">Ć</mat-checkbox>
+    <app-input *ngIf="newSubjectTeacher.exerciseEnable" type="number"
+      [(ngModel)]="newSubjectTeacher.exerciseHours" name="exerciseHours"  
+      placeholder="4" class="micro-input spaced-l" description="Ilość grup" 
+      [min]="1" required></app-input>
+      
+    <mat-checkbox class="spaced-l-l" color="primary" name="laboratories" 
+      [(ngModel)]="newSubjectTeacher.laboratoriesEnable">L</mat-checkbox>
+    <app-input *ngIf="newSubjectTeacher.laboratoriesEnable" type="number"
+      [(ngModel)]="newSubjectTeacher.laboratoriesHours" name="laboratoriesHours"  
+      placeholder="8" class="micro-input spaced-l" description="Ilość grup" 
+      [min]="1" required></app-input>
+
+    <mat-checkbox class="spaced-l-l" color="primary" name="lectures" 
+      [(ngModel)]="newSubjectTeacher.seminarsEnable">S</mat-checkbox>
+    <app-input *ngIf="newSubjectTeacher.seminarsEnable" type="number"
+      [(ngModel)]="newSubjectTeacher.seminarsHours" name="seminarsHours"  
+      placeholder="4" class="micro-input spaced-l" description="Ilość grup" 
+      [min]="1" required></app-input>
   </div>
   <span class="a-text-button spaced-l primary-color clickable weight-500" (click)="addTeacher()">Dodaj</span>
 </div>
@@ -44,10 +43,10 @@
     <span class="light-color w-10">{{ getTitleToDisplay(teacher.teacher) }}</span>
     <span>{{ teacher.teacher.name }}</span>
     <span class="light-color spaced-l-l">
-      {{ teacher.lecturesEnable ? "[W - " + teacher.lecturesHours + "h]" : "" }}
-      {{ teacher.exerciseEnable ? "[Ć - " + teacher.exerciseHours + "h]" : "" }}
-      {{ teacher.laboratoriesEnable ? "[L - " + teacher.laboratoriesHours + "h]" : "" }}
-      {{ teacher.seminarsEnable ? "[S - " + teacher.seminarsHours + "h]" : "" }}
+      {{ teacher.lecturesEnable ? "[W - " + teacher.lecturesHours + " grp]" : "" }}
+      {{ teacher.exerciseEnable ? "[Ć - " + teacher.exerciseHours + " grp]" : "" }}
+      {{ teacher.laboratoriesEnable ? "[L - " + teacher.laboratoriesHours + " grp]" : "" }}
+      {{ teacher.seminarsEnable ? "[S - " + teacher.seminarsHours + " grp]" : "" }}
     </span>
     <span class="space"></span>
     <span class="red-color clickable weight-500" (click)="deleteTeacher(i)">Usuń</span>

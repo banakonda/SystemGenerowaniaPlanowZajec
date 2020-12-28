@@ -3,26 +3,22 @@
 <div class="spaced-l-l spaced-t column">
   <div class="checkbox-label">
     <div class="center-row">
-      <mat-checkbox class="example-margin" color="primary" [(ngModel)]="newSubject.schedule.lectures.enabled"
+      <mat-checkbox [(ngModel)]="newSubject.schedule.lectures.enabled" class="example-margin" color="primary"
         name="lectures">
         <span class="spaced-l-s">Wykłady</span>
       </mat-checkbox>
-      <app-input *ngIf="newSubject.schedule.lectures.enabled"
-        [(ngModel)]="newSubject.schedule.lectures['hours']"
-        name="hourLectures" placeholder="30" type="number" [min]="1"
-        class="spaced-l micro-input" description="Ilość godzin"
-        required></app-input>
     </div>
 
     <div class="spaced-l-l column" *ngIf="newSubject.schedule.lectures.enabled">
-      <mat-radio-group class="column spaced-t spaced-l-l" [(ngModel)]="newSubject.schedule.lectures['online']"
+      <mat-radio-group [(ngModel)]="newSubject.schedule.lectures['online']" class="column spaced-t spaced-l-l spaced-b"
         name="lecturesClass">
-        <mat-radio-button color="primary" [value]="true">Online</mat-radio-button>
-        <mat-radio-button color="primary" class="spaced-t" [value]="false">W jednej z sal</mat-radio-button>
-          <app-input *ngIf="!newSubject.schedule.lectures['online']"
-            [(ngModel)]="classL" name="onlineLectures"  required
-            description="Numery sal" placeholder="135, 144, D1/15"
-            class="normal-input spaced-l-l spaced-t-s spaced-b" ></app-input>
+        <mat-radio-button color="primary" [value]="true">
+          Online</mat-radio-button>
+        <mat-radio-button color="primary" class="spaced-t spaced-b-s" [value]="false">W jednej z sal</mat-radio-button>
+        <app-input *ngIf="!newSubject.schedule.lectures['online']" [ngModel]="classL" (ngModelChange)="changeL($event)"
+          name="onlineLectures" required description="Numery sal" placeholder="135, 144, D1/15"
+          class="normal-input spaced-l-l">
+        </app-input>
       </mat-radio-group>
     </div>
   </div>
@@ -33,22 +29,17 @@
         name="exercise">
         <span class="spaced-l-s">Ćwiczenia</span>
       </mat-checkbox>
-      <app-input *ngIf="newSubject.schedule.exercise.enabled"
-        [(ngModel)]="newSubject.schedule.exercise['hours']"
-        name="hourExercises" placeholder="30" type="number" [min]="1"
-        class="spaced-l micro-input" description="Ilość godzin"
-        required></app-input>
     </div>
 
     <div class="spaced-l-l column" *ngIf="newSubject.schedule.exercise.enabled">
-      <mat-radio-group class="column spaced-t spaced-l-l" [(ngModel)]="newSubject.schedule.exercise['online']"
+      <mat-radio-group class="column spaced-t spaced-l-l spaced-b" [(ngModel)]="newSubject.schedule.exercise['online']"
         name="exercisesClass">
         <mat-radio-button color="primary" [value]="true">Online</mat-radio-button>
-        <mat-radio-button color="primary" class="spaced-t" [value]="false">W jednej z sal</mat-radio-button>
-        <app-input *ngIf="!newSubject.schedule.exercise['online']"
-          [(ngModel)]="classE" name="onlineExercises"  required
-          description="Numery sal" placeholder="135, 144, D1/15"
-          class="normal-input spaced-l-l spaced-t-s spaced-b" ></app-input>
+        <mat-radio-button color="primary" class="spaced-t spaced-b-s" [value]="false">W jednej z sal</mat-radio-button>
+        <app-input *ngIf="!newSubject.schedule.exercise['online']" [ngModel]="classE" (ngModelChange)="changeE($event)"
+          name="onlineExercises" required description="Numery sal" placeholder="135, 144, D1/15"
+          class="normal-input spaced-l-l">
+        </app-input>
       </mat-radio-group>
     </div>
   </div>
@@ -59,22 +50,17 @@
         name="laboratories">
         <span class="spaced-l-s">Labolatoria</span>
       </mat-checkbox>
-      <app-input *ngIf="newSubject.schedule.laboratories.enabled"
-        [(ngModel)]="newSubject.schedule.laboratories['hours']"
-        name="hourLaboratories" placeholder="30" type="number" [min]="1"
-        class="spaced-l micro-input" description="Ilość godzin"
-        required></app-input>
     </div>
 
     <div class="spaced-l-l column" *ngIf="newSubject.schedule.laboratories.enabled">
-      <mat-radio-group class="column spaced-t spaced-l-l" [(ngModel)]="newSubject.schedule.laboratories['online']"
-        name="laboratoriesClass">
+      <mat-radio-group class="column spaced-t spaced-l-l spaced-b"
+        [(ngModel)]="newSubject.schedule.laboratories['online']" name="laboratoriesClass">
         <mat-radio-button color="primary" [value]="true">Online</mat-radio-button>
-        <mat-radio-button color="primary" class="spaced-t" [value]="false">W jednej z sal</mat-radio-button>
-        <app-input *ngIf="!newSubject.schedule.laboratories['online']"
-          [(ngModel)]="classLab" name="onlineLaboratories"  required
-          description="Numery sal" placeholder="135, 144, D1/15"
-          class="normal-input spaced-l-l spaced-t-s spaced-b" ></app-input>
+        <mat-radio-button color="primary" class="spaced-t spaced-b-s" [value]="false">W jednej z sal</mat-radio-button>
+        <app-input *ngIf="!newSubject.schedule.laboratories['online']" [ngModel]="classLab"
+          (ngModelChange)="changeLab($event)" name="onlineLaboratories" required description="Numery sal"
+          placeholder="135, 144, D1/15" class="normal-input spaced-l-l">
+        </app-input>
       </mat-radio-group>
     </div>
   </div>
@@ -85,22 +71,17 @@
         name="seminars">
         <span class="spaced-l-s">Seminaria</span>
       </mat-checkbox>
-      <app-input *ngIf="newSubject.schedule.seminars.enabled"
-        [(ngModel)]="newSubject.schedule.seminars['hours']"
-        name="hourSeminars" placeholder="30" type="number" [min]="1"
-        class="spaced-l micro-input" description="Ilość godzin"
-        required></app-input>
     </div>
 
     <div class="spaced-l-l column" *ngIf="newSubject.schedule.seminars.enabled">
-      <mat-radio-group class="column spaced-t spaced-l-l" [(ngModel)]="newSubject.schedule.seminars['online']"
+      <mat-radio-group class="column spaced-t spaced-l-l spaced-b" [(ngModel)]="newSubject.schedule.seminars['online']"
         name="seminarsClass">
         <mat-radio-button color="primary" [value]="true">Online</mat-radio-button>
-        <mat-radio-button color="primary" class="spaced-t" [value]="false">W jednej z sal</mat-radio-button>
-        <app-input *ngIf="!newSubject.schedule.seminars['online']"
-          [(ngModel)]="classS" name="onlineSeminars"  required
-          description="Numery sal" placeholder="135, 144, D1/15"
-          class="normal-input spaced-l-l spaced-t-s spaced-b" ></app-input>
+        <mat-radio-button color="primary" class="spaced-t spaced-b-s" [value]="false">W jednej z sal</mat-radio-button>
+        <app-input *ngIf="!newSubject.schedule.seminars['online']" [ngModel]="classS" (ngModelChange)="changeS($event)"
+          name="onlineSeminars" required description="Numery sal" placeholder="135, 144, D1/15"
+          class="normal-input spaced-l-l">
+        </app-input>
       </mat-radio-group>
     </div>
   </div>

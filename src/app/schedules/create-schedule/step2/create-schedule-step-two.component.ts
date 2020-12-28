@@ -93,12 +93,6 @@ export class CreateScheduleStepTwoComponent implements OnInit {
   }
 
   prepareSubjects() {
-    // private String teacherName;
-    // private String teacherTitle;
-    // private String subjectName;
-    // private String subjectType;
-    // private String className;
-
     this.subjectsService.getSubjects().subscribe(allSubjects => {
       const filteredSubjects = allSubjects.filter(a => {
         return a.students.studyFieldID === this.newSchedule.studyFieldID
@@ -110,15 +104,20 @@ export class CreateScheduleStepTwoComponent implements OnInit {
 
       const flatSubject = filteredSubjects.map(q => {
         q.teachers.forEach(w => {
+          console.log(w)
           let p = [];
           if (w.exerciseEnable)
-            p.push({ type: "Exercise", cr: q.schedule.exercise.enabled ? q.schedule.exercise.classroom : [] });
+            for (let i = 1; i < w.exerciseHours; i++)
+              p.push({ type: "Exercise", cr: q.schedule.exercise.enabled ? q.schedule.exercise.classroom : [], grp: i });
           if (w.lecturesEnable)
-            p.push({ type: "Lectures", cr: q.schedule.lectures.enabled ? q.schedule.lectures.classroom : [] });
+            for (let i = 1; i < w.lecturesHours + 1; i++)
+              p.push({ type: "Lectures", cr: q.schedule.lectures.enabled ? q.schedule.lectures.classroom : [], grp: i });
           if (w.laboratoriesEnable)
-            p.push({ type: "Laboratories", cr: q.schedule.laboratories.enabled ? q.schedule.laboratories.classroom : [] });
+            for (let i = 1; i < w.laboratoriesHours + 1; i++)
+              p.push({ type: "Laboratories", cr: q.schedule.laboratories.enabled ? q.schedule.laboratories.classroom : [], grp: i });
           if (w.seminarsEnable)
-            p.push({ type: "Seminars", cr: q.schedule.seminars.enabled ? q.schedule.seminars.classroom : [] });
+            for (let i = 1; i < w.seminarsHours + 1; i++)
+              p.push({ type: "Seminars", cr: q.schedule.seminars.enabled ? q.schedule.seminars.classroom : [], grp: i });
 
           for (let k of p)
             teachers.push({
@@ -129,6 +128,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
               subjectType: k.type,
               className: k.cr,
               availability: w.teacher.availability,
+              group: k.grp,
             });
         });
       });
@@ -155,7 +155,6 @@ export class CreateScheduleStepTwoComponent implements OnInit {
         }
       }
       teachers.sort((a, b) => a.countedAva - b.countedAva);
-
       for (let i = 0; i < 5; i++) {
         this.preparedSubjects.push([]);
         for (let j = 0; j < 112; j++)
@@ -167,6 +166,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
               subjectName: c.subjectName,
               subjectType: c.subjectType,
               className: c.className,
+              group: c.group,
             }
           }));
       }

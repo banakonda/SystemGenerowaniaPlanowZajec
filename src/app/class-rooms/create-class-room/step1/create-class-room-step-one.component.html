@@ -1,6 +1,4 @@
 <h3 class="form-request">Podaj nazwę sali</h3>
-
-<div class="spaced-l-l spaced-t-s">
-  <input class="app-input normal-input" placeholder="D 1/15" name="name" [(ngModel)]="newClassRoom.name" required>
-  <p class="app-input-hint">Nazwa sali</p>
-</div>
+<app-input class="spaced-l-l spaced-t-s normal-input"
+  [(ngModel)]="newClassRoom.name" name="name" placeholder="D 1/15"
+  description="Nazwa sali" required></app-input>

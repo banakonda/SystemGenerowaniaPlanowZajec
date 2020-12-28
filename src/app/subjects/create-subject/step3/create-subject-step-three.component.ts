@@ -10,39 +10,27 @@ import { Subject } from 'src/app/data/models/Subject';
 })
 export class CreateSubjectStepThreeComponent {
   @Input() newSubject: Subject;
+  classL = "";
+  classE = "";
+  classLab = "";
+  classS = "";
 
-  get classL(): string {
-    if (this.newSubject.schedule.lectures.enabled && this.newSubject.schedule.lectures.classroom)
-      return this.newSubject.schedule.lectures.classroom.join(', ');
-  }
-  set classL(value: string) {
+  changeL(value: string) {
     if (this.newSubject.schedule.lectures.enabled && this.newSubject.schedule.lectures.classroom && value)
       this.newSubject.schedule.lectures.classroom = value.replace(' ', '').split(',');
   }
 
-  get classE(): string {
-    if (this.newSubject.schedule.exercise.enabled && this.newSubject.schedule.exercise.classroom)
-      return this.newSubject.schedule.exercise.classroom.join(', ');
-  }
-  set classE(value: string) {
+  changeE(value: string) {
     if (this.newSubject.schedule.exercise.enabled && this.newSubject.schedule.exercise.classroom && value)
       this.newSubject.schedule.exercise.classroom = value.replace(' ', '').split(',');
   }
 
-  get classLab(): string {
-    if (this.newSubject.schedule.laboratories.enabled && this.newSubject.schedule.laboratories.classroom)
-      return this.newSubject.schedule.laboratories.classroom.join(', ');
-  }
-  set classLab(value: string) {
+  changeLab(value: string) {
     if (this.newSubject.schedule.laboratories.enabled && this.newSubject.schedule.laboratories.classroom && value)
       this.newSubject.schedule.laboratories.classroom = value.replace(' ', '').split(',');
   }
 
-  get classS(): string {
-    if (this.newSubject.schedule.seminars.enabled && this.newSubject.schedule.seminars.classroom)
-      return this.newSubject.schedule.seminars.classroom.join(', ');
-  }
-  set classS(value: string) {
+  changeS(value: string) {
     if (this.newSubject.schedule.seminars.enabled && this.newSubject.schedule.seminars.classroom && value)
       this.newSubject.schedule.seminars.classroom = value.replace(' ', '').split(',');
   }

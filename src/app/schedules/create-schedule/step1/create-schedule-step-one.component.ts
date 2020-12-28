@@ -12,6 +12,7 @@ import { TeachersService } from 'src/app/teachers/teachers.service';
 export class CreateScheduleStepOneComponent implements OnInit {
   @Input() newSchedule: any;
   studyFields: StudyFieldAPI[];
+  semesterTypes = [{ id: 1, name: 'Zimowy' }, { id: 2, name: 'Letni' }];
 
   constructor(
     private studyFieldService: StudyFieldService,
