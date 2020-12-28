@@ -124,6 +124,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
             teachers.push({
               teacherName: w.teacher.name,
               teacherTitle: w.teacher.titleID,
+              semesterOfSubject: q.students.semester,
               subjectName: q.name,
               subjectType: k.type,
               className: k.cr,
@@ -162,6 +163,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
             return {
               teacherName: c.teacherName,
               teacherTitle: c.teacherTitle,
+              semesterOfSubject: c.semesterOfSubject,
               subjectName: c.subjectName,
               subjectType: c.subjectType,
               className: c.className,
