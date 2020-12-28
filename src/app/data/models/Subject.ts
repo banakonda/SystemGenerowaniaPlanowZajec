@@ -5,7 +5,7 @@ interface StudyStudents {
   semester: number;
 }
 
-type ScheduleActivities = {
+export type ScheduleActivities = {
   enabled: boolean;
   online: boolean;
   classroom: string[];

@@ -43,6 +43,7 @@ import { InputComponent } from './components/input/input.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { MinDirective } from './components/input/min.directive';
 import { MaxDirective } from './components/input/max.directive';
+import { CreateSubjectTypeComponent } from './subjects/create-subject/step3/create-subject-type/create-subject-type.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +76,7 @@ import { MaxDirective } from './components/input/max.directive';
     DropdownComponent,
     MinDirective,
     MaxDirective,
+    CreateSubjectTypeComponent,
   ],
   imports: [
     BrowserModule,
