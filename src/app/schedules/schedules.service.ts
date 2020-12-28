@@ -17,6 +17,8 @@ export class SchedulesService {
   }
 
   createSchedule(schedule: any): Observable<any> {
+    console.log(schedule);
+    // console.log(JSON.stringify({schedule}));
     return this.httpClient.post<any>(this.baseUrl, schedule, { responseType: 'text' } as Object);
   }
 }

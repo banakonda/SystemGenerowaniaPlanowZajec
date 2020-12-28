@@ -9,7 +9,7 @@
       <div *ngFor="let item of listItems">
         <div class="center-row list-row w-80">
           <span class="spaced-l-s weight-500">{{ item.name }} </span>
-          <span class="light-color spaced-l">({{item.degree}} stopień, {{item.numberOfSemesters}} semestrów)</span>
+          <span class="light-color spaced-l">({{ item.degree }} stopień, {{item.numberOfSemesters}} semestrów)</span>
           <div class="space"></div>
           <span class="material-icons red-color clickable" (click)="deleteStudyField(item.id)">delete_forever</span>
           <span class="spaced-l-s primary-color clickable weight-500">Edytuj</span>

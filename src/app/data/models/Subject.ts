@@ -6,9 +6,7 @@ interface StudyStudents {
 }
 
 type ScheduleActivities = {
-  enabled: false;
-} | {
-  enabled: true;
+  enabled: boolean;
   hours: number;
   online: boolean;
   classroom: string[];

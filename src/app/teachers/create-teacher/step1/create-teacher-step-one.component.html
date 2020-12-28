@@ -1,26 +1,12 @@
 <h3 class="form-request spaced-b">Podaj tytuł, imię i nazwisko nauczyciela akademickiego</h3>
 
 <div class="spaced-l-l row">
-  <div class="column">
-    <select name="studyField" id="studyField" class="app-input tiny-input" [(ngModel)]="newTeacher.titleID">
-      <option *ngFor="let title of titles" [ngValue]="title.id">{{title.name}}
-      </option>
-    </select>
-    <p class="app-input-hint">Tytuł naukowy</p>
-  </div>
-  <div class="spaced-l">
-    <input [(ngModel)]="newTeacher.name" class="app-input long-input" placeholder="Jan Kowalski" name="name"
-      minlength="1" required>
-    <p class="app-input-hint">Imię i nazwisko prowadzącego</p>
-  </div>
+  <app-dropdown [(ngModel)]="newTeacher.titleID" name="studyField" description="Tytuł naukowy" [data]="titles">
+  </app-dropdown>
+  <app-input [(ngModel)]="newTeacher.name" class="long-input spaced-l-l" name="name"
+    description="Imię i nazwisko prowadzącego" placeholder="Jan Kowalski" required></app-input>
 </div>
 
 <h3 class="form-request spaced-t spaced-b">Podaj email nauczyciela</h3>
-
-<div class="spaced-l-l row">
-  <div>
-    <input [(ngModel)]="newTeacher.email" class="app-input long-input" placeholder="Jan Kowalski" name="email"
-      minlength="1" required>
-    <p class="app-input-hint">Adres e-mail</p>
-  </div>
-</div>
+<app-input [(ngModel)]="newTeacher.email" class="long-input spaced-l-l" name="email" description="Adres e-mail"
+  placeholder="jan.kowalski@pk.edu.pl" required></app-input>

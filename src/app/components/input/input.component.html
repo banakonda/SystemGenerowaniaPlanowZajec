@@ -1,0 +1,6 @@
+<div>
+  <input *ngIf="type==='text'" [formControl]="control" [placeholder]="placeholder">
+  <input *ngIf="type==='number'" [formControl]="control" [placeholder]="placeholder" type="number">
+
+  <p *ngIf="description" class="app-input-hint">{{ description }}</p>
+</div>

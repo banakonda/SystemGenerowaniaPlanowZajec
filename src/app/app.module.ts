@@ -18,7 +18,7 @@ import { StudyFieldComponent } from './study-field/study-field.component';
 import { CreateFieldComponent } from './study-field/create-field/create-field.component';
 
 import { CreateFieldStepOneComponent } from './study-field/create-field/step1/create-field-step-one.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TeachersComponent } from './teachers/teachers.component';
 import { CreateTeacherComponent } from './teachers/create-teacher/create-teacher.component';
 import { CreateTeacherStepOneComponent } from './teachers/create-teacher/step1/create-teacher-step-one.component';
@@ -39,6 +39,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreateScheduleComponent } from './schedules/create-schedule/create-schedule.component';
 import { CreateScheduleStepOneComponent } from './schedules/create-schedule/step1/create-schedule-step-one.component';
 import { CreateScheduleStepTwoComponent } from './schedules/create-schedule/step2/create-schedule-step-two.component';
+import { InputComponent } from './components/input/input.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { MinDirective } from './components/input/min.directive';
+import { MaxDirective } from './components/input/max.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +71,10 @@ import { CreateScheduleStepTwoComponent } from './schedules/create-schedule/step
     CreateScheduleComponent,
     CreateScheduleStepOneComponent,
     CreateScheduleStepTwoComponent,
+    InputComponent,
+    DropdownComponent,
+    MinDirective,
+    MaxDirective,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +87,7 @@ import { CreateScheduleStepTwoComponent } from './schedules/create-schedule/step
     FormsModule,
     HttpClientModule,
     MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

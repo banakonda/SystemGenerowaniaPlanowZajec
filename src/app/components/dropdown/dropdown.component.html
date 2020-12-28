@@ -1,0 +1,11 @@
+<div>
+  <select #test name="studyField" id="studyField" class="app-input tiny-input" [formControl]="control">
+    <option *ngFor="let item of data" [ngValue]="value.length ? item[value] : item">
+      {{ display.length ? item[display] : item }}
+      <span *ngIf="additionalDisplay || additionalDescription">
+        ({{ item[additionalDisplay] }} {{additionalDescription }})
+      </span>
+    </option>
+  </select>
+  <p *ngIf="description" class="app-input-hint">{{ description }}</p>
+</div>

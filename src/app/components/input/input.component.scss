@@ -1,0 +1,23 @@
+@import "../../../styles/variables.scss";
+
+:host {
+  display: inline-block;
+}
+
+input {
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid $simple_gray;
+  outline: none;
+  padding: 3px 0;
+  margin: 8px 0 0 0;
+  font-size: 1rem;
+  min-height: 1rem;
+  color: $simple_black;
+}
+.app-input-hint {
+  font-size: 0.7rem;
+  min-height: 0.8rem;
+  color: $simple_gray;
+}

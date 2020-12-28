@@ -9,9 +9,9 @@ export function newSubject(): Subject {
     },
     schedule: {
       lectures: { enabled: true, hours: 30, online: false, classroom: [] },
-      exercise: { enabled: false },
-      laboratories: { enabled: false },
-      seminars: { enabled: false },
+      exercise: { enabled: false, hours: 30, online: false, classroom: [] },
+      laboratories: { enabled: false, hours: 30, online: false, classroom: [] },
+      seminars: { enabled: false, hours: 30, online: false, classroom: [] },
     },
     teachers: [],
     eligibility: false,

@@ -10,5 +10,7 @@ import { StudyField } from 'src/app/data/models/StudyField';
 export class CreateFieldStepOneComponent {
   @Input() newStudyField: StudyField;
 
-  constructor() { }
+  constructor() {
+    // setInterval(() => console.log(this.newStudyField), 3000)
+  }
 }
