@@ -7,28 +7,32 @@
 
   <div class="center-row spaced-l-s">
     <mat-checkbox class="spaced-l-l" color="primary" name="lectures" 
-      [(ngModel)]="newSubjectTeacher.lecturesEnable">W</mat-checkbox>
+      [(ngModel)]="newSubjectTeacher.lecturesEnable" 
+      [disabled]="!newSubject.schedule.lectures.enabled">W</mat-checkbox>
     <app-input *ngIf="newSubjectTeacher.lecturesEnable" type="number"
       [(ngModel)]="newSubjectTeacher.lecturesHours" name="lecturesHours"  
       placeholder="1" class="micro-input spaced-l" description="Ilość grup" 
       [min]="1" required></app-input>
 
     <mat-checkbox class="spaced-l-l" color="primary" name="exercises" 
-      [(ngModel)]="newSubjectTeacher.exerciseEnable">Ć</mat-checkbox>
+      [(ngModel)]="newSubjectTeacher.exerciseEnable"
+      [disabled]="!newSubject.schedule.exercise.enabled">Ć</mat-checkbox>
     <app-input *ngIf="newSubjectTeacher.exerciseEnable" type="number"
       [(ngModel)]="newSubjectTeacher.exerciseHours" name="exerciseHours"  
       placeholder="4" class="micro-input spaced-l" description="Ilość grup" 
       [min]="1" required></app-input>
       
     <mat-checkbox class="spaced-l-l" color="primary" name="laboratories" 
-      [(ngModel)]="newSubjectTeacher.laboratoriesEnable">L</mat-checkbox>
+      [(ngModel)]="newSubjectTeacher.laboratoriesEnable"
+      [disabled]="!newSubject.schedule.laboratories.enabled">L</mat-checkbox>
     <app-input *ngIf="newSubjectTeacher.laboratoriesEnable" type="number"
       [(ngModel)]="newSubjectTeacher.laboratoriesHours" name="laboratoriesHours"  
       placeholder="8" class="micro-input spaced-l" description="Ilość grup" 
       [min]="1" required></app-input>
 
-    <mat-checkbox class="spaced-l-l" color="primary" name="lectures" 
-      [(ngModel)]="newSubjectTeacher.seminarsEnable">S</mat-checkbox>
+    <mat-checkbox class="spaced-l-l" color="primary" name="seminars" 
+      [(ngModel)]="newSubjectTeacher.seminarsEnable"
+      [disabled]="!newSubject.schedule.seminars.enabled">S</mat-checkbox>
     <app-input *ngIf="newSubjectTeacher.seminarsEnable" type="number"
       [(ngModel)]="newSubjectTeacher.seminarsHours" name="seminarsHours"  
       placeholder="4" class="micro-input spaced-l" description="Ilość grup" 
@@ -50,5 +54,32 @@
     </span>
     <span class="space"></span>
     <span class="red-color clickable weight-500" (click)="deleteTeacher(i)">Usuń</span>
+  </div>
+</div>
+
+<div class="column spaced-t-l spaced-l-l">
+  <div class="center-row" *ngIf="newSubject.schedule.lectures.enabled">
+    <p class="h-100">Grupy Wykładowe:</p>
+    <app-input [(ngModel)]="sumOfGroup.lectures" name="lecturesGroups"
+      type="number" description="Ilość grup" [disabled]="sumOfGroup.lectures === 0"
+      class="tiny-input spaced-l" [min]="1"></app-input>
+  </div>
+  <div class="center-row" *ngIf="newSubject.schedule.exercise.enabled">
+    <p class="h-100">Grupy Ćwiczeniowe:</p>
+    <app-input [(ngModel)]="sumOfGroup.exercise" name="exerciseGroups"
+      type="number" description="Ilość grup" [disabled]="sumOfGroup.exercise === 0"
+      class="tiny-input spaced-l" [min]="1"></app-input>
+  </div> 
+  <div class="center-row" *ngIf="newSubject.schedule.laboratories.enabled">
+    <p class="h-100">Grupy Laboratoryjne:</p>
+    <app-input [(ngModel)]="sumOfGroup.laboratories" name="laboratoriesGroups"
+      type="number"  description="Ilość grup" [disabled]="sumOfGroup.laboratories === 0"
+      class="tiny-input spaced-l" [min]="1"></app-input>
+  </div>
+  <div class="center-row" *ngIf="newSubject.schedule.seminars.enabled">
+    <p class="h-100">Grupy Seminaryjne:</p>
+    <app-input [(ngModel)]="sumOfGroup.seminars" name="seminarsGroups"
+      type="number"  description="Ilość grup" [disabled]="sumOfGroup.seminars === 0"
+      class="tiny-input spaced-l" [min]="1"></app-input>
   </div>
 </div>

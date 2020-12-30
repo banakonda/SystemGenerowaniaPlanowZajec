@@ -15,9 +15,9 @@ export class CreateSubjectStepTwoComponent implements OnInit {
   studyFields: StudyFieldAPI[];
 
   get getSemesters(): number[] {
-    if (!this.studyFields || !this.studyFields.length) {
+    if (!this.studyFields || !this.studyFields.length)
       return [];
-    }
+
     const numberOfSemesters = this.studyFields.find(q => q.id === this.newSubject.students.studyFieldID).numberOfSemesters;
     const semesters: number[] = [];
 

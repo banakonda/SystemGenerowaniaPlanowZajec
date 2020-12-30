@@ -4,29 +4,29 @@ import { Observable, of } from 'rxjs';
 
 import { Subject, SubjectAPI } from '../data/models/Subject';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class SubjectsService {
   baseUrl = 'http://localhost:8888/subject';
+  requestOptions: Object = { responseType: 'text' };
 
-  constructor(
-    private httpClient: HttpClient,
-  ) { }
+  constructor(private httpClient: HttpClient) { }
 
   getSubjects(): Observable<SubjectAPI[]> {
     return this.httpClient.get<SubjectAPI[]>(this.baseUrl);
   }
-
-  createSubjects(studyField: Subject): Observable<Subject> {
-    console.log(studyField);
-    return this.httpClient.post<Subject>(this.baseUrl, studyField, { responseType: 'text' } as Object);
+  getSubject(id: string): Observable<SubjectAPI> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.httpClient.get<SubjectAPI>(url);
   }
-  editSubjects(studyField: SubjectAPI): void {
-
+  createSubjects(studyField: Subject): Observable<Subject> {
+    return this.httpClient.post<Subject>(this.baseUrl, studyField, this.requestOptions);
+  }
+  editSubjects(studyField: SubjectAPI): Observable<SubjectAPI> {
+    const url = `${this.baseUrl}/${studyField.id}`;
+    return this.httpClient.put<SubjectAPI>(url, studyField, this.requestOptions);
   }
   deleteSubjects(id: number): Observable<{}> {
     const url = `${this.baseUrl}/${id}`;
-    return this.httpClient.delete(url, { responseType: 'text' } as Object);
+    return this.httpClient.delete(url);
   }
 }

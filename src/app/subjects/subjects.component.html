@@ -1,10 +1,15 @@
 <div class="h-100 content">
-  <h1 class="page-title">Przedmioty</h1>
+  <div class="center-row">
+    <h1 class="page-title">Przedmioty</h1>
+    <button mat-button class="clickable" (click)="refreshList()">
+      <i class="material-icons">refresh</i>
+    </button>
+  </div>
 
   <div class="sub-content">
     <div class="center-row">
       <app-type-buttons [buttons]="buttons" [(selected)]="selected"></app-type-buttons>
-      <span class="material-icons clickable" (click)="refreshList()">refresh</span>
+
     </div>
 
     <div class="spaced-t" *ngIf="listItems$ | async as listItems">
@@ -16,7 +21,7 @@
             {{ item.students.semester }} semestr)</span>
           <div class="space"></div>
           <span (click)="deleteSubject(item.id)" class="material-icons clickable red-color">delete_forever</span>
-          <span class="spaced-l-s primary-color clickable weight-500">Edytuj</span>
+          <a class="spaced-l-s primary-color clickable weight-500" [routerLink]="'/edit-subject/' + item.id">Edytuj</a>
         </div>
       </div>
     </div>

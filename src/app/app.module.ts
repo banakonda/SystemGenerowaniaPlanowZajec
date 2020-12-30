@@ -44,6 +44,11 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { MinDirective } from './components/input/min.directive';
 import { MaxDirective } from './components/input/max.directive';
 import { CreateSubjectTypeComponent } from './subjects/create-subject/step3/create-subject-type/create-subject-type.component';
+import { EditFieldComponent } from './study-field/create-field/edit-field.component';
+import { EditTeacherComponent } from './teachers/create-teacher/edit-teacher.component';
+import { EditClassRoomComponent } from './class-rooms/create-class-room/edit-class-room.component';
+import { EditSubjectComponent } from './subjects/create-subject/edit-subject.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +82,10 @@ import { CreateSubjectTypeComponent } from './subjects/create-subject/step3/crea
     MinDirective,
     MaxDirective,
     CreateSubjectTypeComponent,
+    EditFieldComponent,
+    EditTeacherComponent,
+    EditClassRoomComponent,
+    EditSubjectComponent,
   ],
   imports: [
     BrowserModule,

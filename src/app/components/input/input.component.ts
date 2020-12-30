@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Inject, Input, OnInit, Optional } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Inject, Input, OnInit, Optional, Renderer2 } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms';
 
 export type AppInputType = number | string;
@@ -14,6 +14,7 @@ export class InputComponent implements ControlValueAccessor, Validator {
   @Input() description: string;
   @Input() placeholder: string;
   @Input() type = "text";
+  @Input() disabled = false;
   validation: ValidatorFn[] = [];
 
   constructor(
@@ -30,7 +31,6 @@ export class InputComponent implements ControlValueAccessor, Validator {
   registerOnChange(fn: (value: AppInputType) => void): void {
     this.control.updateValueAndValidity();
     this.control.valueChanges.subscribe((value: AppInputType) => {
-
       fn(this.type === "number" && typeof (value) === "string" ? Number.parseInt(value as string) : value);
     });
   }
@@ -41,6 +41,8 @@ export class InputComponent implements ControlValueAccessor, Validator {
   }
 
   ngAfterViewChecked() {
+    // if (this.disabled)
+    //   this.control.disable();
     this.cdr.detectChanges();
   }
 }

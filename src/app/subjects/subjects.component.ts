@@ -9,33 +9,29 @@ import { SubjectsService } from './subjects.service';
   selector: 'app-subjects',
   templateUrl: './subjects.component.html',
 })
-export class SubjectsComponent implements OnInit {
+export class SubjectsComponent {
   buttons: StudyFieldAPI[] = [];
-  selected: any;
+  selected: string;
   listItems$: Observable<SubjectAPI[]>;
 
   constructor(
     private subjectsService: SubjectsService,
     private studyFieldService: StudyFieldService,
-  ) { }
-
-  ngOnInit(): void {
-    this.studyFieldService.getStudyFields().subscribe(
-      q => this.buttons = q,
-      () => { },
-      () => this.selected = this.buttons[0].id);
+  ) {
     this.refreshList();
   }
 
   deleteSubject(id: number): void {
     this.subjectsService.deleteSubjects(id).subscribe(
-      () => { },
-      () => { },
       () => this.refreshList(),
     );
   }
 
   refreshList(): void {
+    this.studyFieldService.getStudyFields().subscribe(
+      q => this.buttons = q,
+      () => { },
+      () => this.selected = this.buttons[0].id);
     this.listItems$ = this.subjectsService.getSubjects();
   }
 }

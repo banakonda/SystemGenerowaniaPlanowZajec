@@ -8,7 +8,7 @@ import { SchedulesService } from './schedules.service';
   selector: 'app-schedules',
   templateUrl: './schedules.component.html',
 })
-export class SchedulesComponent implements OnInit {
+export class SchedulesComponent {
   buttons: StudyFieldAPI[] = [];
   selected: any;
   listItems$: Observable<any[]>; // Observable<ScheduleAPI[]>
@@ -16,21 +16,20 @@ export class SchedulesComponent implements OnInit {
   constructor(
     private schedulesService: SchedulesService,
     private studyFieldService: StudyFieldService,
-  ) { }
-
-  ngOnInit(): void {
-    this.studyFieldService.getStudyFields().subscribe(
-      q => this.buttons = q,
-      () => { },
-      () => this.selected = this.buttons[0].id);
+  ) {
     this.refreshList();
   }
+
 
   // deleteSubject(id: number): void {
   //   this.schedulesService.deleteSchedule(id);
   // }
 
   refreshList(): void {
+    this.studyFieldService.getStudyFields().subscribe(
+      q => this.buttons = q,
+      () => { },
+      () => this.selected = this.buttons[0].id);
     this.listItems$ = this.schedulesService.getSchedules();
   }
 

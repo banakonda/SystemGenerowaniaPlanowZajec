@@ -23,7 +23,7 @@ export class CreateTeacherStepOneComponent implements OnInit {
     this.titleService.getTitles().subscribe(
       t => this.titles = t,
       () => { },
-      () => this.newTeacher.titleID = this.titles[0].id,
+      () => { },
     );
   }
 }

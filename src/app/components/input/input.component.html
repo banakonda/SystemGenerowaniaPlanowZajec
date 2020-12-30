@@ -1,6 +1,8 @@
 <div>
-  <input *ngIf="type==='text'" [formControl]="control" [placeholder]="placeholder">
-  <input *ngIf="type==='number'" [formControl]="control" [placeholder]="placeholder" type="number">
+  <input *ngIf="type==='text'" [formControl]="control" [placeholder]="placeholder"
+    [attr.disabled]="disabled? true : null">
+  <input *ngIf="type==='number'" [formControl]="control" [placeholder]="placeholder" type="number"
+    [attr.disabled]="disabled? true : null">
 
   <p *ngIf="description" class="app-input-hint">{{ description }}</p>
 </div>

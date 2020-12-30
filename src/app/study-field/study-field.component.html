@@ -1,7 +1,9 @@
 <div class="h-100 content">
   <div class="center-row">
     <h1 class="page-title">Kierunki studiów</h1>
-    <span class="material-icons clickable spaced-l-l" (click)="refreshList()">refresh</span>
+    <button mat-button class="clickable" (click)="refreshList()">
+      <i class="material-icons">refresh</i>
+    </button>
   </div>
 
   <div class="sub-content">
@@ -12,11 +14,11 @@
           <span class="light-color spaced-l">({{ item.degree }} stopień, {{item.numberOfSemesters}} semestrów)</span>
           <div class="space"></div>
           <span class="material-icons red-color clickable" (click)="deleteStudyField(item.id)">delete_forever</span>
-          <span class="spaced-l-s primary-color clickable weight-500">Edytuj</span>
+          <a class="spaced-l-s primary-color clickable weight-500" [routerLink]="'/edit-field/' + item.id">Edytuj</a>
         </div>
       </div>
     </div>
-    <a mat-button color="primary" class="a-text-button spaced-t-s weight-300" routerLink="/create-field">Dodaj
-      kierunek</a>
+    <a mat-button color="primary" class="a-text-button spaced-t-s weight-300" routerLink="/create-field">
+      Dodaj kierunek</a>
   </div>
 </div>

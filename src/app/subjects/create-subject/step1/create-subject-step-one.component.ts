@@ -9,5 +9,4 @@ import { Subject } from 'src/app/data/models/Subject';
 })
 export class CreateSubjectStepOneComponent {
   @Input() newSubject: Subject;
-  constructor() { }
 }

@@ -11,5 +11,5 @@
       <app-create-field-step-one *ngIf="step==1" [(newStudyField)]="newStudyField"></app-create-field-step-one>
     </div>
   </div>
-  <app-create-buttons [(step)]="step" [lastStep]="lastStep" [f]="f" [cancelLink]="'fields'"></app-create-buttons>
+  <app-create-buttons [(step)]="step" [lastStep]="lastStep" [f]="f" cancelLink="fields"></app-create-buttons>
 </form>

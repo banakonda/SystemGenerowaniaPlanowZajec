@@ -9,26 +9,21 @@ import { ClassRoomService } from './class-rooms.service';
   selector: 'app-class-rooms',
   templateUrl: './class-rooms.component.html',
 })
-export class ClassRoomsComponent implements OnInit {
+export class ClassRoomsComponent {
   listItems$: Observable<ClassRoomAPI[]>;
-  constructor(
-    private studyFieldService: StudyFieldService,
-    private classRoomsService: ClassRoomService,
-  ) { }
 
-  ngOnInit(): void {
+  constructor(
+    private classRoomsService: ClassRoomService,
+  ) {
     this.refreshList();
   }
 
-  refreshList(): void {
-    this.listItems$ = this.classRoomsService.getClassRooms();
-  }
-
-  deleteClassRooms(id: number): void {
+  deleteClassRooms(id: string): void {
     this.classRoomsService.deleteClassRooms(id).subscribe(
-      () => { },
-      () => { },
       () => this.refreshList(),
     );
+  }
+  refreshList(): void {
+    this.listItems$ = this.classRoomsService.getClassRooms();
   }
 }

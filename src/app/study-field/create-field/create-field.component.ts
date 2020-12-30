@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { StudyField, StudyFieldAPI } from 'src/app/data/models/StudyField';
 import { StudyFieldService } from '../study-field.service';
 import { newStudyField } from './default-field';
 
@@ -11,7 +12,13 @@ import { newStudyField } from './default-field';
 export class CreateFieldComponent {
   step = 1;
   lastStep = 1;
+  edit = false;
+
   newStudyField = newStudyField();
+  @Input() set studyField(value: StudyFieldAPI) {
+    this.newStudyField = value;
+    this.edit = true;
+  }
 
   constructor(
     private studyFieldService: StudyFieldService,
@@ -22,7 +29,10 @@ export class CreateFieldComponent {
   createStudyField(): void {
     let error = 0;
     try {
-      this.studyFieldService.createStudyField(this.newStudyField).subscribe();
+      if (!this.edit)
+        this.studyFieldService.createStudyField(this.newStudyField).subscribe();
+      else
+        this.studyFieldService.editStudyField(this.newStudyField as StudyFieldAPI).subscribe();
     } catch {
       error = 1;
     } finally {

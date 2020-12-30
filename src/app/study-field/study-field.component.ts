@@ -7,25 +7,18 @@ import { StudyFieldService } from './study-field.service';
   selector: 'app-study-field',
   templateUrl: './study-field.component.html',
 })
-export class StudyFieldComponent implements OnInit {
+export class StudyFieldComponent {
   listItems$: Observable<StudyFieldAPI[]>;
 
   constructor(
     private studyFieldService: StudyFieldService,
-  ) { }
-
-  ngOnInit(): void {
-    this.setDefault();
-  }
-
-  setDefault(): void {
+  ) {
     this.refreshList();
   }
-  deleteStudyField(id: number): void {
+
+  deleteStudyField(id: string): void {
     this.studyFieldService.deleteStudyField(id).subscribe(
-      () => { },
       () => this.refreshList(),
-      () => { },
     );
   }
 

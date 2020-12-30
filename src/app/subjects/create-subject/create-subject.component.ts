@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { SubjectAPI } from 'src/app/data/models/Subject';
 import { SubjectsService } from '../subjects.service';
 import { newSubject } from './default-subject';
 
@@ -11,9 +13,13 @@ import { newSubject } from './default-subject';
 export class CreateSubjectComponent {
   step = 1;
   lastStep = 4;
+  edit = false;
 
   newSubject = newSubject();
-
+  @Input() set subject(value: SubjectAPI) {
+    this.newSubject = value;
+    this.edit = true;
+  }
   constructor(
     private subjectsService: SubjectsService,
     private router: Router,
@@ -23,7 +29,10 @@ export class CreateSubjectComponent {
   createSubject(): void {
     let error = 0;
     try {
-      this.subjectsService.createSubjects(this.newSubject).subscribe();
+      if (!this.edit)
+        this.subjectsService.createSubjects(this.newSubject).subscribe();
+      else
+        this.subjectsService.editSubjects(this.newSubject as SubjectAPI).subscribe();
     } catch {
       error = 1;
     } finally {

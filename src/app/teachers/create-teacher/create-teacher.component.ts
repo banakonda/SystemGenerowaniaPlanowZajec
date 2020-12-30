@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Teacher } from 'src/app/data/models/Teacher';
+import { Teacher, TeacherAPI } from 'src/app/data/models/Teacher';
 import { TeachersService } from '../teachers.service';
 import { newTeacher } from './default-teacher';
 
@@ -12,8 +12,13 @@ import { newTeacher } from './default-teacher';
 export class CreateTeacherComponent {
   step = 1;
   lastStep = 2;
-  newTeacher: Teacher = newTeacher();
+  edit = false;
 
+  newTeacher = newTeacher();
+  @Input() set teacher(value: TeacherAPI) {
+    this.newTeacher = value;
+    this.edit = true;
+  }
   constructor(
     private teachersService: TeachersService,
     private router: Router,
@@ -22,8 +27,10 @@ export class CreateTeacherComponent {
   createTeacher(): void {
     let error = 0;
     try {
-      // TODO: Delete (evenWeeks && oddWeeks) || allWeeks
-      this.teachersService.createTeacher(this.newTeacher).subscribe();
+      if (!this.edit)
+        this.teachersService.createTeacher(this.newTeacher).subscribe();
+      else
+        this.teachersService.editTeacher(this.newTeacher as TeacherAPI).subscribe();
     } catch {
       error = 1;
     } finally {

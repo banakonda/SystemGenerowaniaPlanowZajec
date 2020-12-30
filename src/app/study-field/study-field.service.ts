@@ -1,34 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { StudyField, StudyFieldAPI } from '../data/models/StudyField';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class StudyFieldService {
   baseUrl = 'http://localhost:8888/fields';
+  requestOptions: Object = { responseType: 'text' };
 
-  constructor(
-    private httpClient: HttpClient,
-  ) { }
+  constructor(private httpClient: HttpClient) { }
 
   getStudyFields(): Observable<StudyFieldAPI[]> {
     return this.httpClient.get<StudyFieldAPI[]>(this.baseUrl);
   }
-
-  createStudyField(studyField: StudyField): Observable<any> {
-    const requestOptions: Object = {
-      /* other options here */
-      responseType: 'text'
-    };
-
-    return this.httpClient.post<StudyField>(this.baseUrl, studyField, requestOptions);
+  getStudyField(id: string): Observable<StudyFieldAPI> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.httpClient.get<StudyFieldAPI>(url);
   }
-  editStudyField(studyField: StudyFieldAPI): void {
-
+  createStudyField(studyField: StudyField): Observable<StudyField> {
+    return this.httpClient.post<StudyField>(this.baseUrl, studyField, this.requestOptions);
   }
-  deleteStudyField(id: number): Observable<{}> {
+  editStudyField(studyField: StudyFieldAPI): Observable<StudyField> {
+    const url = `${this.baseUrl}/${studyField.id}`;
+    return this.httpClient.put<StudyFieldAPI>(url, studyField, this.requestOptions);
+  }
+  deleteStudyField(id: string): Observable<{}> {
     const url = `${this.baseUrl}/${id}`;
     return this.httpClient.delete(url);
   }
