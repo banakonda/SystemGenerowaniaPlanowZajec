@@ -5,8 +5,8 @@ import { StudyField, StudyFieldAPI } from '../data/models/StudyField';
 
 @Injectable({ providedIn: 'root' })
 export class StudyFieldService {
-  baseUrl = 'http://localhost:8888/fields';
-  requestOptions: Object = { responseType: 'text' };
+  private baseUrl: string = 'http://localhost:8888/fields';
+  private requestOptions: Object = { responseType: 'text' };
 
   constructor(private httpClient: HttpClient) { }
 

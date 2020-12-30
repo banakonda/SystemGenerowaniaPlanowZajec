@@ -1,5 +1,4 @@
-import { Inject, Input, Optional } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Inject, Input, Optional, Component } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
 
 export type AppInputType = number | string;
@@ -13,9 +12,9 @@ export type AppInputType = number | string;
 export class DropdownComponent implements ControlValueAccessor, Validator {
   control = new FormControl();
   @Input() description: string;
-  @Input() data = [];
-  @Input() value = "id";
-  @Input() display = "name";
+  @Input() data: Array<any> = [];
+  @Input() value: string = "id";
+  @Input() display: string = "name";
   @Input() additionalDisplay?: string;
   @Input() additionalDescription?: string;
 

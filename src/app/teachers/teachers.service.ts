@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class TeachersService {
-  baseUrl = 'http://localhost:8888/teachers';
+  baseUrl: string = 'http://localhost:8888/teachers';
   requestOptions: Object = { responseType: 'text' };
 
   constructor(private httpClient: HttpClient) { }

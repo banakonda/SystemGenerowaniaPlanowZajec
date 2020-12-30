@@ -1,0 +1,12 @@
+@import "../../../../styles/variables.scss";
+.time {
+  display: flex;
+  justify-content: center;
+  transform: rotate(-90deg);
+  padding: 2px;
+  min-width: 36px !important;
+  background-color: $primary_color;
+  color: $simple_white;
+  border-radius: 2px;
+  margin: -3px;
+}

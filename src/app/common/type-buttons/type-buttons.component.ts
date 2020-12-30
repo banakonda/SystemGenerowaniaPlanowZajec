@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class TypeButtonsComponent {
   @Input() buttons: any[] = [];
-  @Input() selected: any;
+  @Input() selected: string;
   @Output() selectedChange = new EventEmitter<string>();
 
   constructor() { }

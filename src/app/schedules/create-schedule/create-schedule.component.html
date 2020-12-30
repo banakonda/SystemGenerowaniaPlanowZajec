@@ -9,7 +9,10 @@
 
     <div class="sub-content">
       <app-create-schedule-step-one *ngIf="step==1" [(newSchedule)]="newSchedule"></app-create-schedule-step-one>
-      <app-create-schedule-step-two *ngIf="step==2" [(newSchedule)]="newSchedule"></app-create-schedule-step-two>
+      <app-create-schedule-step-two *ngIf="step==2" [(newSchedule)]="newSchedule"
+        (newScheduleId)="handleNewScheduleId($event)"></app-create-schedule-step-two>
+      <app-create-schedule-step-three *ngIf="step==3" [(newSchedule)]="newSchedule" [id]="newScheduleId">
+      </app-create-schedule-step-three>
     </div>
   </div>
 

@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { StudyField, StudyFieldAPI } from 'src/app/data/models/StudyField';
+import { StudyFieldAPI } from 'src/app/data/models/StudyField';
 import { StudyFieldService } from '../study-field.service';
 import { newStudyField } from './default-field';
 
@@ -10,9 +10,9 @@ import { newStudyField } from './default-field';
   templateUrl: './create-field.component.html',
 })
 export class CreateFieldComponent {
-  step = 1;
-  lastStep = 1;
-  edit = false;
+  step: number = 1;
+  lastStep: number = 1;
+  edit: boolean = false;
 
   newStudyField = newStudyField();
   @Input() set studyField(value: StudyFieldAPI) {

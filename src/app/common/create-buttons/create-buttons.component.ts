@@ -8,12 +8,10 @@ import { NgForm } from '@angular/forms';
 })
 export class CreateButtonsComponent implements OnInit {
   @Input() f: NgForm;
-  @Input() step: number;
-  @Input() lastStep: number;
   @Input() cancelLink: string;
-  @Output() stepChange = new EventEmitter<number>();
-
-  constructor() { }
+  @Input() step: number;
+  @Output() private stepChange = new EventEmitter<number>();
+  @Input() lastStep: number;
 
   ngOnInit(): void {
     this.cancelLink = '/' + this.cancelLink;

@@ -1,5 +1,5 @@
-import { ChangeDetectorRef, Component, ElementRef, Inject, Input, OnInit, Optional, Renderer2 } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms';
+import { ChangeDetectorRef, Component, Inject, Input, OnInit, Optional, Renderer2 } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms';
 
 export type AppInputType = number | string;
 
@@ -13,9 +13,8 @@ export class InputComponent implements ControlValueAccessor, Validator {
   control = new FormControl();
   @Input() description: string;
   @Input() placeholder: string;
-  @Input() type = "text";
-  @Input() disabled = false;
-  validation: ValidatorFn[] = [];
+  @Input() type: string = "text";
+  @Input() disabled: boolean = false;
 
   constructor(
     @Optional() @Inject(NG_VALIDATORS) control: ValidatorFn[],
@@ -40,9 +39,7 @@ export class InputComponent implements ControlValueAccessor, Validator {
     return this.control.errors;
   }
 
-  ngAfterViewChecked() {
-    // if (this.disabled)
-    //   this.control.disable();
+  ngAfterViewChecked(): void {
     this.cdr.detectChanges();
   }
 }

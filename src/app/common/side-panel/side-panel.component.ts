@@ -6,5 +6,4 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-panel.component.scss'],
 })
 export class SidePanelComponent {
-  constructor() { }
 }

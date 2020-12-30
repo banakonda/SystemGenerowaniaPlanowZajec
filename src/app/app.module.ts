@@ -48,6 +48,7 @@ import { EditFieldComponent } from './study-field/create-field/edit-field.compon
 import { EditTeacherComponent } from './teachers/create-teacher/edit-teacher.component';
 import { EditClassRoomComponent } from './class-rooms/create-class-room/edit-class-room.component';
 import { EditSubjectComponent } from './subjects/create-subject/edit-subject.component';
+import { CreateScheduleStepThreeComponent } from './schedules/create-schedule/step3/create-schedule-step-three.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { EditSubjectComponent } from './subjects/create-subject/edit-subject.com
     EditTeacherComponent,
     EditClassRoomComponent,
     EditSubjectComponent,
+    CreateScheduleStepThreeComponent,
   ],
   imports: [
     BrowserModule,

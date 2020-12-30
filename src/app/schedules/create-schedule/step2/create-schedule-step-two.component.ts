@@ -1,16 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ClassRoomService } from 'src/app/class-rooms/class-rooms.service';
 import { ClassRoomAPI } from 'src/app/data/models/ClassRoom';
 import { StudyFieldAPI } from 'src/app/data/models/StudyField';
 import { StudyFieldService } from 'src/app/study-field/study-field.service';
 import { SubjectsService } from 'src/app/subjects/subjects.service';
-import { TeachersService } from 'src/app/teachers/teachers.service';
 import { SchedulesService } from '../../schedules.service';
 
 @Component({
   selector: 'app-create-schedule-step-two',
   templateUrl: './create-schedule-step-two.component.html',
-  styleUrls: ['./create-schedule-step-two.component.scss']
 })
 export class CreateScheduleStepTwoComponent implements OnInit {
   @Input() newSchedule: any;
@@ -18,6 +16,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
   classRooms: ClassRoomAPI[] = [];
   preparedClassRooms = [];
   preparedSubjects = [];
+  @Output() newScheduleId = new EventEmitter<string>();
 
   get nameOfStudyField(): string {
     if (!this.studyFields) {
@@ -104,7 +103,6 @@ export class CreateScheduleStepTwoComponent implements OnInit {
 
       const flatSubject = filteredSubjects.map(q => {
         q.teachers.forEach(w => {
-          console.log(w)
           let p = [];
           if (w.exerciseEnable)
             for (let i = 1; i < w.exerciseHours; i++)
@@ -174,6 +172,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
   }
 
   sendRequest() {
+    // let idNewSchedule;
     this.sleep(1000).then(() => {
       this.schedulesService.createSchedule({
         name: "TymczasowyBrak",
@@ -182,8 +181,15 @@ export class CreateScheduleStepTwoComponent implements OnInit {
         numberOfSemester: this.newSchedule.numberOfSemesters,
         classroomsData: this.preparedClassRooms,
         teachersData: this.preparedSubjects,
-      }).subscribe();
+      }).subscribe(q => {
+        // console.log(q);
+        this.newScheduleId.emit(q)
+      });
+
     });
+    // this.sleep(5000).then(() => {
+    //   this.schedulesService.getSchedule(idNewSchedule).subscribe(q => { console.log(q) });
+    // })
   }
 
   sleep(ms) {
