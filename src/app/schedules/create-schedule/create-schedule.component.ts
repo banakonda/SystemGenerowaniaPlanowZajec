@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './create-schedule.component.html',
 })
 export class CreateScheduleComponent implements OnInit {
-  step = 1;
+  step = 3;
   lastStep = 3;
   newSchedule = {
     studyFieldID: 1,

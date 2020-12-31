@@ -31,8 +31,8 @@ export class CreateScheduleStepThreeComponent {
   }
 
   ngOnInit() {
-    this.schedule$ = this.schedulesService.getSchedule(this.id);
-    // this.schedule$ = this.schedulesService.getSchedule("5feda01fde34017654bdf1e9");
+    // this.schedule$ = this.schedulesService.getSchedule(this.id);
+    this.schedule$ = this.schedulesService.getSchedule("5feda01fde34017654bdf1e9");
     this.schedule$.subscribe(q => {
       console.log(q);
       console.log(q.semesters[0].daysOfWeek);

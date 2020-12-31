@@ -7,20 +7,28 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LessonComponent {
   subjects: any[] = [];
-  indexNumbers: number[] = [];
-
+  indexNumbers: number[][] = [];
+  lastIndex: number = 0;;
+  tabIndex: number = 0;
   @Input() set days(value: any) {
     if (!value.subjects) return;
 
     value.subjects.map((q: any) => {
-      if (!this.subjects.length)
+      if (!this.subjects.length) {
         this.addSubject(q);
+        this.indexNumbers.push([]);
+      }
       else if (q.firstIndex === this.subjects[this.subjects.length - 1].firstIndex)
         this.subjects[this.subjects.length - 1].class.push(this.createClass(q));
-      else
+      else {
+        this.indexNumbers.push([]);
+        for (let i = 0; i < q.firstIndex - this.lastIndex - 1; i++)
+          this.indexNumbers[this.indexNumbers.length - 1].push(1);
+
         this.addSubject(q);
+      }
+      this.lastIndex = q.lastIndex;
     })
-    console.log(this.subjects)
   }
 
   addSubject(q: any) {
@@ -30,7 +38,6 @@ export class LessonComponent {
       lastIndex: q.lastIndex,
       class: [this.createClass(q)]
     });
-    this.indexNumbers.push(q.firstIndex);
   }
 
   createClass(q: any): any {
