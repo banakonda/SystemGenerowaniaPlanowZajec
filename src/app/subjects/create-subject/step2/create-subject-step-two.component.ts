@@ -35,6 +35,6 @@ export class CreateSubjectStepTwoComponent implements OnInit {
   ngOnInit(): void {
     this.studyFieldService.getStudyFields().subscribe(fields => this.studyFields = fields,
       () => { },
-      () => this.newSubject.students.studyFieldID = this.studyFields[0].id);
+      () => { if (this.newSubject.students.studyFieldID.length === 0) this.newSubject.students.studyFieldID = this.studyFields[0].id });
   }
 }

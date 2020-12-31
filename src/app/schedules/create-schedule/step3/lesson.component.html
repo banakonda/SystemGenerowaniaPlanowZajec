@@ -1,0 +1,36 @@
+<!-- <div class="row" >
+  <div class="break" *ngIf="day.firstIndex !== 0"></div>
+  <div>
+    <div class="lesson-6 column" *ngIf="day.lastIndex - day.firstIndex == 5">
+      <p class="weight-500">{{ day.subjectName }}</p>
+      <p class="description">
+        {{ day.classRoomName ? "s." + day.classRoomName : "online - "}}
+        <span [ngSwitch]="day.subjectType">
+          <span *ngSwitchCase="'Lectures'">Wykład</span>
+          <span *ngSwitchCase="'Exercise'">Ćwiczenia</span>
+          <span *ngSwitchCase="'Laboratories'">Laboratoria</span>
+          <span *ngSwitchCase="'Seminars'">Seminaria</span>
+        </span>
+      </p>
+      <p class="description"><span>inż.</span> Jan Koroński</p>
+
+    </div>
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="row" *ngFor="let class of subjects; let i=index">
+    <div *ngIf="indexNumbers[i] !== 0 && subjects[i-1].lastIndex - indexNumbers[i] != 1" class="break"></div>
+    <div class="column lesson-6">
+      <div class="lesson" *ngFor="let item of class.class; let k=index">
+        <p class="weight-500">{{ item.subjectName }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div style="height: 90px; width: 100px;background: red;">
+  <div style>
+
+  </div>
+  <div></div>
+</div> -->

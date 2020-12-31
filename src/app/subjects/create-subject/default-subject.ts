@@ -4,7 +4,7 @@ export function newSubject(): Subject {
   return {
     name: '',
     students: {
-      studyFieldID: '1',
+      studyFieldID: '',
       semester: 1,
     },
     schedule: {

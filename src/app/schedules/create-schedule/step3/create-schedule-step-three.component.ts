@@ -18,8 +18,12 @@ export class CreateScheduleStepThreeComponent {
     '10:00', '10:15', '10:30', '10:45', '11:00', '11:15', '11:30', '11:45', '12:00', '12:15', '12:30', '12:45',
     '13:00', '13:15', '13:30', '13:45', '14:00', '14:15', '14:30', '14:45', '15:00', '15:15', '15:30', '15:45',
     '16:00', '16:15', '16:30', '16:45', '17:00', '17:15', '17:30', '17:45', '18:00', '18:15', '18:30', '18:45',
-    '19:00', '19:15', '19:30', '19:45', '20:00', '20:15', '20:30', '20:45', '21:00', '21:15', '21:30', '21:45',
+    '19:00', '19:15', '19:30', '19:45', '20:00', '20:15', '20:30', '20:45', '21:00', '21:15',
   ];
+  weekDaysShort: string[] = ["Pn", "Wt", "Śr", "Cz", "Pt"];
+
+  index: number = 0;
+
   constructor(
     private schedulesService: SchedulesService,
     private studyFieldService: StudyFieldService,
@@ -28,7 +32,12 @@ export class CreateScheduleStepThreeComponent {
 
   ngOnInit() {
     // this.schedule$ = this.schedulesService.getSchedule(this.id);
-    this.schedule$ = this.schedulesService.getSchedule("5fecdc7a4c34f33ba77d338b");
-    this.schedule$.subscribe(q => { this.studyFieldService.getStudyField(q.studyFieldId).subscribe(w => { this.studyField = w }) });
+    this.schedule$ = this.schedulesService.getSchedule("5feda01fde34017654bdf1e9");
+    this.schedule$.subscribe(q => {
+      console.log(q);
+      console.log(q.semesters[0].daysOfWeek);
+      // console.log(q.semesters[0].daysOfWeek);
+      this.studyFieldService.getStudyField(q.studyFieldId).subscribe(w => { this.studyField = w })
+    });
   }
 }
