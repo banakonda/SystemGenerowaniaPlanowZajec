@@ -11,17 +11,11 @@ import { TeachersService } from './teachers.service';
 })
 export class TeachersComponent {
   listItems$: Observable<TeacherAPI[]>;
-  titles: TitleAPI[];
 
   constructor(
     private teachersService: TeachersService,
-    private titleService: TitleService,
   ) {
-    this.titleService.getTitles().subscribe(t => this.titles = t);
     this.refreshList();
-  }
-  getTitleToDisplay(item: TeacherAPI): string {
-    return this.titles.find(q => q.id === item.titleID).name;
   }
   refreshList(): void {
     this.listItems$ = this.teachersService.getTeachers();

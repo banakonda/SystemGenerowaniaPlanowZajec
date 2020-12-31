@@ -51,6 +51,7 @@ import { EditSubjectComponent } from './subjects/create-subject/edit-subject.com
 import { CreateScheduleStepThreeComponent } from './schedules/create-schedule/step3/create-schedule-step-three.component';
 import { LessonComponent } from './schedules/create-schedule/step3/lesson.component';
 import { CommonModule } from '@angular/common';
+import { TitlePipe } from './data/title.pipe';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { CommonModule } from '@angular/common';
     EditSubjectComponent,
     CreateScheduleStepThreeComponent,
     LessonComponent,
+    TitlePipe,
   ],
   imports: [
     BrowserModule,

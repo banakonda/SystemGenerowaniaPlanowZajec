@@ -175,7 +175,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
     // let idNewSchedule;
     this.sleep(1000).then(() => {
       this.schedulesService.createSchedule({
-        name: "TymczasowyBrak",
+        name: this.newSchedule.name,
         ifWinter: this.newSchedule.semester === 1 ? true : false,
         studyFieldId: this.newSchedule.studyFieldID,
         numberOfSemester: this.newSchedule.numberOfSemesters,

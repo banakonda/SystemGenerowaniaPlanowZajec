@@ -5,9 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './create-schedule.component.html',
 })
 export class CreateScheduleComponent implements OnInit {
-  step = 3;
+  step = 1;
   lastStep = 3;
   newSchedule = {
+    name: "Nowy plan zajęć",
     studyFieldID: 1,
     semester: 1,
     numberOfSemesters: 1,

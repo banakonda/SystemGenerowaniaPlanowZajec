@@ -15,24 +15,25 @@
 
 .lesson-3 {
   min-width: 24px * 3 + 6px * (3 - 1)+ 6px;
-  height: 100px;
+  height: 120px;
 }
 .lesson-6 {
   min-width: 24px * 6 + 6px * (6 - 1) + 6px;
-  height: 100px;
+  height: 120px;
 }
 .lesson-9 {
   min-width: 24px * 9 + 6px * (9 - 1) + 6px;
-  height: 100px;
+  height: 120px;
 }
 .break {
   min-width: 24px;
   margin-right: 6px;
-  height: 100px;
+  height: 120px;
   background-color: $simple_gray_3;
 }
 
 .description {
-  font-size: smaller;
+  font-size: 80%;
   color: $simple_gray;
+  line-height: 16px;
 }

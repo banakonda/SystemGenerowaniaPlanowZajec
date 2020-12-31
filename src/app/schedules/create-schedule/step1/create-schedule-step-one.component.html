@@ -1,9 +1,11 @@
-<h3 class="form-request">Zdefiniuj kogo dotyczy plan</h3>
-<app-dropdown [(ngModel)]="newSchedule.studyFieldID" name="studyField"
-  [data]="studyFields" description="Nazwa kierunku"
+<h3 class="form-request">Podaj nazwę planu zajęć</h3>
+<app-input [(ngModel)]="newSchedule.name" name="studyField" description="Nazwa planu zajęć"
+  class="normal-input spaced-t spaced-l-l" placeholder="Informatyka" required></app-input>
+
+<h3 class="form-request spaced-t">Zdefiniuj kogo dotyczy plan</h3>
+<app-dropdown [(ngModel)]="newSchedule.studyFieldID" name="studyField" [data]="studyFields" description="Nazwa kierunku"
   class="normal-input spaced-t spaced-l-l"></app-dropdown>
 
 <h3 class="form-request spaced-t">Wybierz semestr</h3>
-<app-dropdown [(ngModel)]="newSchedule.semester" name="semester"
-  [data]="semesterTypes" description="Rodzaj semestru"
+<app-dropdown [(ngModel)]="newSchedule.semester" name="semester" [data]="semesterTypes" description="Rodzaj semestru"
   class="normal-input spaced-t spaced-l-l"></app-dropdown>

@@ -13,7 +13,7 @@ export class SchedulesService {
   ) { }
 
   getSchedules(): Observable<any[]> {
-    return of();
+    return this.httpClient.get<any[]>(this.baseUrl);
   }
 
   createSchedule(schedule: any): Observable<any> {

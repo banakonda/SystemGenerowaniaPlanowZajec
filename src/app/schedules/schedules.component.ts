@@ -31,6 +31,7 @@ export class SchedulesComponent {
       () => { },
       () => this.selected = this.buttons[0].id);
     this.listItems$ = this.schedulesService.getSchedules();
+    this.listItems$.subscribe(console.log);
   }
 
 }
