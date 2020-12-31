@@ -105,7 +105,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
         q.teachers.forEach(w => {
           let p = [];
           if (w.exerciseEnable)
-            for (let i = 1; i < w.exerciseHours; i++)
+            for (let i = 1; i < w.exerciseHours + 1; i++)
               p.push({ type: "Exercise", cr: q.schedule.exercise.enabled ? q.schedule.exercise.classroom : [], grp: i });
           if (w.lecturesEnable)
             for (let i = 1; i < w.lecturesHours + 1; i++)
