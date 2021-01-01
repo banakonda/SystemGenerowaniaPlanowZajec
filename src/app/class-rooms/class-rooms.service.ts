@@ -28,7 +28,6 @@ export class ClassRoomService {
     const url = `${this.baseUrl}/${id}`;
     return this.httpClient.delete(url);
   }
-
   async getAsyncClassRooms() {
     return this.httpClient.get<ClassRoomAPI[]>(this.baseUrl).toPromise();
   }

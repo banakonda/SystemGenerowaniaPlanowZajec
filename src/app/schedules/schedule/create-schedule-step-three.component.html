@@ -1,8 +1,11 @@
 <div class="content">
   <div *ngIf="schedule$ | async as schedule">
-    <h3 class="form-request row" *ngIf="studyField">
+    <h3 class="form-request center-row" *ngIf="studyField">
       <p class="weight-500 spaced-r-s">{{ schedule.name }}</p>
       <p>({{studyField.name }} - semestry {{ schedule.ifWinter ? "zimowe":"letnie" }})</p>
+      <button mat-raised-button color="primary" class="spaced-l-l" *ngFor="let button of buttons"
+        [class.unselected]="button != selected" (click)="selected = button">
+        Semestr {{ (button + 1) * (schedule.ifWinter ? 1 : 2)}}</button>
     </h3>
 
     <div class="spaced-t-l spaced-l-l" perfectScrollbar>
@@ -13,7 +16,7 @@
         </div>
       </div>
       <div class="spaced-t-l">
-        <div class="row spaced-b-s" *ngFor="let days of schedule.semesters[0].daysOfWeek; let i=index">
+        <div class="row spaced-b-s" *ngFor="let days of schedule.semesters[selected].daysOfWeek; let i=index">
           <div class="week-day">
             {{ weekDaysShort[i] }}
           </div>

@@ -1,17 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { StudyFieldAPI } from 'src/app/data/models/StudyField';
 import { StudyFieldService } from 'src/app/study-field/study-field.service';
-import { SchedulesService } from '../../schedules.service';
+import { SchedulesService } from '../schedules.service';
 
 @Component({
   selector: 'app-create-schedule-step-three',
   templateUrl: './create-schedule-step-three.component.html',
   styleUrls: ['./create-schedule-step-three.component.scss']
 })
-export class CreateScheduleStepThreeComponent {
-  newSchedule: any;
+export class GeneratedScheduleComponent implements OnInit {
   @Input() id: string;
   schedule$: Observable<any>;
   studyField: StudyFieldAPI;
@@ -25,6 +25,9 @@ export class CreateScheduleStepThreeComponent {
 
   index: number = 0;
 
+  selected = 0;
+  buttons = [];
+
   constructor(
     private schedulesService: SchedulesService,
     private studyFieldService: StudyFieldService,
@@ -32,9 +35,22 @@ export class CreateScheduleStepThreeComponent {
   ) {
     this.route.params.subscribe(params => {
       this.schedule$ = this.schedulesService.getSchedule(params['id']);
+      this.schedule$.subscribe(q => {
+        let i = 0;
+        q.semesters.map(p => {
+          this.buttons.push(i);
+          i++;
+        });
+        console.log(this.buttons)
+      })
     });
     this.schedule$.subscribe(q => {
       this.studyFieldService.getStudyField(q.studyFieldId).subscribe(w => { this.studyField = w })
     });
+  }
+  ngOnInit(): void {
+    // if(this.)
+    // this.buttons =
+
   }
 }

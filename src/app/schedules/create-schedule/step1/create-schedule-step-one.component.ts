@@ -1,9 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ClassRoomService } from 'src/app/class-rooms/class-rooms.service';
 import { StudyFieldAPI } from 'src/app/data/models/StudyField';
 import { StudyFieldService } from 'src/app/study-field/study-field.service';
-import { SubjectsService } from 'src/app/subjects/subjects.service';
-import { TeachersService } from 'src/app/teachers/teachers.service';
 
 @Component({
   selector: 'app-create-schedule-step-one',
@@ -13,7 +10,7 @@ export class CreateScheduleStepOneComponent implements OnInit {
   @Input() newSchedule: any;
   studyFields: StudyFieldAPI[];
   semesterTypes = [{ id: 1, name: 'Zimowy' }, { id: 2, name: 'Letni' }];
-  lessonWidth = [1, 2, 3];
+  lessonWidth = [2, 3];
 
   constructor(
     private studyFieldService: StudyFieldService,

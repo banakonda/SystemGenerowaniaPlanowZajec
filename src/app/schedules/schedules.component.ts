@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ScheduleAPI } from '../data/models/Schedule';
 import { StudyFieldAPI } from '../data/models/StudyField';
 import { StudyFieldService } from '../study-field/study-field.service';
 import { SchedulesService } from './schedules.service';
@@ -10,8 +11,8 @@ import { SchedulesService } from './schedules.service';
 })
 export class SchedulesComponent {
   buttons: StudyFieldAPI[] = [];
-  selected: any;
-  listItems$: Observable<any[]>; // Observable<ScheduleAPI[]>
+  selected: string;
+  listItems$: Observable<ScheduleAPI[]>;
 
   constructor(
     private schedulesService: SchedulesService,
@@ -32,7 +33,6 @@ export class SchedulesComponent {
       () => { },
       () => this.selected = this.buttons[0].id);
     this.listItems$ = this.schedulesService.getSchedules();
-    this.listItems$.subscribe(console.log);
   }
 
 }

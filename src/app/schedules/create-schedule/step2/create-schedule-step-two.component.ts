@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClassRoomService } from 'src/app/class-rooms/class-rooms.service';
+import { ScheduleTeachers } from 'src/app/data/models/Schedule';
 import { StudyFieldAPI } from 'src/app/data/models/StudyField';
 import { StudyFieldService } from 'src/app/study-field/study-field.service';
 import { SubjectsService } from 'src/app/subjects/subjects.service';
@@ -15,7 +16,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
   @Input() newSchedule: any;
   studyFields: StudyFieldAPI[] = [];
   classRooms: string[][][] = [];
-  subjects: any = [];
+  subjects: ScheduleTeachers[][][] = [];
 
 
   get nameOfStudyField(): string {
@@ -36,7 +37,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
     private router: Router,
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.studyFieldService.getStudyFields().subscribe(
       q => this.studyFields = q,
       () => { },

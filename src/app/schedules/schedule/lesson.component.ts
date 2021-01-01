@@ -31,7 +31,7 @@ export class LessonComponent {
     })
   }
 
-  addSubject(q: any) {
+  addSubject(q: any): void {
     this.subjects.push({
       classRoomName: q.classRoomName,
       firstIndex: q.firstIndex,

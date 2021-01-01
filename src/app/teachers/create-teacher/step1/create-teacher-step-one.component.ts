@@ -11,15 +11,13 @@ import { StudyFieldService } from 'src/app/study-field/study-field.service';
   templateUrl: './create-teacher-step-one.component.html',
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
 })
-export class CreateTeacherStepOneComponent implements OnInit {
+export class CreateTeacherStepOneComponent {
   @Input() newTeacher: Teacher;
   titles: TitleAPI[] = [];
 
   constructor(
     private titleService: TitleService,
-  ) { }
-
-  ngOnInit(): void {
+  ) {
     this.titleService.getTitles().subscribe(
       t => this.titles = t,
       () => { },

@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-create-schedule',
   templateUrl: './create-schedule.component.html',
 })
-export class CreateScheduleComponent implements OnInit {
+export class CreateScheduleComponent {
   step = 1;
   lastStep = 3;
   newSchedule = {
@@ -15,12 +15,7 @@ export class CreateScheduleComponent implements OnInit {
     lessonWidth: 2,
   };
   newScheduleId: string = "";
-  constructor() { }
 
-  ngOnInit(): void {
-  }
-
-  createSchedule(): void { }
   handleNewScheduleId(value: string) {
     this.newScheduleId = value;
     this.step = 3

@@ -37,11 +37,11 @@ export class CreateSubjectStepFourComponent implements OnInit {
     this.titleService.getTitles().subscribe(t => this.titles = t);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.countGroups();
   }
 
-  countGroups() {
+  private countGroups(): void {
     this.sumOfGroup = {
       lectures: 0,
       exercise: 0,

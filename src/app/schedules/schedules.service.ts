@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { Schedule, ScheduleAPI } from '../data/models/Schedule';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +14,15 @@ export class SchedulesService {
     private httpClient: HttpClient,
   ) { }
 
-  getSchedules(): Observable<any[]> {
-    return this.httpClient.get<any[]>(this.baseUrl);
+  getSchedules(): Observable<ScheduleAPI[]> {
+    return this.httpClient.get<ScheduleAPI[]>(this.baseUrl);
   }
-  getSchedule(id: string): Observable<any> {
+  getSchedule(id: string): Observable<ScheduleAPI> {
     const url = `${this.baseUrl}/${id}`;
-    return this.httpClient.get<any>(url);
+    return this.httpClient.get<ScheduleAPI>(url);
   }
-  createSchedule(schedule: any): Observable<any> {
-    return this.httpClient.post<any>(this.baseUrl, schedule, this.requestOptions);
+  createSchedule(schedule: Schedule): Observable<Schedule> {
+    return this.httpClient.post<Schedule>(this.baseUrl, schedule, this.requestOptions);
   }
   deleteSchedule(id: string): Observable<{}> {
     const url = `${this.baseUrl}/${id}`;

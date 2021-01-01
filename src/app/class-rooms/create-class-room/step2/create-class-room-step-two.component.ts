@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Availability } from 'src/app/data/models/Availability';
 import { ClassRoom } from 'src/app/data/models/ClassRoom';
 import { getWeekAvailability } from '../default-class-rooms';
@@ -7,7 +7,7 @@ import { getWeekAvailability } from '../default-class-rooms';
   selector: 'app-create-class-room-step-two',
   templateUrl: './create-class-room-step-two.component.html',
 })
-export class CreateClassRoomStepTwoComponent implements OnInit {
+export class CreateClassRoomStepTwoComponent {
   @Input() newClassRoom: ClassRoom;
   week: 'even' | 'odd' = 'even';
 
@@ -34,10 +34,4 @@ export class CreateClassRoomStepTwoComponent implements OnInit {
       if (this.week === 'odd') { this.newClassRoom.availability.oddWeeks = value; }
     }
   }
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

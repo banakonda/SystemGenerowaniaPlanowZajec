@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ClassRoomAPI } from '../data/models/ClassRoom';
-import { StudyFieldAPI } from '../data/models/StudyField';
-import { StudyFieldService } from '../study-field/study-field.service';
 import { ClassRoomService } from './class-rooms.service';
 
 @Component({

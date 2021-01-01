@@ -48,10 +48,10 @@ import { EditFieldComponent } from './study-field/create-field/edit-field.compon
 import { EditTeacherComponent } from './teachers/create-teacher/edit-teacher.component';
 import { EditClassRoomComponent } from './class-rooms/create-class-room/edit-class-room.component';
 import { EditSubjectComponent } from './subjects/create-subject/edit-subject.component';
-import { CreateScheduleStepThreeComponent } from './schedules/create-schedule/step3/create-schedule-step-three.component';
-import { LessonComponent } from './schedules/create-schedule/step3/lesson.component';
 import { CommonModule } from '@angular/common';
 import { TitlePipe } from './data/title.pipe';
+import { GeneratedScheduleComponent } from './schedules/schedule/create-schedule-step-three.component';
+import { LessonComponent } from './schedules/schedule/lesson.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +90,7 @@ import { TitlePipe } from './data/title.pipe';
     EditTeacherComponent,
     EditClassRoomComponent,
     EditSubjectComponent,
-    CreateScheduleStepThreeComponent,
+    GeneratedScheduleComponent,
     LessonComponent,
     TitlePipe,
   ],

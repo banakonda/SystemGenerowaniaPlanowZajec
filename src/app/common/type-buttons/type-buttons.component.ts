@@ -9,8 +9,6 @@ export class TypeButtonsComponent {
   @Input() selected: string;
   @Output() selectedChange = new EventEmitter<string>();
 
-  constructor() { }
-
   change(button: string): void {
     this.selected = button;
     this.selectedChange.emit(this.selected);
