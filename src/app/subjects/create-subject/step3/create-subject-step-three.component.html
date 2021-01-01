@@ -1,8 +1,12 @@
 <h3 class="form-request">Zdefiniuj zajęcia wchodzące w skład przedmiotu ({{newSubject.name}})</h3>
 
 <div class="spaced-l-l spaced-t column">
-  <app-create-subject-type typeName="Wykład" [type]="newSubject.schedule.lectures" name="lectures"></app-create-subject-type>
-  <app-create-subject-type typeName="Ćwiczenia" [(type)]="newSubject.schedule.exercise" name="exercises"></app-create-subject-type>
-  <app-create-subject-type typeName="Laboratoria" [(type)]="newSubject.schedule.laboratories" name="laboratories"></app-create-subject-type>
-  <app-create-subject-type typeName="Seminaria" [(type)]="newSubject.schedule.seminars" name="seminars"></app-create-subject-type>
+  <app-create-subject-type typeName="Wykład" [sType]="newSubject.schedule.lectures" name="lectures">
+  </app-create-subject-type>
+  <app-create-subject-type typeName="Ćwiczenia" [sType]="newSubject.schedule.exercise" name="exercises">
+  </app-create-subject-type>
+  <app-create-subject-type typeName="Laboratoria" [sType]="newSubject.schedule.laboratories" name="laboratories">
+  </app-create-subject-type>
+  <app-create-subject-type typeName="Seminaria" [sType]="newSubject.schedule.seminars" name="seminars">
+  </app-create-subject-type>
 </div>

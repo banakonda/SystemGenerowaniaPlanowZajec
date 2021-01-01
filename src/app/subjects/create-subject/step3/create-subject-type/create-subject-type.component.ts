@@ -9,10 +9,15 @@ import { ScheduleActivities } from 'src/app/data/models/Subject';
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
 })
 export class CreateSubjectTypeComponent {
-  @Input() type: ScheduleActivities;
+  type: ScheduleActivities;
+  class: string = "";
+  @Input() set sType(value: ScheduleActivities) {
+    this.type = value;
+    this.class = value.classroom.join(", ");
+  }
   @Input() typeName: string = "";
   @Input() name: string;
-  class: string = "";
+
 
   // get checkbox(): boolean {
   //   if (this.type)
