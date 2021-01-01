@@ -37,15 +37,4 @@ export class CreateScheduleStepThreeComponent {
       this.studyFieldService.getStudyField(q.studyFieldId).subscribe(w => { this.studyField = w })
     });
   }
-
-  ngOnInit() {
-    // this.schedule$ = this.schedulesService.getSchedule(this.id);
-    // this.schedule$ = this.schedulesService.getSchedule("5feda01fde34017654bdf1e9");
-    // this.schedule$.subscribe(q => {
-    // console.log(q);
-    // console.log(q.semesters[0].daysOfWeek);
-    // console.log(q.semesters[0].daysOfWeek);
-    //   this.studyFieldService.getStudyField(q.studyFieldId).subscribe(w => { this.studyField = w })
-    // });
-  }
 }

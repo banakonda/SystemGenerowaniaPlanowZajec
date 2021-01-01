@@ -170,6 +170,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
     this.schedulesService.createSchedule({
       name: this.newSchedule.name,
       ifWinter: this.newSchedule.semester === 1 ? true : false,
+      lessonWidth: this.newSchedule.lessonWidth,
       studyFieldId: this.newSchedule.studyFieldID,
       numberOfSemester: this.newSchedule.numberOfSemesters,
       classroomsData: this.classRooms,

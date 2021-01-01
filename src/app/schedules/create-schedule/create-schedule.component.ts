@@ -12,6 +12,7 @@ export class CreateScheduleComponent implements OnInit {
     studyFieldID: 1,
     semester: 1,
     numberOfSemesters: 1,
+    lessonWidth: 2,
   };
   newScheduleId: string = "";
   constructor() { }

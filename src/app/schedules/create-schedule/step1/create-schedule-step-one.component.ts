@@ -13,6 +13,7 @@ export class CreateScheduleStepOneComponent implements OnInit {
   @Input() newSchedule: any;
   studyFields: StudyFieldAPI[];
   semesterTypes = [{ id: 1, name: 'Zimowy' }, { id: 2, name: 'Letni' }];
+  lessonWidth = [1, 2, 3];
 
   constructor(
     private studyFieldService: StudyFieldService,
