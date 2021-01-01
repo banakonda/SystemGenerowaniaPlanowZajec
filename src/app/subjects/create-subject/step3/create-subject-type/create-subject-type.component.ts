@@ -18,18 +18,6 @@ export class CreateSubjectTypeComponent {
   @Input() typeName: string = "";
   @Input() name: string;
 
-
-  // get checkbox(): boolean {
-  //   if (this.type)
-  //     return this.type.enabled;
-  //   else
-  // }
-
-  // set checkbox(value: boolean) {
-  //   if (value)
-  //     this.type.enabled = value;
-  // }
-
   changeModel(value: string) {
     if (this.type.enabled && value)
       this.type.classroom = value.replace(' ', '').split(',');

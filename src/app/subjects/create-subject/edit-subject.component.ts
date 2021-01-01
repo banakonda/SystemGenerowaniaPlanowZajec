@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { StudyFieldAPI } from 'src/app/data/models/StudyField';
 import { SubjectAPI } from 'src/app/data/models/Subject';
 import { SubjectsService } from '../subjects.service';
 

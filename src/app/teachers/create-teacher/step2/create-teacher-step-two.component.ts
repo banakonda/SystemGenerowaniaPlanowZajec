@@ -34,9 +34,4 @@ export class CreateTeacherStepTwoComponent {
       if (this.week === 'odd') { this.newTeacher.availability.oddWeeks = value; }
     }
   }
-
-  constructor() { }
-
-  setDefaultAvailability() {
-  }
 }
