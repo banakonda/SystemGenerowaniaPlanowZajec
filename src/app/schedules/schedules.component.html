@@ -1,10 +1,14 @@
 <div class="h-100 content">
-  <h1 class="page-title">Plany zajęć</h1>
+  <div class="center-row">
+    <h1 class="page-title">Plany zajęć</h1>
+    <button mat-button class="clickable" (click)="refreshList()">
+      <i class="material-icons">refresh</i>
+    </button>
+  </div>
 
   <div class="sub-content">
     <div class="center-row">
       <app-type-buttons [buttons]="buttons" [(selected)]="selected"></app-type-buttons>
-      <span class="material-icons clickable" (click)="refreshList()">refresh</span>
     </div>
 
     <div class="spaced-t" *ngIf="listItems$ | async as listItems">

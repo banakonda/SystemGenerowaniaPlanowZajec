@@ -11,7 +11,7 @@ import { SchedulesService } from '../schedules.service';
   templateUrl: './create-schedule-step-three.component.html',
   styleUrls: ['./create-schedule-step-three.component.scss']
 })
-export class GeneratedScheduleComponent implements OnInit {
+export class GeneratedScheduleComponent {
   @Input() id: string;
   schedule$: Observable<any>;
   studyField: StudyFieldAPI;
@@ -25,8 +25,8 @@ export class GeneratedScheduleComponent implements OnInit {
 
   index: number = 0;
 
-  selected = 0;
-  buttons = [];
+  selected: number = 0;
+  buttons: number[] = [];
 
   constructor(
     private schedulesService: SchedulesService,
@@ -47,10 +47,5 @@ export class GeneratedScheduleComponent implements OnInit {
     this.schedule$.subscribe(q => {
       this.studyFieldService.getStudyField(q.studyFieldId).subscribe(w => { this.studyField = w })
     });
-  }
-  ngOnInit(): void {
-    // if(this.)
-    // this.buttons =
-
   }
 }
