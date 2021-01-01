@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { StudyFieldAPI } from 'src/app/data/models/StudyField';
 import { StudyFieldService } from 'src/app/study-field/study-field.service';
@@ -10,7 +11,7 @@ import { SchedulesService } from '../../schedules.service';
   styleUrls: ['./create-schedule-step-three.component.scss']
 })
 export class CreateScheduleStepThreeComponent {
-  @Input() newSchedule: any;
+  newSchedule: any;
   @Input() id: string;
   schedule$: Observable<any>;
   studyField: StudyFieldAPI;
@@ -27,17 +28,24 @@ export class CreateScheduleStepThreeComponent {
   constructor(
     private schedulesService: SchedulesService,
     private studyFieldService: StudyFieldService,
+    private route: ActivatedRoute,
   ) {
+    this.route.params.subscribe(params => {
+      this.schedule$ = this.schedulesService.getSchedule(params['id']);
+    });
+    this.schedule$.subscribe(q => {
+      this.studyFieldService.getStudyField(q.studyFieldId).subscribe(w => { this.studyField = w })
+    });
   }
 
   ngOnInit() {
-    this.schedule$ = this.schedulesService.getSchedule(this.id);
+    // this.schedule$ = this.schedulesService.getSchedule(this.id);
     // this.schedule$ = this.schedulesService.getSchedule("5feda01fde34017654bdf1e9");
-    this.schedule$.subscribe(q => {
-      console.log(q);
-      console.log(q.semesters[0].daysOfWeek);
-      // console.log(q.semesters[0].daysOfWeek);
-      this.studyFieldService.getStudyField(q.studyFieldId).subscribe(w => { this.studyField = w })
-    });
+    // this.schedule$.subscribe(q => {
+    // console.log(q);
+    // console.log(q.semesters[0].daysOfWeek);
+    // console.log(q.semesters[0].daysOfWeek);
+    //   this.studyFieldService.getStudyField(q.studyFieldId).subscribe(w => { this.studyField = w })
+    // });
   }
 }

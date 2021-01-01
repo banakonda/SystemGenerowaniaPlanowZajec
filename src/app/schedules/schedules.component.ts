@@ -20,10 +20,11 @@ export class SchedulesComponent {
     this.refreshList();
   }
 
-
-  // deleteSubject(id: number): void {
-  //   this.schedulesService.deleteSchedule(id);
-  // }
+  deleteSchedule(id: string): void {
+    this.schedulesService.deleteSchedule(id).subscribe(
+      () => this.refreshList(),
+    );
+  }
 
   refreshList(): void {
     this.studyFieldService.getStudyFields().subscribe(

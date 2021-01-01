@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { ClassRoomService } from 'src/app/class-rooms/class-rooms.service';
-import { ClassRoomAPI } from 'src/app/data/models/ClassRoom';
 import { StudyFieldAPI } from 'src/app/data/models/StudyField';
 import { StudyFieldService } from 'src/app/study-field/study-field.service';
 import { SubjectsService } from 'src/app/subjects/subjects.service';
@@ -11,12 +11,12 @@ import { SchedulesService } from '../../schedules.service';
   templateUrl: './create-schedule-step-two.component.html',
 })
 export class CreateScheduleStepTwoComponent implements OnInit {
+  step: number = 1;
   @Input() newSchedule: any;
   studyFields: StudyFieldAPI[] = [];
-  classRooms: ClassRoomAPI[] = [];
-  preparedClassRooms = [];
-  preparedSubjects = [];
-  @Output() newScheduleId = new EventEmitter<string>();
+  classRooms: string[][][] = [];
+  subjects: any = [];
+
 
   get nameOfStudyField(): string {
     if (!this.studyFields) {
@@ -33,75 +33,65 @@ export class CreateScheduleStepTwoComponent implements OnInit {
     private subjectsService: SubjectsService,
     private classRoomsService: ClassRoomService,
     private schedulesService: SchedulesService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
-    this.studyFieldService.getStudyFields().subscribe(q => this.studyFields = q,
+    this.studyFieldService.getStudyFields().subscribe(
+      q => this.studyFields = q,
       () => { },
       () => {
         this.newSchedule.numberOfSemesters = this.studyFields.filter(q => q.id == this.newSchedule.studyFieldID)[0].numberOfSemesters;
       });
-    this.prepareClassRooms()
-    this.prepareSubjects();
-    this.sendRequest();
+    this.processData()
   }
 
-  getData(): void {
-    this.classRoomsService.getClassRooms().subscribe(q => this.classRooms = q);
+  async processData() {
+    await this.prepareClassRooms();
+    await this.prepareSubjects();
+    await this.sendRequest();
   }
 
-  prepareClassRooms() {
-    this.classRoomsService.getClassRooms().subscribe(allClassRooms => {
-      this.classRooms = allClassRooms;
-      const values = this.classRooms.map(q => {
-        if (q.availability.oneWeek === true) {
-          return {
-            name: q.name,
-            availability: Object.values(q.availability.allWeeks).map(a => [...a, ...a]),
-          };
-        } else {
+  async prepareClassRooms() {
+    let temporaryClassRooms: {
+      name: string,
+      availability: boolean[][],
+      countAvailability: number,
+    }[];
+
+    await this.classRoomsService.getAsyncClassRooms().then(allClassRooms => {
+      temporaryClassRooms = allClassRooms.map(q => {
+        let availability: boolean[][] = [];
+        if (q.availability.oneWeek === true)
+          availability = Object.values(q.availability.allWeeks).map(a => [...a, ...a]);
+        else {
           const oddObjects = Object.values(q.availability.oddWeeks);
           const evenObjects = Object.values(q.availability.evenWeeks);
-          const allWeeks: boolean[][] = [];
-          for (let i = 0; i < oddObjects.length; i++) {
-            allWeeks.push([...evenObjects[i], ...oddObjects[i]]);
-          }
-          return {
-            name: q.name,
-            availability: allWeeks,
-          };
+          for (let i = 0; i < oddObjects.length; i++)
+            availability.push([...evenObjects[i], ...oddObjects[i]]);
         }
-      });
-
-      let sortedValues = values.map(a => {
         return {
-          name: a.name,
-          countAvailability: a.availability.map(q => q.filter(x => x === true).length).reduce((p, o) => p + o),
-          availability: a.availability,
-        }
-      });
-
-      sortedValues.sort((a, b) => a.countAvailability - b.countAvailability);
-
-      for (let i = 0; i < 5; i++) {
-        this.preparedClassRooms.push([]);
-        for (let j = 0; j < 112; j++)
-          this.preparedClassRooms[i].push(sortedValues.filter(c => c.availability[i][j] === true).map(c => c.name));
-      }
+          name: q.name,
+          availability: availability,
+          countAvailability: availability.map(p => p.filter(x => x === true).length).reduce((a, b) => a + b),
+        };
+      }).sort((a, b) => a.countAvailability - b.countAvailability);
     });
+
+    for (let i = 0; i < 5; i++) {
+      this.classRooms.push([]);
+      for (let j = 0; j < 112; j++)
+        this.classRooms[i].push(temporaryClassRooms.filter(c => c.availability[i][j] === true).map(c => c.name));
+    }
+    this.step = 2;
   }
 
-  prepareSubjects() {
-    this.subjectsService.getSubjects().subscribe(allSubjects => {
-      const filteredSubjects = allSubjects.filter(a => {
-        return a.students.studyFieldID === this.newSchedule.studyFieldID
-      });
-
+  async prepareSubjects() {
+    await this.subjectsService.getAsyncSubjects().then(allSubjects => {
       let teachers = [];
-      const flatTeacher = filteredSubjects.map(q => q.teachers).flat();
-
-
-      const flatSubject = filteredSubjects.map(q => {
+      allSubjects.filter(a => {
+        return a.students.studyFieldID === this.newSchedule.studyFieldID;
+      }).map(q => {
         q.teachers.forEach(w => {
           let p = [];
           if (w.exerciseEnable)
@@ -153,47 +143,40 @@ export class CreateScheduleStepTwoComponent implements OnInit {
         }
       }
       teachers.sort((a, b) => a.countedAva - b.countedAva);
+
       for (let i = 0; i < 5; i++) {
-        this.preparedSubjects.push([]);
+        this.subjects.push([]);
         for (let j = 0; j < 112; j++)
-          this.preparedSubjects[i].push(teachers.filter(c => c.availability[i][j] === true).map(c => {
-            return {
-              teacherName: c.teacherName,
-              teacherTitle: c.teacherTitle,
-              semesterOfSubject: c.semesterOfSubject,
-              subjectName: c.subjectName,
-              subjectType: c.subjectType,
-              className: c.className,
-              group: c.group,
-            }
-          }));
+          this.subjects[i].push(teachers.filter(c => c.availability[i][j] === true)
+            .map(c => {
+              return {
+                teacherName: c.teacherName,
+                teacherTitle: c.teacherTitle,
+                semesterOfSubject: c.semesterOfSubject,
+                subjectName: c.subjectName,
+                subjectType: c.subjectType,
+                className: c.className,
+                group: c.group,
+              }
+            })
+          );
       }
     });
+    this.step = 3;
   }
 
-  sendRequest() {
-    // let idNewSchedule;
-    this.sleep(1000).then(() => {
-      this.schedulesService.createSchedule({
-        name: this.newSchedule.name,
-        ifWinter: this.newSchedule.semester === 1 ? true : false,
-        studyFieldId: this.newSchedule.studyFieldID,
-        numberOfSemester: this.newSchedule.numberOfSemesters,
-        classroomsData: this.preparedClassRooms,
-        teachersData: this.preparedSubjects,
-      }).subscribe(q => {
-        // console.log(q);
-        this.newScheduleId.emit(q)
-      });
 
+  async sendRequest() {
+    this.schedulesService.createSchedule({
+      name: this.newSchedule.name,
+      ifWinter: this.newSchedule.semester === 1 ? true : false,
+      studyFieldId: this.newSchedule.studyFieldID,
+      numberOfSemester: this.newSchedule.numberOfSemesters,
+      classroomsData: this.classRooms,
+      teachersData: this.subjects,
+    }).subscribe(q => {
+      this.step = 4;
+      this.router.navigate(['schedules/schedule/' + q]);
     });
-    // this.sleep(5000).then(() => {
-    //   this.schedulesService.getSchedule(idNewSchedule).subscribe(q => { console.log(q) });
-    // })
   }
-
-  sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
 }

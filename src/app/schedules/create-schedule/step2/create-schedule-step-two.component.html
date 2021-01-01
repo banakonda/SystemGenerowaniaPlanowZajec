@@ -1,6 +1,8 @@
 <h3 class="form-request">{{nameOfStudyField}} - semestry {{newSchedule.semester === 1 ? "zimowe" : "letnie"}}</h3>
 
-<h4>Plan zostanie wkrótce wygenerowany.</h4>
-<p>Tworzę zestaw danych, z którego zostanie wygenerowany plan.</p>
-<p>Ustalam terminy zajęć.</p>
-<p>Plan wygenerowany, zostaniesz przeniesiony.</p>
+<p [ngSwitch]="step">
+  <span *ngSwitchCase="'1'">Przetwarzam dostępność sal lekcyjnych... (0%)</span>
+  <span *ngSwitchCase="'2'">Przetwarzam dostępność nauczycieli akademickich... (33%)</span>
+  <span *ngSwitchCase="'3'">Generuję rozkład... (67%)</span>
+  <span *ngSwitchCase="'4'">Przenoszę na wygenerowany rozkład... (100%)</span>
+</p>

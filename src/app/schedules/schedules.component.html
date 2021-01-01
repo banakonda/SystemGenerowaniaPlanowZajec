@@ -15,8 +15,8 @@
             ({{item.ifWinter ? "semestry zimowe" : "semestry letnie"}})
           </span>
           <div class="space"></div>
-          <span class="material-icons clickable red-color">delete_forever</span>
-          <span class="spaced-l-s primary-color clickable weight-500">Edytuj</span>
+          <span (click)="deleteSchedule(item.id)" class="material-icons clickable red-color">delete_forever</span>
+          <a [routerLink]="['./schedule/'+item.id]" class="spaced-l-s primary-color clickable weight-500">Przeglądaj</a>
         </div>
       </div>
     </div>

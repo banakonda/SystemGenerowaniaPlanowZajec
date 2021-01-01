@@ -1,25 +1,24 @@
-<div *ngIf="schedule$ | async as schedule">
-  <!-- <h3 class="form-request row" *ngIf="studyField">
-    <p class="weight-500 spaced-r-s">{{ schedule.name }}</p>
-    <p>({{studyField.name }} - semestry {{ schedule.ifWinter ? "zimowe":"letnie" }})</p>
-  </h3> -->
+<div class="content">
+  <div *ngIf="schedule$ | async as schedule">
+    <h3 class="form-request row" *ngIf="studyField">
+      <p class="weight-500 spaced-r-s">{{ schedule.name }}</p>
+      <p>({{studyField.name }} - semestry {{ schedule.ifWinter ? "zimowe":"letnie" }})</p>
+    </h3>
 
-
-
-
-  <div class="spaced-t-l spaced-l-l" perfectScrollbar>
-    <div class="row">
-      <div class="rectangle empty-time"></div>
-      <div class="rectangle time" *ngFor="let timeItem of clockTime">
-        {{ timeItem }}
-      </div>
-    </div>
-    <div class="spaced-t-l">
-      <div class="row spaced-b-s" *ngFor="let days of schedule.semesters[0].daysOfWeek; let i=index">
-        <div class="week-day">
-          {{ weekDaysShort[i] }}
+    <div class="spaced-t-l spaced-l-l" perfectScrollbar>
+      <div class="row">
+        <div class="rectangle empty-time"></div>
+        <div class="rectangle time" *ngFor="let timeItem of clockTime">
+          {{ timeItem }}
         </div>
-        <app-lesson [days]="days"></app-lesson>
+      </div>
+      <div class="spaced-t-l">
+        <div class="row spaced-b-s" *ngFor="let days of schedule.semesters[0].daysOfWeek; let i=index">
+          <div class="week-day">
+            {{ weekDaysShort[i] }}
+          </div>
+          <app-lesson [days]="days"></app-lesson>
+        </div>
       </div>
     </div>
   </div>

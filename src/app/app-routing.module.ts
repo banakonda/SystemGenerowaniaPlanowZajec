@@ -4,6 +4,7 @@ import { ClassRoomsComponent } from './class-rooms/class-rooms.component';
 import { CreateClassRoomComponent } from './class-rooms/create-class-room/create-class-room.component';
 import { EditClassRoomComponent } from './class-rooms/create-class-room/edit-class-room.component';
 import { CreateScheduleComponent } from './schedules/create-schedule/create-schedule.component';
+import { CreateScheduleStepThreeComponent } from './schedules/create-schedule/step3/create-schedule-step-three.component';
 import { SchedulesComponent } from './schedules/schedules.component';
 import { CreateFieldComponent } from './study-field/create-field/create-field.component';
 import { EditFieldComponent } from './study-field/create-field/edit-field.component';
@@ -34,6 +35,7 @@ const routes: Routes = [
 
   { path: 'schedules', component: SchedulesComponent },
   { path: 'create-schedule', component: CreateScheduleComponent },
+  { path: 'schedules/schedule/:id', component: CreateScheduleStepThreeComponent },
 ];
 
 @NgModule({

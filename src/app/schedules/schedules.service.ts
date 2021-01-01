@@ -21,9 +21,14 @@ export class SchedulesService {
     // console.log(JSON.stringify({schedule}));
     return this.httpClient.post<any>(this.baseUrl, schedule, { responseType: 'text' } as Object);
   }
-
+  deleteSchedule(id: string): Observable<{}> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.httpClient.delete(url);
+  }
   getSchedule(id: string): Observable<any> {
     const url = `${this.baseUrl}/${id}`;
     return this.httpClient.get<any>(url);
   }
+
+
 }

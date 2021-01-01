@@ -29,4 +29,8 @@ export class SubjectsService {
     const url = `${this.baseUrl}/${id}`;
     return this.httpClient.delete(url);
   }
+
+  async getAsyncSubjects() {
+    return this.httpClient.get<SubjectAPI[]>(this.baseUrl).toPromise();
+  }
 }
