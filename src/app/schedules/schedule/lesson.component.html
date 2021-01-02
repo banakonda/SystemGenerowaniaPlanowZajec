@@ -12,7 +12,7 @@
       <div class="lesson column" *ngFor="let item of class.class; let k=index">
         <p class="weight-500">{{ item.subjectName }}</p>
         <p class="description">
-          {{ item.classRoomName ? "s." + item.classRoomName : "online - "}}
+          {{ item.classRoomName !== "online" ? "s." + item.classRoomName + " - ": "online - "}}
           <span [ngSwitch]="item.subjectType">
             <span *ngSwitchCase="'Lectures'">Wykład</span>
             <span *ngSwitchCase="'Exercise'">Ćwiczenia</span>

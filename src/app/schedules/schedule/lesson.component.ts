@@ -29,6 +29,8 @@ export class LessonComponent {
       }
       this.lastIndex = q.lastIndex;
     })
+
+    console.log(this.subjects[0].class);
   }
 
   addSubject(q: any): void {
@@ -46,6 +48,7 @@ export class LessonComponent {
       subjectType: q.subjectType,
       teacherName: q.teacherName,
       teacherTitle: q.teacherTitle,
+      classRoomName: q.classRoomName,
     }
   }
 }
