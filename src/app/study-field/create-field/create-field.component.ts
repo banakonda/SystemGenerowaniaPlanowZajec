@@ -30,18 +30,19 @@ export class CreateFieldComponent {
     let error = 0;
     try {
       if (!this.edit)
-        this.studyFieldService.createStudyField(this.newStudyField).subscribe();
+        this.studyFieldService.createStudyField(this.newStudyField).subscribe(q => { this.snackBar(q); });
       else
-        this.studyFieldService.editStudyField(this.newStudyField as StudyFieldAPI).subscribe();
+        this.studyFieldService.editStudyField(this.newStudyField as StudyFieldAPI).subscribe(q => { this.snackBar(q); });
     } catch {
       error = 1;
     } finally {
-      if (!error) {
-        this._snackBar.open('Pomyślnie utworzono nowy kierunek ' + this.newStudyField.name, undefined, {
-          duration: 3000,
-        });
-        this.router.navigate(['/fields']);
-      }
     }
+  }
+
+  snackBar(q: any) {
+    this._snackBar.open(q, undefined, {
+      duration: 3000,
+    });
+    this.router.navigate(['/fields']);
   }
 }

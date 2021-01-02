@@ -28,18 +28,19 @@ export class CreateTeacherComponent {
     let error = 0;
     try {
       if (!this.edit)
-        this.teachersService.createTeacher(this.newTeacher).subscribe(q => {
-          this._snackBar.open('Pomyślnie utworzono nowego nauczyciela akademickiego ' + q, undefined, {
-            duration: 3000,
-          });
-          this.router.navigate(['/teachers']);
-        });
+        this.teachersService.createTeacher(this.newTeacher).subscribe(q => { this.snackBar(q); });
       else
-        this.teachersService.editTeacher(this.newTeacher as TeacherAPI).subscribe();
+        this.teachersService.editTeacher(this.newTeacher as TeacherAPI).subscribe(q => { this.snackBar(q); });
     } catch {
       error = 1;
     } finally {
     }
   }
 
+  snackBar(q: any) {
+    this._snackBar.open(q, undefined, {
+      duration: 3000,
+    });
+    this.router.navigate(['/teachers']);
+  }
 }

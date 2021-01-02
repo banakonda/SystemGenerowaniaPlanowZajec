@@ -30,18 +30,19 @@ export class CreateSubjectComponent {
     let error = 0;
     try {
       if (!this.edit)
-        this.subjectsService.createSubjects(this.newSubject).subscribe();
+        this.subjectsService.createSubjects(this.newSubject).subscribe(q => { this.snackBar(q); });
       else
-        this.subjectsService.editSubjects(this.newSubject as SubjectAPI).subscribe();
+        this.subjectsService.editSubjects(this.newSubject as SubjectAPI).subscribe(q => { this.snackBar(q); });
     } catch {
       error = 1;
     } finally {
-      if (!error) {
-        this._snackBar.open('Pomyślnie utworzono nowy kierunek ' + this.newSubject.name, undefined, {
-          duration: 3000,
-        });
-        this.router.navigate(['/subjects']);
-      }
     }
+  }
+
+  snackBar(q: any) {
+    this._snackBar.open(q, undefined, {
+      duration: 3000,
+    });
+    this.router.navigate(['/subjects']);
   }
 }

@@ -30,19 +30,19 @@ export class CreateClassRoomComponent {
     let error = 0;
     try {
       if (!this.edit)
-        this.classRoomsService.createClassRooms(this.newClassRoom).subscribe();
+        this.classRoomsService.createClassRooms(this.newClassRoom).subscribe(q => { this.snackBar(q); });
       else
-        this.classRoomsService.editClassRooms(this.newClassRoom as ClassRoomAPI).subscribe();
+        this.classRoomsService.editClassRooms(this.newClassRoom as ClassRoomAPI).subscribe(q => { this.snackBar(q); });
     } catch {
       error = 1;
     } finally {
-      if (!error) {
-        this._snackBar.open('Pomyślnie utworzono salę ' + this.newClassRoom.name, undefined, {
-          duration: 3000,
-        });
-        this.router.navigate(['/class-rooms']);
-      }
     }
   }
 
+  snackBar(q: any) {
+    this._snackBar.open(q, undefined, {
+      duration: 3000,
+    });
+    this.router.navigate(['/class-rooms']);
+  }
 }
