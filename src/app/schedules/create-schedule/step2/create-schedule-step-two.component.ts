@@ -64,12 +64,12 @@ export class CreateScheduleStepTwoComponent implements OnInit {
       temporaryClassRooms = allClassRooms.map(q => {
         let availability: boolean[][] = [];
         if (q.availability.oneWeek === true)
-          availability = Object.values(q.availability.allWeeks).map(a => [...a, ...a]);
+          availability = Object.values(q.availability.allWeeks);
         else {
           const oddObjects = Object.values(q.availability.oddWeeks);
           const evenObjects = Object.values(q.availability.evenWeeks);
           for (let i = 0; i < oddObjects.length; i++)
-            availability.push([...evenObjects[i], ...oddObjects[i]]);
+            availability.push(evenObjects[i] && oddObjects[i]);
         }
         return {
           name: q.name,
@@ -81,7 +81,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
 
     for (let i = 0; i < 5; i++) {
       this.classRooms.push([]);
-      for (let j = 0; j < 112; j++)
+      for (let j = 0; j < 56; j++)
         this.classRooms[i].push(temporaryClassRooms.filter(c => c.availability[i][j] === true).map(c => c.name));
     }
     this.step = 2;
@@ -114,7 +114,6 @@ export class CreateScheduleStepTwoComponent implements OnInit {
             for (let i = 1; i < w.seminarsHours + 1; i++, sem++)
               p.push({ type: "Seminars", cr: q.schedule.seminars.enabled ? q.schedule.seminars.classroom : [], grp: sem });
 
-          //
           for (let k of p) {
             teachers.push({
               teacherName: w.teacher.name,
@@ -133,12 +132,12 @@ export class CreateScheduleStepTwoComponent implements OnInit {
       const teacherAvailability = teachers.map(q => {
         let ava = [];
         if (q.availability.oneWeek)
-          ava = Object.values(q.availability.allWeeks).map(z => [z, z].flat())
+          ava = Object.values(q.availability.allWeeks)
         else {
           const oddObjects = Object.values(q.availability.oddWeeks);
           const evenObjects = Object.values(q.availability.evenWeeks);
           for (let i = 0; i < oddObjects.length; i++) {
-            ava.push([evenObjects[i], oddObjects[i]].flat());
+            ava.push(evenObjects[i] && oddObjects[i]);
           }
         }
         return ava;
@@ -155,7 +154,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
 
       for (let i = 0; i < 5; i++) {
         this.subjects.push([]);
-        for (let j = 0; j < 112; j++)
+        for (let j = 0; j < 56; j++)
           this.subjects[i].push(teachers.filter(c => c.availability[i][j] === true)
             .map(c => {
               return {

@@ -25,9 +25,24 @@
       </div>
     </div>
   </div>
-  <button mat-button class="spaced-t-s" color="primary" [routerLink]="'/schedules'">Wróć</button>
-  <button mat-raised-button class="spaced-t-s spaced-l-s" color="primary" *ngIf="editedForm"
-    (click)="saveChanges()">Zapisz</button>
-  <button mat-raised-button class="spaced-t-s spaced-l-s" color="primary" *ngIf="editedForm" (click)="saveChanges()"
-    [routerLink]="'/schedules'">Zapisz i wyjdź</button>
+  <div class="center-row">
+    <button mat-button class="spaced-t-s" color="primary" [routerLink]="'/schedules'">Wyjdź</button>
+    <button mat-raised-button class="spaced-t-s spaced-l-s" color="primary" *ngIf="editedForm"
+      (click)="saveChanges()">Zapisz</button>
+    <button mat-raised-button class="spaced-t-s spaced-l-s" color="primary" *ngIf="editedForm" (click)="saveChanges()"
+      [routerLink]="'/schedules'">Zapisz i wyjdź</button>
+    <button mat-button class="spaced-t-s spaced-l-s" color="primary" (click)="addMode = true">Dodaj zajęcia</button>
+    <div *ngIf="addMode" class="row spaced-l-l">
+      <app-dropdown [(ngModel)]="newSubject.day" [data]="weekDaysShort" value="" display="" class="micro-input"
+        description="Dzień"></app-dropdown>
+      <app-dropdown [(ngModel)]="newSubject.type" [data]="subjectsTypes" class="micro-input spaced-l"
+        description="Typ zajęć"></app-dropdown>
+      <app-dropdown [(ngModel)]="newSubject.time" [data]="clockTime" value="" display="" class="micro-input spaced-l"
+        description="Godzina"></app-dropdown>
+      <app-dropdown [(ngModel)]="newSubject.width" [data]="[2,3]" value="" display="" class="micro-input spaced-l"
+        description="Długość" additionalDescription="jednostki jekcyjne"></app-dropdown>
+      <button mat-raised-button class="spaced-t-s spaced-l-l" color="primary" (click)="addSubject()">Zapisz</button>
+    </div>
+    <div *ngIf="addError" class="red-color spaced-l-l">Podano niepoprawne dane</div>
+  </div>
 </div>

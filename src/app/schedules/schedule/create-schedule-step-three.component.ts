@@ -30,7 +30,18 @@ export class GeneratedScheduleComponent {
   selectedItem: any;
   editedForm: boolean = false;
 
+  addMode = false;
+  newSubject = {
+    day: "Pn",
+    time: "7:30",
+    width: 2,
+    type: "Lectures"
+  }
+
   id: string;
+
+  addError = false;
+  subjectsTypes = [{ id: "Lectures", name: "Wykład" }, { id: "Exercise", name: "Ćwiczenia" }, { id: "Laboratories", name: "Laboratoria" }, { id: "Seminars", name: "Seminaria" }];
   constructor(
     private schedulesService: SchedulesService,
     private studyFieldService: StudyFieldService,
@@ -44,6 +55,7 @@ export class GeneratedScheduleComponent {
     await this.schedulesService.getSchedule(this.id).then(q => {
       let i = 0;
       this.schedule = q;
+      this.buttons = [];
       q.semesters.map(p => {
         this.buttons.push(i);
         i++;
@@ -55,8 +67,38 @@ export class GeneratedScheduleComponent {
 
   saveChanges() {
     this.schedulesService.editSchedule(this.schedule).subscribe(q => {
-      console.log(q);
+      this.editedForm = false;
     });
+  }
 
+  addSubject() {
+    this.addError = false
+    const subject = this.schedule.semesters[this.selected].daysOfWeek[this.weekDaysShort.indexOf(this.newSubject.day)].subjects;
+    const index = this.clockTime.indexOf(this.newSubject.time);
+    const valid = subject ? subject.filter(q => q.firstIndex <= index && q.lastIndex >= index) : [];
+    const valid2 = subject ? subject.filter(q => q.firstIndex <= index + 3 * this.newSubject.width - 1 && q.lastIndex >= index + 3 * this.newSubject.width - 1) : [];
+
+    if (valid.length !== 2 && valid.length === valid2.length) {
+      console.log("STWORZYMY")
+      if (!subject)
+        this.schedule.semesters[this.selected].daysOfWeek[this.weekDaysShort.indexOf(this.newSubject.day)] = {
+          subjects: [],
+        }
+      this.schedule.semesters[this.selected].daysOfWeek[this.weekDaysShort.indexOf(this.newSubject.day)].subjects.push({
+        classRoomName: "online",
+        firstIndex: index,
+        lastIndex: index + 3 * this.newSubject.width - 1,
+        group: "1",
+        subjectName: "NOWY PRZEDMIOT",
+        subjectType: this.newSubject.type,
+        teacherName: "NAUCZYCIEL",
+        teacherTitle: "1"
+      });
+      this.saveChanges();
+      this.getSchedule();
+      this.addMode = false;
+    }
+    else
+      this.addError = true;
   }
 }

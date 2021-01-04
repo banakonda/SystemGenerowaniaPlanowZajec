@@ -10,7 +10,7 @@
       [class.lesson-9]="class.lastIndex-class.firstIndex === 8">
 
       <ng-container class="column" *ngFor="let item of class.class; let k=index">
-        <div class="lesson column" (click)="editElement(i,k)" *ngIf="selectedItem !== item">
+        <div class="lesson column clickable" (click)="editElement(i,k)" *ngIf="selectedItem !== item">
           <p class="weight-500">{{ item.subjectName }}</p>
           <p class="description">
             {{ item.classRoomName !== "online" ? "s." + item.classRoomName + " - ": "online - "}}
