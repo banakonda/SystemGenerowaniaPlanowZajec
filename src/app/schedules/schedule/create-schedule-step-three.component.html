@@ -1,5 +1,5 @@
 <div class="content">
-  <div *ngIf="schedule$ | async as schedule">
+  <div *ngIf="schedule">
     <h3 class="form-request center-row" *ngIf="studyField">
       <p class="weight-500 spaced-r-s">{{ schedule.name }}</p>
       <p>({{studyField.name }} - semestry {{ schedule.ifWinter ? "zimowe":"letnie" }})</p>
@@ -20,9 +20,12 @@
           <div class="week-day">
             {{ weekDaysShort[i] }}
           </div>
-          <app-lesson [days]="days"></app-lesson>
+          <app-lesson [days]="days" [(selectedItem)]="selectedItem" (editedForm)="editedForm = $event"></app-lesson>
         </div>
       </div>
     </div>
   </div>
+  <button mat-button class="spaced-t-s" color="primary">Wróć</button>
+  <button mat-raised-button class="spaced-t-s" color="primary" *ngIf="editedForm" (click)="saveChanges()">Zapisz
+    zmiany</button>
 </div>

@@ -3,6 +3,8 @@
     [attr.disabled]="disabled? true : null">
   <input *ngIf="type==='number'" [formControl]="control" [placeholder]="placeholder" type="number"
     [attr.disabled]="disabled? true : null">
+  <input *ngIf="type==='password'" [formControl]="control" [placeholder]="placeholder" type="password"
+    [attr.disabled]="disabled? true : null">
 
   <p *ngIf="description" class="app-input-hint">{{ description }}</p>
 </div>

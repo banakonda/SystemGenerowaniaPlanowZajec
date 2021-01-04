@@ -12,8 +12,7 @@ import { SchedulesService } from '../schedules.service';
   styleUrls: ['./create-schedule-step-three.component.scss']
 })
 export class GeneratedScheduleComponent {
-  @Input() id: string;
-  schedule$: Observable<any>;
+  schedule: any;
   studyField: StudyFieldAPI;
   clockTime: string[] = ['7:30', '7:45', '8:00', '8:15', '8:30', '8:45', '9:00', '9:15', '9:30', '9:45',
     '10:00', '10:15', '10:30', '10:45', '11:00', '11:15', '11:30', '11:45', '12:00', '12:15', '12:30', '12:45',
@@ -28,24 +27,38 @@ export class GeneratedScheduleComponent {
   selected: number = 0;
   buttons: number[] = [];
 
+  selectedItem: any;
+  editedForm: boolean = false;
+
+  id: string;
   constructor(
     private schedulesService: SchedulesService,
     private studyFieldService: StudyFieldService,
     private route: ActivatedRoute,
   ) {
-    this.route.params.subscribe(params => {
-      this.schedule$ = this.schedulesService.getSchedule(params['id']);
-      this.schedule$.subscribe(q => {
-        let i = 0;
-        q.semesters.map(p => {
-          this.buttons.push(i);
-          i++;
-        });
-        console.log(this.buttons)
-      })
+    this.route.params.subscribe(params => { this.id = params['id'] });
+    this.getSchedule();
+  }
+
+  async getSchedule() {
+    await this.schedulesService.getSchedule(this.id).then(q => {
+      let i = 0;
+      this.schedule = q;
+      q.semesters.map(p => {
+        this.buttons.push(i);
+        i++;
+      });
+    })
+
+    this.studyFieldService.getStudyField(this.schedule.studyFieldId).subscribe(w => { this.studyField = w })
+    console.log(this.schedule)
+  }
+
+  saveChanges() {
+    console.log("saved");
+    this.schedulesService.editSchedule(this.schedule).subscribe(q => {
+      console.log(q);
     });
-    this.schedule$.subscribe(q => {
-      this.studyFieldService.getStudyField(q.studyFieldId).subscribe(w => { this.studyField = w })
-    });
+
   }
 }

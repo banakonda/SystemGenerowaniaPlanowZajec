@@ -14,18 +14,23 @@ export class SchedulesService {
     private httpClient: HttpClient,
   ) { }
 
-  getSchedules(): Observable<ScheduleAPI[]> {
-    return this.httpClient.get<ScheduleAPI[]>(this.baseUrl);
+  getSchedules(): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.baseUrl);
   }
-  getSchedule(id: string): Observable<ScheduleAPI> {
+  async getSchedule(id: string) {
     const url = `${this.baseUrl}/${id}`;
-    return this.httpClient.get<ScheduleAPI>(url);
+    return this.httpClient.get<any>(url).toPromise();
   }
-  createSchedule(schedule: Schedule): Observable<Schedule> {
-    return this.httpClient.post<Schedule>(this.baseUrl, schedule, this.requestOptions);
+  createSchedule(schedule: any): Observable<any> {
+    return this.httpClient.post<any>(this.baseUrl, schedule, this.requestOptions);
   }
   deleteSchedule(id: string): Observable<{}> {
     const url = `${this.baseUrl}/${id}`;
     return this.httpClient.delete(url);
+  }
+  editSchedule(schedule: any): Observable<any> {
+    const url = `${this.baseUrl}/${schedule.id}`;
+    console.log(schedule);
+    return this.httpClient.put<any>(url, schedule, this.requestOptions);
   }
 }

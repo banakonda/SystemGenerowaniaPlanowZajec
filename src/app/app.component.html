@@ -1,6 +1,17 @@
-<div class="h-100">
+<div class="h-100" *ngIf="logged">
   <app-side-panel></app-side-panel>
   <div>
     <router-outlet></router-outlet>
   </div>
+</div>
+
+<div class="h-100 log" *ngIf="!logged">
+  <form #f="ngForm" class="log-in column" (ngSubmit)="test()">
+    <h1>Zaloguj się</h1>
+    <app-input [(ngModel)]="user.login" name="login" placeholder="Login" description="Login"
+      class="normal-input spaced-t" required></app-input>
+    <app-input [(ngModel)]="user.password" name="password" placeholder="Password" description="Hasło"
+      class="normal-input spaced-t" type="password" required></app-input>
+    <button mat-raised-button color="primary" class="spaced-t-l" type="submit" [disabled]="f.invalid">Zaloguj</button>
+  </form>
 </div>

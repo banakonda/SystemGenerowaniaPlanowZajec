@@ -13,6 +13,10 @@
   }
 }
 
+.lesson-edit {
+  @extend .lesson;
+  background: none;
+}
 .lesson-3 {
   min-width: 24px * 3 + 6px * (3 - 1)+ 6px;
   height: 120px;
@@ -36,4 +40,24 @@
   font-size: 80%;
   color: $simple_gray;
   line-height: 16px;
+}
+
+.edit-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  border-radius: 2px;
+  height: 100%;
+  & + & {
+    margin-left: 4px;
+  }
+}
+
+.change {
+  color: $simple_white;
+  background-color: $primary_color;
+}
+.delete {
+  background-color: $simple_red;
 }

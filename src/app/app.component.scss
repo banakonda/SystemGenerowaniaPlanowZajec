@@ -1,0 +1,21 @@
+@import "../styles/variables.scss";
+@import "../styles/layout.scss";
+.log {
+  width: 100%;
+  height: 100%;
+  background-color: $primary-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.log-in {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $simple_white;
+  min-height: 300px;
+  min-width: 300px;
+  border-radius: 5px;
+  @extend .box-shadow;
+}

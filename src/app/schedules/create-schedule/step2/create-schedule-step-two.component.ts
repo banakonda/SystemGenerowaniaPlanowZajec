@@ -93,22 +93,29 @@ export class CreateScheduleStepTwoComponent implements OnInit {
       allSubjects.filter(a => {
         return a.students.studyFieldID === this.newSchedule.studyFieldID;
       }).map(q => {
+        let lec = 1;
+        let exe = 1;
+        let lab = 1;
+        let sem = 1;
+
         q.teachers.forEach(w => {
+
           let p = [];
           if (w.exerciseEnable)
-            for (let i = 1; i < w.exerciseHours + 1; i++)
-              p.push({ type: "Exercise", cr: q.schedule.exercise.enabled ? q.schedule.exercise.classroom : [], grp: i });
+            for (let i = 1; i < w.exerciseHours + 1; i++, exe++)
+              p.push({ type: "Exercise", cr: q.schedule.exercise.enabled ? q.schedule.exercise.classroom : [], grp: exe });
           if (w.lecturesEnable)
-            for (let i = 1; i < w.lecturesHours + 1; i++)
-              p.push({ type: "Lectures", cr: q.schedule.lectures.enabled ? q.schedule.lectures.classroom : [], grp: i });
+            for (let i = 1; i < w.lecturesHours + 1; i++, lec++)
+              p.push({ type: "Lectures", cr: q.schedule.lectures.enabled ? q.schedule.lectures.classroom : [], grp: lec });
           if (w.laboratoriesEnable)
-            for (let i = 1; i < w.laboratoriesHours + 1; i++)
-              p.push({ type: "Laboratories", cr: q.schedule.laboratories.enabled ? q.schedule.laboratories.classroom : [], grp: i });
+            for (let i = 1; i < w.laboratoriesHours + 1; i++, lab++)
+              p.push({ type: "Laboratories", cr: q.schedule.laboratories.enabled ? q.schedule.laboratories.classroom : [], grp: lab });
           if (w.seminarsEnable)
-            for (let i = 1; i < w.seminarsHours + 1; i++)
-              p.push({ type: "Seminars", cr: q.schedule.seminars.enabled ? q.schedule.seminars.classroom : [], grp: i });
+            for (let i = 1; i < w.seminarsHours + 1; i++, sem++)
+              p.push({ type: "Seminars", cr: q.schedule.seminars.enabled ? q.schedule.seminars.classroom : [], grp: sem });
 
-          for (let k of p)
+          //
+          for (let k of p) {
             teachers.push({
               teacherName: w.teacher.name,
               teacherTitle: w.teacher.titleID,
@@ -119,6 +126,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
               availability: w.teacher.availability,
               group: k.grp,
             });
+          }
         });
       });
 
@@ -151,13 +159,14 @@ export class CreateScheduleStepTwoComponent implements OnInit {
           this.subjects[i].push(teachers.filter(c => c.availability[i][j] === true)
             .map(c => {
               return {
+
                 teacherName: c.teacherName,
                 teacherTitle: c.teacherTitle,
                 semesterOfSubject: c.semesterOfSubject,
                 subjectName: c.subjectName,
                 subjectType: c.subjectType,
                 className: c.className,
-                group: c.group,
+                group: c.group.toString(),
               }
             })
           );

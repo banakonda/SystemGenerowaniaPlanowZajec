@@ -9,19 +9,45 @@
       [class.lesson-6]="class.lastIndex-class.firstIndex === 5"
       [class.lesson-9]="class.lastIndex-class.firstIndex === 8">
 
-      <div class="lesson column" *ngFor="let item of class.class; let k=index">
-        <p class="weight-500">{{ item.subjectName }}</p>
-        <p class="description">
-          {{ item.classRoomName !== "online" ? "s." + item.classRoomName + " - ": "online - "}}
-          <span [ngSwitch]="item.subjectType">
-            <span *ngSwitchCase="'Lectures'">Wykład</span>
-            <span *ngSwitchCase="'Exercise'">Ćwiczenia</span>
-            <span *ngSwitchCase="'Laboratories'">Laboratoria</span>
-            <span *ngSwitchCase="'Seminars'">Seminaria</span>
-          </span>
-        </p>
-        <p class="description"><span>{{ (item.teacherTitle | title) + " "}}</span>{{item.teacherName}}</p>
-      </div>
+      <ng-container class="column" *ngFor="let item of class.class; let k=index">
+        <div class="lesson column" (click)="editElement(i,k)" *ngIf="selectedItem !== item">
+          <p class="weight-500">{{ item.subjectName }}</p>
+          <p class="description">
+            {{ item.classRoomName !== "online" ? "s." + item.classRoomName + " - ": "online - "}}
+            <span [ngSwitch]="item.subjectType">
+              <span *ngSwitchCase="'Lectures'">Wykład</span>
+              <span *ngSwitchCase="'Exercise'">Ćwiczenia</span>
+              <span *ngSwitchCase="'Laboratories'">Laboratoria</span>
+              <span *ngSwitchCase="'Seminars'">Seminaria</span>
+              <span>{{" (grp. "+ item.group +")"}}</span>
+            </span>
+          </p>
+          <p class="description"><span>{{ (item.teacherTitle | title) + " "}}</span>{{item.teacherName}}</p>
+        </div>
+
+        <ng-container *ngIf="selectedItem == item">
+          <div class="lesson-edit row" *ngIf="!editMode">
+            <div class="edit-field change clickable" (click)="editMode = true">Edytuj</div>
+            <div class="edit-field delete clickable" (click)="deleteElement()">Usuń</div>
+          </div>
+          <ng-container *ngIf="editMode">
+            <div class="lesson-edit row" *ngIf="editThing === 0">
+              <div class="edit-field change clickable" (click)="editThing = 1">Nazwa</div>
+              <div class="edit-field change clickable" (click)="editThing = 2">Sala</div>
+              <div class="edit-field change clickable" (click)="editThing = 3">Grupa</div>
+            </div>
+            <form #f="ngForm" class="lesson-edit" *ngIf="editThing !== 0" (ngSubmit)="saveChanges()">
+              <app-input class="tiny-input" description="Zatwierdź enterem" [(ngModel)]="selectedItem.subjectName"
+                (ngModelChange)="editItem.subjectName = selectedItem.subjectName" name="changeSubjectName"
+                *ngIf="editThing === 1" placeholder="Język angielski"></app-input>
+              <app-input class="tiny-input" description="Zatwierdź enterem" [(ngModel)]="selectedItem.classRoomName"
+                name="changeClassRoom" *ngIf="editThing === 2" placeholder="135"></app-input>
+              <app-input class="tiny-input" description="Zatwierdź enterem" [(ngModel)]="selectedItem.group"
+                name="changeGroup" *ngIf="editThing === 3" placeholder="3"></app-input>
+            </form>
+          </ng-container>
+        </ng-container>
+      </ng-container>
     </div>
   </div>
 </div>
