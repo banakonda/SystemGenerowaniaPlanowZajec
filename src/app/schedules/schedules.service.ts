@@ -28,9 +28,9 @@ export class SchedulesService {
     const url = `${this.baseUrl}/${id}`;
     return this.httpClient.delete(url);
   }
-  editSchedule(schedule: any): Observable<any> {
+  async editSchedule(schedule: any) {
     const url = `${this.baseUrl}/${schedule.id}`;
     console.log(schedule);
-    return this.httpClient.put<any>(url, schedule, this.requestOptions);
+    return this.httpClient.put<any>(url, schedule, this.requestOptions).toPromise();
   }
 }

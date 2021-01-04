@@ -65,13 +65,13 @@ export class GeneratedScheduleComponent {
     this.studyFieldService.getStudyField(this.schedule.studyFieldId).subscribe(w => { this.studyField = w })
   }
 
-  saveChanges() {
-    this.schedulesService.editSchedule(this.schedule).subscribe(q => {
+  async saveChanges() {
+    await this.schedulesService.editSchedule(this.schedule).then(q => {
       this.editedForm = false;
     });
   }
 
-  addSubject() {
+  async addSubject() {
     this.addError = false
     const subject = this.schedule.semesters[this.selected].daysOfWeek[this.weekDaysShort.indexOf(this.newSubject.day)].subjects;
     const index = this.clockTime.indexOf(this.newSubject.time);
@@ -79,7 +79,6 @@ export class GeneratedScheduleComponent {
     const valid2 = subject ? subject.filter(q => q.firstIndex <= index + 3 * this.newSubject.width - 1 && q.lastIndex >= index + 3 * this.newSubject.width - 1) : [];
 
     if (valid.length !== 2 && valid.length === valid2.length) {
-      console.log("STWORZYMY")
       if (!subject)
         this.schedule.semesters[this.selected].daysOfWeek[this.weekDaysShort.indexOf(this.newSubject.day)] = {
           subjects: [],
@@ -94,8 +93,12 @@ export class GeneratedScheduleComponent {
         teacherName: "NAUCZYCIEL",
         teacherTitle: "1"
       });
-      this.saveChanges();
-      this.getSchedule();
+
+      this.schedule.semesters[this.selected].daysOfWeek[this.weekDaysShort.indexOf(this.newSubject.day)].subjects.sort((a, b) => a.firstIndex - b.firstIndex)
+
+
+      await this.saveChanges();
+      await this.getSchedule();
       this.addMode = false;
     }
     else
