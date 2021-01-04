@@ -51,11 +51,9 @@ export class GeneratedScheduleComponent {
     })
 
     this.studyFieldService.getStudyField(this.schedule.studyFieldId).subscribe(w => { this.studyField = w })
-    console.log(this.schedule)
   }
 
   saveChanges() {
-    console.log("saved");
     this.schedulesService.editSchedule(this.schedule).subscribe(q => {
       console.log(q);
     });

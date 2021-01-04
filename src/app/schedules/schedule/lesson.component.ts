@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TitleAPI } from 'src/app/data/models/Title';
+import { TitleService } from 'src/app/data/title.service';
 
 @Component({
   selector: 'app-lesson',
@@ -19,6 +21,7 @@ export class LessonComponent {
   editThing = 0;
   @Output() editedForm = new EventEmitter<boolean>();
 
+  titles: TitleAPI[] = [];
 
   editedItem: any;
   editItem: any;
@@ -46,6 +49,17 @@ export class LessonComponent {
       this.lastIndex = q.lastIndex;
     })
   }
+
+  constructor(
+    private titleService: TitleService,
+  ) {
+    this.titleService.getTitles().subscribe(
+      t => this.titles = t,
+      () => { },
+      () => { },
+    );
+  }
+
 
   addSubject(q: any): void {
     this.subjects.push({
@@ -88,6 +102,7 @@ export class LessonComponent {
   }
 
   saveChanges() {
+    console.log(this.selectedItem);
     this.editThing = 0;
     this.editMode = false;
     this.selectedItem = {};
