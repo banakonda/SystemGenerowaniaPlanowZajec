@@ -62,8 +62,8 @@
                 (ngModelChange)="editItem.teacherName = selectedItem.teacherName"></app-input>
               <app-input class="tiny-input" description="Zatwierdź enterem" [(ngModel)]="selectedItem.description"
                 name="changeDescription" *ngIf="editThing === 5" placeholder="Opis"
-                (ngModelChange)="editItem.description = selectedItem.description"></app-input>
-            </form>
+                (ngModelChange)="selectedItem.description = selectedItem.description.length < 20 ? selectedItem.description : selectedItem.description.substring(0,20); editItem.description = selectedItem.description">
+              </app-input>
           </ng-container>
         </ng-container>
       </ng-container>
