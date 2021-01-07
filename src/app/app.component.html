@@ -8,6 +8,7 @@
 <div class="h-100 log" *ngIf="!logged">
   <form #f="ngForm" class="log-in column" (ngSubmit)="login()">
     <h1>Zaloguj się</h1>
+    <p *ngIf="error">Błąd logowania</p>
     <app-input [(ngModel)]="user.username" name="username" placeholder="Login" description="Login"
       class="normal-input spaced-t" required></app-input>
     <app-input [(ngModel)]="user.password" name="password" placeholder="Password" description="Hasło"

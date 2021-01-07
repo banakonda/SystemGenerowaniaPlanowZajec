@@ -29,15 +29,12 @@ export class TitleService {
     name: 'dr hab. inż.',
   }, {
     id: '8',
-    name: 'dr hab. prof PK',
+    name: 'prof PK',
   }, {
     id: '9',
-    name: 'dr hab. inż. prof PK',
-  }, {
-    id: '10',
     name: 'prof. dr hab.',
   }, {
-    id: '11',
+    id: '10',
     name: 'prof. dr hab. inż.',
   }];
 

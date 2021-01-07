@@ -91,7 +91,8 @@ export class GeneratedScheduleComponent {
         subjectName: "NOWY PRZEDMIOT",
         subjectType: this.newSubject.type,
         teacherName: "NAUCZYCIEL",
-        teacherTitle: "1"
+        teacherTitle: "1",
+        description: "",
       });
 
       this.schedule.semesters[this.selected].daysOfWeek[this.weekDaysShort.indexOf(this.newSubject.day)].subjects.sort((a, b) => a.firstIndex - b.firstIndex)

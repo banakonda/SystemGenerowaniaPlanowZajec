@@ -78,6 +78,7 @@ export class LessonComponent {
       teacherTitle: q.teacherTitle,
       classRoomName: q.classRoomName,
       group: q.group,
+      description: q.description,
     }
   }
 
