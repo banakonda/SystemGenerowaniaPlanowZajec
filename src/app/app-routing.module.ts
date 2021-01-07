@@ -36,6 +36,8 @@ const routes: Routes = [
   { path: 'schedules', component: SchedulesComponent },
   { path: 'create-schedule', component: CreateScheduleComponent },
   { path: 'schedules/schedule/:id', component: GeneratedScheduleComponent },
+
+  { path: '**', component: StudyFieldComponent },
 ];
 
 @NgModule({

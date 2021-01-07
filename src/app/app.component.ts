@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './data/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +8,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   user = {
-    login: "",
+    username: "",
     password: "",
   }
-  logged = true;
+  logged = false;
+  error = false;
   title: string = 'system-generowania-planow-zajec';
-  test() {
-    this.logged = true;
+
+  constructor(private auth: AuthService) { }
+  login() {
+    this.auth.getAuth(this.user).subscribe(q => {
+      if (q)
+        this.logged = true;
+      else
+        this.error = true;
+    });
   }
 }
