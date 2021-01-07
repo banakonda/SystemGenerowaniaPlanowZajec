@@ -64,6 +64,7 @@
                 name="changeDescription" *ngIf="editThing === 5" placeholder="Opis"
                 (ngModelChange)="selectedItem.description = selectedItem.description.length < 20 ? selectedItem.description : selectedItem.description.substring(0,20); editItem.description = selectedItem.description">
               </app-input>
+            </form>
           </ng-container>
         </ng-container>
       </ng-container>
