@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 })
 export class CreateScheduleComponent {
   step = 1;
-  lastStep = 3;
+  lastStep = 2;
   newSchedule = {
     name: "Nowy plan zajęć",
     studyFieldID: 1,
