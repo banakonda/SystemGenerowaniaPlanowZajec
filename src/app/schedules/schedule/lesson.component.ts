@@ -26,6 +26,8 @@ export class LessonComponent {
   editedItem: any;
   editItem: any;
   originalDays;
+
+  editDesc = false;
   @Input() set days(value: any) {
     if (!value.subjects) return;
     this.originalDays = value;

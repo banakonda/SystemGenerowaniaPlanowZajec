@@ -23,6 +23,7 @@
             </span>
           </p>
           <p class="description"><span>{{ (item.teacherTitle | title) + " "}}</span>{{item.teacherName}}</p>
+          <p class="description" *ngIf="item.description.length">{{item.description}}</p>
         </div>
 
         <ng-container *ngIf="selectedItem == item">
@@ -35,12 +36,12 @@
               <div class="edit-field row">
                 <div class="edit-field change clickable" (click)="editThing = 1">Nazwa</div>
                 <div class="edit-field change clickable spaced-l-4" (click)="editThing = 2">Sala</div>
+                <div class="edit-field change clickable spaced-l-4" (click)="editThing = 5">Opis</div>
               </div>
               <div class="edit-field row spaced-t-4">
                 <div class="edit-field change clickable" (click)="editThing = 3">Grupa</div>
                 <div class="edit-field change clickable spaced-l-4" (click)="editThing = 4">Lektor</div>
               </div>
-
             </div>
             <form #f="ngForm" class="lesson-edit row" *ngIf="editThing !== 0" (ngSubmit)="saveChanges()">
               <app-input class="tiny-input" description="Zatwierdź enterem" [(ngModel)]="selectedItem.subjectName"
@@ -59,6 +60,9 @@
               <app-input class="tiny-input" description="Zatwierdź enterem" [(ngModel)]="selectedItem.teacherName"
                 name="changeGroup" *ngIf="editThing === 4" placeholder="Jan Kowalski"
                 (ngModelChange)="editItem.teacherName = selectedItem.teacherName"></app-input>
+              <app-input class="tiny-input" description="Zatwierdź enterem" [(ngModel)]="selectedItem.description"
+                name="changeDescription" *ngIf="editThing === 5" placeholder="Opis"
+                (ngModelChange)="editItem.description = selectedItem.description"></app-input>
             </form>
           </ng-container>
         </ng-container>
