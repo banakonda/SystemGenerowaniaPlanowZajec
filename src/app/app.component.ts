@@ -17,11 +17,13 @@ export class AppComponent {
 
   constructor(private auth: AuthService) { }
   login() {
+
     this.auth.getAuth(this.user).subscribe(q => {
       if (q)
         this.logged = true;
-      else
-        this.error = true;
-    });
+    },
+      () => { this.error = true; },
+      () => { },
+    )
   }
 }
