@@ -1,8 +1,9 @@
 <h3 class="form-request">{{nameOfStudyField}} - semestry {{newSchedule.semester === 1 ? "zimowe" : "letnie"}}</h3>
 
 <p [ngSwitch]="step">
-  <span *ngSwitchCase="'1'">Przetwarzam dostępność sal lekcyjnych... (0%)</span>
-  <span *ngSwitchCase="'2'">Przetwarzam dostępność nauczycieli akademickich... (33%)</span>
-  <span *ngSwitchCase="'3'">Generuję rozkład... (67%)</span>
-  <span *ngSwitchCase="'4'">Przenoszę na wygenerowany rozkład... (100%)</span>
+  <span *ngSwitchCase="1">Przetwarzam dostępność sal lekcyjnych... (0%)</span>
+  <span *ngSwitchCase="2">Przetwarzam dostępność nauczycieli akademickich... (33%)</span>
+  <span *ngSwitchCase="3">Generuję rozkład... (67%)</span>
+  <span *ngSwitchCase="4">Przenoszę na wygenerowany rozkład... (100%)</span>
+  <span *ngSwitchCase="91" class="red-color">{{errorMessage}}</span>
 </p>

@@ -18,7 +18,9 @@ export class CreateScheduleStepTwoComponent implements OnInit {
   classRooms: string[][][] = [];
   subjects: ScheduleTeachers[][][] = [];
 
-
+  classRoomsNames: string[];
+  error = false;
+  errorMessage = "";
   get nameOfStudyField(): string {
     if (!this.studyFields) {
       return '';
@@ -50,7 +52,8 @@ export class CreateScheduleStepTwoComponent implements OnInit {
   async processData() {
     await this.prepareClassRooms();
     await this.prepareSubjects();
-    await this.sendRequest();
+    if (!this.error)
+      await this.sendRequest();
   }
 
   async prepareClassRooms() {
@@ -61,6 +64,8 @@ export class CreateScheduleStepTwoComponent implements OnInit {
     }[];
 
     await this.classRoomsService.getAsyncClassRooms().then(allClassRooms => {
+      this.classRoomsNames = allClassRooms.map(q => q.name);
+
       temporaryClassRooms = allClassRooms.map(q => {
         let availability: boolean[][] = [];
         if (q.availability.oneWeek === true)
@@ -114,7 +119,20 @@ export class CreateScheduleStepTwoComponent implements OnInit {
             for (let i = 1; i < w.seminarsHours + 1; i++, sem++)
               p.push({ type: "Seminars", cr: q.schedule.seminars.enabled ? q.schedule.seminars.classroom : [], grp: sem });
 
+          let pp = 0;
           for (let k of p) {
+            if (k.cr.length > 0) {
+              pp = 0;
+              for (let ppp of k.cr)
+                if (this.classRoomsNames.indexOf(ppp) == -1)
+                  pp++;
+            }
+
+            if (pp != 0 && pp === k.cr.length) {
+              this.showError("Błąd zdefiniowania sal dla: " + w.teacher.name);
+              return;
+            }
+
             teachers.push({
               teacherName: w.teacher.name,
               teacherTitle: w.teacher.titleID,
@@ -158,7 +176,6 @@ export class CreateScheduleStepTwoComponent implements OnInit {
           this.subjects[i].push(teachers.filter(c => c.availability[i][j] === true)
             .map(c => {
               return {
-
                 teacherName: c.teacherName,
                 teacherTitle: c.teacherTitle,
                 semesterOfSubject: c.semesterOfSubject,
@@ -171,7 +188,8 @@ export class CreateScheduleStepTwoComponent implements OnInit {
           );
       }
     });
-    this.step = 3;
+    if (!this.error)
+      this.step = 3;
   }
 
 
@@ -188,5 +206,11 @@ export class CreateScheduleStepTwoComponent implements OnInit {
       this.step = 4;
       this.router.navigate(['schedules/schedule/' + q]);
     });
+  }
+
+  showError(txt: string) {
+    this.error = true;
+    this.step = 91;
+    this.errorMessage = "Generowanie rozkładu anulowano. " + txt;
   }
 }
