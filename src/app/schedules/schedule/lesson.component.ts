@@ -105,7 +105,6 @@ export class LessonComponent {
   }
 
   saveChanges() {
-    console.log(this.selectedItem);
     this.editThing = 0;
     this.editMode = false;
     this.selectedItem = {};

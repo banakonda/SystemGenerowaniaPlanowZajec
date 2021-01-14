@@ -40,6 +40,8 @@ export class GeneratedScheduleComponent {
 
   id: string;
 
+  errorMessage = "";
+
   addError = false;
   subjectsTypes = [{ id: "Lectures", name: "Wykład" }, { id: "Exercise", name: "Ćwiczenia" }, { id: "Laboratories", name: "Laboratoria" }, { id: "Seminars", name: "Seminaria" }];
   constructor(
@@ -66,7 +68,32 @@ export class GeneratedScheduleComponent {
   }
 
   async saveChanges() {
-    await this.schedulesService.editSchedule(this.schedule).then(q => {
+    let saveError = false;
+    this.errorMessage = "";
+    let pp = 0;
+    this.schedule.semesters.map(q => {
+      q.daysOfWeek.map(w => {
+        if (w.subjects)
+          for (let i = 0; i < w.subjects.length - 1; i++)
+            if (w.subjects[i].firstIndex === w.subjects[i + 1].firstIndex)
+              if (w.subjects[i].subjectType === w.subjects[i + 1].subjectType)
+                if (w.subjects[i].group === w.subjects[i + 1].group) {
+                  saveError = true;
+                  this.errorMessage = `Błąd grup dla: ${this.weekDaysShort[i - 1]} ${this.clockTime[w.subjects[i].firstIndex]} - ${w.subjects[i].subjectName}. Zapis odrzucono.`
+                }
+      })
+      pp++;
+    })
+
+    for (let i = 0; i < this.schedule.semesters.length; i++) {
+      console.log(1)
+      if (this.schedule.semesters[i]) {
+        console.log(this.schedule.semester)
+      }
+    }
+
+    if (saveError) { }
+    else await this.schedulesService.editSchedule(this.schedule).then(q => {
       this.editedForm = false;
     });
   }

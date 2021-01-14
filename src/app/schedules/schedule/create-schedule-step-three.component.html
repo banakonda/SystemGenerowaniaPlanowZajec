@@ -44,5 +44,7 @@
       <button mat-raised-button class="spaced-t-s spaced-l-l" color="primary" (click)="addSubject()">Zapisz</button>
     </div>
     <div *ngIf="addError" class="red-color spaced-l-l">Podano niepoprawne dane</div>
+
   </div>
+  <div *ngIf="errorMessage.length" class="red-color spaced-l-l">{{ errorMessage }}</div>
 </div>
