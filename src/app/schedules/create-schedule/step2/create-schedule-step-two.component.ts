@@ -128,10 +128,10 @@ export class CreateScheduleStepTwoComponent implements OnInit {
                   pp++;
             }
 
-            if (pp != 0 && pp === k.cr.length) {
-              this.showError("Błąd zdefiniowania sal dla: " + w.teacher.name);
-              return;
-            }
+            // if (pp != 0 && pp === k.cr.length) {
+            //   this.showError("Błąd zdefiniowania sal dla: " + w.teacher.name);
+            //   return;
+            // }
 
             teachers.push({
               teacherName: w.teacher.name,
