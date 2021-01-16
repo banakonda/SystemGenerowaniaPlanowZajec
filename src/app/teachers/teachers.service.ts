@@ -28,4 +28,7 @@ export class TeachersService {
     const url = `${this.baseUrl}/${id}`;
     return this.httpClient.delete(url);
   }
+  async getAsyncTeachers() {
+    return this.httpClient.get<TeacherAPI[]>(this.baseUrl).toPromise();
+  }
 }

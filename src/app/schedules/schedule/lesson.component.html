@@ -43,27 +43,27 @@
                 <div class="edit-field change clickable spaced-l-4" (click)="editThing = 4">Lektor</div>
               </div>
             </div>
-            <form #f="ngForm" class="lesson-edit row" *ngIf="editThing !== 0" (ngSubmit)="saveChanges()">
+            <form #f="ngForm" class="lesson-edit column" *ngIf="editThing !== 0" (ngSubmit)="saveChanges()">
               <app-input class="tiny-input" description="Zatwierdź enterem" [(ngModel)]="selectedItem.subjectName"
-                (ngModelChange)="editItem.subjectName = selectedItem.subjectName" name="changeSubjectName"
-                *ngIf="editThing === 1" placeholder="Język angielski"></app-input>
+                name="changeSubjectName" *ngIf="editThing === 1" placeholder="Język angielski"></app-input>
+
               <app-input class="tiny-input" description="Zatwierdź enterem" [(ngModel)]="selectedItem.classRoomName"
-                name="changeClassRoom" *ngIf="editThing === 2" placeholder="135"
-                (ngModelChange)="editItem.classRoomName = selectedItem.classRoomName"></app-input>
+                name="changeClassRoom" *ngIf="editThing === 2" placeholder="135"></app-input>
+
               <app-input class="tiny-input" description="Zatwierdź enterem" [(ngModel)]="selectedItem.group"
-                name="changeGroup" *ngIf="editThing === 3" placeholder="3"
-                (ngModelChange)="editItem.group = selectedItem.group"></app-input>
-              <app-dropdown [(ngModel)]="selectedItem.teacherTitle" name="studyField" description="Tytuł"
-                [data]="titles" *ngIf="editThing === 4" class="super-micro-input"
-                (ngModelChange)="editItem.teacherTitle = selectedItem.teacherTitle">
-              </app-dropdown>
-              <app-input class="tiny-input" description="Zatwierdź enterem" [(ngModel)]="selectedItem.teacherName"
-                name="changeGroup" *ngIf="editThing === 4" placeholder="Jan Kowalski"
-                (ngModelChange)="editItem.teacherName = selectedItem.teacherName"></app-input>
+                name="changeGroup" *ngIf="editThing === 3" placeholder="3"></app-input>
+
+              <div class="center-row">
+                <app-dropdown [(ngModel)]="selectedItem.teacherTitle" name="studyField" description="Tytuł"
+                  [data]="titles" *ngIf="editThing === 4" class="super-micro-input"></app-dropdown>
+                <app-input class="tiny-input" description="Zatwierdź enterem" [(ngModel)]="selectedItem.teacherName"
+                  name="changeGroup" *ngIf="editThing === 4" placeholder="Jan Kowalski"></app-input>
+              </div>
               <app-input class="tiny-input" description="Zatwierdź enterem" [(ngModel)]="selectedItem.description"
-                name="changeDescription" *ngIf="editThing === 5" placeholder="Opis"
-                (ngModelChange)="selectedItem.description = selectedItem.description.length < 20 ? selectedItem.description : selectedItem.description.substring(0,20); editItem.description = selectedItem.description">
+                name="changeDescription" *ngIf="editThing === 5" placeholder="Opis">
               </app-input>
+
+              <p class="red-color smaller-text error">{{errorMessage}}</p>
             </form>
           </ng-container>
         </ng-container>

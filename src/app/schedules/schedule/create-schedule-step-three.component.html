@@ -20,7 +20,8 @@
           <div class="week-day">
             {{ weekDaysShort[i] }}
           </div>
-          <app-lesson [days]="days" [(selectedItem)]="selectedItem" (editedForm)="editedForm = $event"></app-lesson>
+          <app-lesson [days]="days" [(selectedItem)]="selectedItem" (editedForm)="editedForm = $event"
+            [schedule]="schedule" [weekDay]="i"></app-lesson>
         </div>
       </div>
     </div>
