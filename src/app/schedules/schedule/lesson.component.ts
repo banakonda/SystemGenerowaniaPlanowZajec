@@ -158,7 +158,12 @@ export class LessonComponent {
             if (availability.availability.oneWeek) {
               const days = Object.values(availability.availability.allWeeks);
               if (!days[this.weekDay][this.subjects[this.indexes[0]].firstIndex])
-                this.errorMessage = "Sala zajęta (dostępność)."
+                this.errorMessage = "Sala zajęta (dostępność).";
+            }
+            else {
+              const days = Object.values(availability.availability.oddWeeks);
+              if (!days[this.weekDay][this.subjects[this.indexes[0]].firstIndex])
+                this.errorMessage = "Sala zajęta (dostępność).";
             }
           }
         }
@@ -212,6 +217,13 @@ export class LessonComponent {
           if (availabilityT.availability) {
             if (availabilityT.availability.oneWeek) {
               const days = Object.values(availabilityT.availability.allWeeks);
+              if (!days[this.weekDay][this.subjects[this.indexes[0]].firstIndex])
+                if (this.lastTeacherEditedName !== this.selectedItem.teacherName)
+                  this.errorMessage = "Lektor zajęty (dostępność)."
+              this.lastTeacherEditedName = this.selectedItem.teacherName;
+            }
+            else {
+              const days = Object.values(availabilityT.availability.oddWeeks);
               if (!days[this.weekDay][this.subjects[this.indexes[0]].firstIndex])
                 if (this.lastTeacherEditedName !== this.selectedItem.teacherName)
                   this.errorMessage = "Lektor zajęty (dostępność)."
