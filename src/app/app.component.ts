@@ -11,7 +11,7 @@ export class AppComponent {
     username: "",
     password: "",
   }
-  logged = true;
+  logged = false;
   error = false;
   title: string = 'system-generowania-planow-zajec';
 
