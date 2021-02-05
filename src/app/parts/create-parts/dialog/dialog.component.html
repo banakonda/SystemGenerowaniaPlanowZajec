@@ -1,0 +1,43 @@
+<h3 class="form-request spaced-b">Przydziel Przedmiot</h3>
+
+<div class="spaced-l-l spaced-t center-row">
+    <app-dropdown [(ngModel)]="newSubject" name="subjects" 
+      class="long-input" [data]="subjects" value="" display="name" 
+      description="Nazwa przedmiotu"></app-dropdown>
+
+
+      <!-- <div class="center-row spaced-l-s">
+        <mat-checkbox class="spaced-l-l" color="primary" name="lectures" 
+          [(ngModel)]="newSubjectTeacher.lecturesEnable" 
+          [disabled]="!newSubject.schedule.lectures.enabled">W</mat-checkbox>
+        <app-input *ngIf="newSubjectTeacher.lecturesEnable" type="number"
+          [(ngModel)]="newSubjectTeacher.lecturesHours" name="lecturesHours"  
+          placeholder="1" class="micro-input spaced-l" description="Ilość grup" 
+          [min]="1" required></app-input>
+    
+        <mat-checkbox class="spaced-l-l" color="primary" name="exercises" 
+          [(ngModel)]="newSubjectTeacher.exerciseEnable"
+          [disabled]="!newSubject.schedule.exercise.enabled">Ć</mat-checkbox>
+        <app-input *ngIf="newSubjectTeacher.exerciseEnable" type="number"
+          [(ngModel)]="newSubjectTeacher.exerciseHours" name="exerciseHours"  
+          placeholder="4" class="micro-input spaced-l" description="Ilość grup" 
+          [min]="1" required></app-input>
+          
+        <mat-checkbox class="spaced-l-l" color="primary" name="laboratories" 
+          [(ngModel)]="newSubjectTeacher.laboratoriesEnable"
+          [disabled]="!newSubject.schedule.laboratories.enabled">L</mat-checkbox>
+        <app-input *ngIf="newSubjectTeacher.laboratoriesEnable" type="number"
+          [(ngModel)]="newSubjectTeacher.laboratoriesHours" name="laboratoriesHours"  
+          placeholder="8" class="micro-input spaced-l" description="Ilość grup" 
+          [min]="1" required></app-input>
+    
+        <mat-checkbox class="spaced-l-l" color="primary" name="seminars" 
+          [(ngModel)]="newSubjectTeacher.seminarsEnable"
+          [disabled]="!newSubject.schedule.seminars.enabled">S</mat-checkbox>
+        <app-input *ngIf="newSubjectTeacher.seminarsEnable" type="number"
+          [(ngModel)]="newSubjectTeacher.seminarsHours" name="seminarsHours"  
+          placeholder="4" class="micro-input spaced-l" description="Ilość grup" 
+          [min]="1" required></app-input>
+        </div> -->
+        <span class="a-text-button spaced-l primary-color clickable weight-500">Dodaj</span>
+      </div>

@@ -1,0 +1,22 @@
+<div class="h-100 content">
+    <div class="center-row">
+      <h1 class="page-title">Przydziały</h1>
+      <button mat-button class="clickable" (click)="refreshList()">
+        <i class="material-icons">refresh</i>
+      </button>
+    </div>
+    <div class="sub-content">
+  
+  
+      <div class="spaced-t" *ngIf="listItems$ | async as listItems">
+        <div *ngFor="let item of listItems" class="center-row list-row w-80">
+          <span class="spaced-l weight-500">{{ item.name }}</span>
+          <div class="space"></div>
+          <span (click)="deleteAssignment(item.id)" class="material-icons clickable red-color">delete_forever</span>
+          <a class="spaced-l-s primary-color clickable weight-500" [routerLink]="'/edit-part/' + item.id">Edytuj</a>
+        </div>
+      </div>
+      <a mat-button color="primary" class="a-text-button spaced-t-s weight-300" routerLink="/create-parts">
+        Dodaj przydział</a>
+    </div>
+  </div>

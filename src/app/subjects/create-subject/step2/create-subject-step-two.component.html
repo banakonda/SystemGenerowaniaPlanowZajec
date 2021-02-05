@@ -16,3 +16,7 @@
     <mat-radio-button color="primary" class="spaced-t" [value]="true">Obieralny</mat-radio-button>
   </mat-radio-group>
 </div>
+
+<h3 class="form-request spaced-t-l">Zdefiniuj wagę przedmiotu</h3>
+<app-input [(ngModel)]="newSubject.rate" class="tiny-input spaced-l-l" name="rate" description="Waga przedmioty"
+  placeholder="1" required></app-input>

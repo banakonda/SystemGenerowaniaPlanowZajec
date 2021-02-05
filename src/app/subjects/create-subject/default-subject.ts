@@ -8,13 +8,14 @@ export function newSubject(): Subject {
       semester: 1,
     },
     schedule: {
-      lectures: { enabled: true, online: false, classroom: [] },
-      exercise: { enabled: false, online: false, classroom: [] },
-      laboratories: { enabled: false, online: false, classroom: [] },
-      seminars: { enabled: false, online: false, classroom: [] },
+      lectures: { enabled: true, hours: 0, online: false, classroom: [] },
+      exercise: { enabled: false, hours: 0, online: false, classroom: [] },
+      laboratories: { enabled: false, hours: 0, online: false, classroom: [] },
+      seminars: { enabled: false, hours: 0, online: false, classroom: [] },
     },
     teachers: [],
     eligibility: false,
+    rate: 1,
   };
 }
 

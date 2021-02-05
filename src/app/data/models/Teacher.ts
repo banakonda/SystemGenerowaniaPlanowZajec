@@ -4,6 +4,7 @@ export interface Teacher {
   titleID: string;
   name: string;
   email: string;
+  hours: number;
   studyFieldId: string;
   availability: WeekAvailability;
 }

@@ -9,4 +9,6 @@ import { StudyField } from 'src/app/data/models/StudyField';
 })
 export class CreateFieldStepOneComponent {
   @Input() newStudyField: StudyField;
+  fullTime = [{ id: 1, name: 'Stacjonarne' }, { id: 2, name: 'Niestacjonarne' }];
+  erasmus = [{ id: 1, name: 'Tak' }, { id: 2, name: 'Nie' }];
 }

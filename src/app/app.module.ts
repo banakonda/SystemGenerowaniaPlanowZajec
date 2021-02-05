@@ -7,6 +7,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,6 +53,12 @@ import { CommonModule } from '@angular/common';
 import { TitlePipe } from './data/title.pipe';
 import { GeneratedScheduleComponent } from './schedules/schedule/create-schedule-step-three.component';
 import { LessonComponent } from './schedules/schedule/lesson.component';
+import { PartsComponent } from './parts/parts.component';
+import { CreatePartsComponent } from './parts/create-parts/create-parts.component';
+import { CreatePartsStepOneComponent } from './parts/create-parts/step1/create-parts-step-one.component';
+import { CreatePartsStepTwoComponent } from './parts/create-parts/step2/create-parts-step-two.component';
+import { CreatePartsStepThreeComponent } from './parts/create-parts/step3/create-parts-step-three.component';
+import { DialogComponent } from './parts/create-parts/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +100,12 @@ import { LessonComponent } from './schedules/schedule/lesson.component';
     GeneratedScheduleComponent,
     LessonComponent,
     TitlePipe,
+    PartsComponent,
+    CreatePartsComponent,
+    CreatePartsStepOneComponent,
+    CreatePartsStepTwoComponent,
+    CreatePartsStepThreeComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,6 +115,7 @@ import { LessonComponent } from './schedules/schedule/lesson.component';
     MatSnackBarModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatDialogModule,
     FormsModule,
     HttpClientModule,
     MatInputModule,

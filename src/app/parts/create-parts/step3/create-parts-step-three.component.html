@@ -1,0 +1,14 @@
+<h3 class="form-request spaced-b">Przydziel przedmioty</h3>
+
+<div class="sub-content">
+<div class="spaced-t" *ngIf="listItems$ | async as listItems">
+    <div *ngFor="let item of listItems" class="center-row list-row w-80">
+        <span class="spaced-l-s light-color">{{ item.titleID | title }}</span>
+        <span class="spaced-l weight-500">{{ item.name }}</span>
+        <div class="space"></div>
+        <span class="spaced-l weight-500">0 / {{ item.hours }}</span>
+        <a (click)="openDialog()" class="spaced-l-s primary-color clickable weight-500">Przydziel przedmiot</a>
+        <span class="material-icons clickable green-color">info</span>
+    </div>
+</div>
+</div>

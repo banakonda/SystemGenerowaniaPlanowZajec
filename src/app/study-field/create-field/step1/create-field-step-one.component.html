@@ -10,4 +10,13 @@
   <h3 class="form-request spaced-t-l spaced-b">Podaj ilość semestrów</h3>
   <app-input [(ngModel)]="newStudyField.numberOfSemesters" class="tiny-input spaced-l-l" name="numberOfSemesters"
     description="Ilość semestrów" placeholder="6" type="number" [min]="1" required></app-input>
+
+  <h3 class="form-request spaced-t">Wybierz rodziaj studiów</h3>
+  <app-dropdown [(ngModel)]="newStudyField.fullTime" name="fullTime" [data]="fullTime" description="Rodzaj studiów"
+    class="normal-input spaced-t spaced-l-l"></app-dropdown>
+
+  <h3 class="form-request spaced-t">Erasmus</h3>
+  <app-dropdown [(ngModel)]="newStudyField.erasmus" name="erasmus" [data]="erasmus" description="Erasmus"
+    class="normal-input spaced-t spaced-l-l"></app-dropdown>
+
 </div>

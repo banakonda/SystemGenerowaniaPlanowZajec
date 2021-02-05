@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClassRoomsComponent } from './class-rooms/class-rooms.component';
 import { CreateClassRoomComponent } from './class-rooms/create-class-room/create-class-room.component';
 import { EditClassRoomComponent } from './class-rooms/create-class-room/edit-class-room.component';
+import { PartsComponent } from './parts/parts.component';
+import { CreatePartsComponent } from './parts/create-parts/create-parts.component';
 import { CreateScheduleComponent } from './schedules/create-schedule/create-schedule.component';
 import { GeneratedScheduleComponent } from './schedules/schedule/create-schedule-step-three.component';
 import { SchedulesComponent } from './schedules/schedules.component';
@@ -32,6 +34,10 @@ const routes: Routes = [
   { path: 'subjects', component: SubjectsComponent },
   { path: 'create-subject', component: CreateSubjectComponent },
   { path: 'edit-subject/:id', component: EditSubjectComponent },
+
+  { path: 'parts', component: PartsComponent },
+  { path: 'create-parts', component: CreatePartsComponent },
+  { path: 'edit-pats/:id', component: EditTeacherComponent },
 
   { path: 'schedules', component: SchedulesComponent },
   { path: 'create-schedule', component: CreateScheduleComponent },

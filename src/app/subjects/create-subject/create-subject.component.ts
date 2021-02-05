@@ -12,7 +12,7 @@ import { newSubject } from './default-subject';
 })
 export class CreateSubjectComponent {
   step = 1;
-  lastStep = 4;
+  lastStep = 3;
   edit = false;
 
   newSubject = newSubject();
@@ -29,8 +29,10 @@ export class CreateSubjectComponent {
   createSubject(): void {
     let error = 0;
     try {
-      if (!this.edit)
+      if (!this.edit) {
+        console.log(this.newSubject);
         this.subjectsService.createSubjects(this.newSubject).subscribe(q => { this.snackBar(q); });
+      }
       else
         this.subjectsService.editSubjects(this.newSubject as SubjectAPI).subscribe(q => { this.snackBar(q); });
     } catch {

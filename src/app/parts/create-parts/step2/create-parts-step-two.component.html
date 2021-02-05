@@ -1,0 +1,22 @@
+<h3 class="form-request spaced-b">Określ ilość grup</h3>
+
+
+<div class="spaced-t" *ngIf="listItems$ | async as listItems">
+  <div *ngFor="let item of listItems; index as i">
+    <div class="center-row list-row w-80">
+      <div class="spaced-l-s weight-500">{{ item.name }}</div>
+
+          <div *ngFor="let item2 of zmienna2[i]; index as j">
+            <div class="spaced-l-s weight-100">Sem {{j+1}}
+              <app-input class="tiny-input spaced-l-l" name="rate" description="gr. wykładowe" 
+              placeholder="1" required></app-input>
+              <app-input class="tiny-input spaced-l-l" name="rate" description="gr. laboratoryjne" 
+              placeholder="1" required></app-input>
+            </div>
+          </div>
+
+      <div class="space"></div>
+
+    </div>
+  </div>
+</div>

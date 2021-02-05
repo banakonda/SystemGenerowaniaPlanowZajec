@@ -10,3 +10,7 @@
 <h3 class="form-request spaced-t spaced-b">Podaj email nauczyciela</h3>
 <app-input [(ngModel)]="newTeacher.email" class="long-input spaced-l-l" name="email" description="Adres e-mail"
   placeholder="jan.kowalski@pk.edu.pl" required></app-input>
+
+<h3 class="form-request spaced-t spaced-b">Podaj pensum</h3>
+<app-input [(ngModel)]="newTeacher.hours" class="tiny-input spaced-l-l" name="hours" description="Ilość godzin"
+  placeholder="0" required></app-input>

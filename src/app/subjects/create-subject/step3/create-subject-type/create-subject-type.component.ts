@@ -11,8 +11,10 @@ import { ScheduleActivities } from 'src/app/data/models/Subject';
 export class CreateSubjectTypeComponent {
   type: ScheduleActivities;
   class: string = "";
+  hours: number = 0;
   @Input() set sType(value: ScheduleActivities) {
     this.type = value;
+    this.hours = value.hours;
     this.class = value.classroom.join(", ");
   }
   @Input() typeName: string = "";

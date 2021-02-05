@@ -6,7 +6,12 @@
     </mat-checkbox>
   </div>
 
+
   <div class="spaced-l-l column" *ngIf="type.enabled">
+
+    <app-input [(ngModel)]="type.hours" class="tiny-input column spaced-t spaced-l-l spaced-b" name="hours+'TypeClass'" description="Ilość godzin"
+    placeholder="30" required></app-input>
+
     <mat-radio-group [(ngModel)]="type.online" [name]="name+'TypeClass'"
       class="column spaced-t spaced-l-l spaced-b">
       <mat-radio-button color="primary" [value]="true">

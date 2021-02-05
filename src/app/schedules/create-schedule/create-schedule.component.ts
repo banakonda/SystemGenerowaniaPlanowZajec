@@ -11,6 +11,7 @@ export class CreateScheduleComponent {
     name: "Nowy plan zajęć",
     studyFieldID: 1,
     semester: 1,
+    assignment: 1,
     numberOfSemesters: 1,
     lessonWidth: 2,
   };

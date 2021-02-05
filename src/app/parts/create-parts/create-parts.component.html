@@ -1,0 +1,18 @@
+<form #f="ngForm" (ngSubmit)="lastStep === step ? createPart() : step = step + 1">
+
+    <div class="content">
+      <div class="row">
+        <h1 class="page-title">Dodaj przydział</h1>
+        <div class="space"></div>
+        <h5 class="step">Krok: {{step}}/{{lastStep}}</h5>
+      </div>
+  
+      <div class="sub-content">
+        <app-create-parts-step-one [(newPart)]="newPart" *ngIf="step==1"></app-create-parts-step-one>
+        <app-create-parts-step-two [(newPart)]="newPart" *ngIf="step==2"></app-create-parts-step-two>
+        <app-create-parts-step-three [(newPart)]="newPart" *ngIf="step==3"></app-create-parts-step-three>
+      </div>
+    </div>
+  
+    <app-create-buttons [(step)]="step" [lastStep]="lastStep" [f]="f" [cancelLink]="'parts'"></app-create-buttons>
+  </form>

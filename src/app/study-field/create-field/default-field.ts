@@ -5,5 +5,7 @@ export function newStudyField(): StudyField {
     name: '',
     degree: 1,
     numberOfSemesters: 1,
+    fullTime: 1,
+    erasmus: 2,
   };
 }

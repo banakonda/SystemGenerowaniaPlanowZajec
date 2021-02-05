@@ -15,3 +15,7 @@
 <app-dropdown [(ngModel)]="newSchedule.lessonWidth" name="lessonWidth" [data]="lessonWidth" description="Długość zajęć"
   value="" display="" additionalDescription="jednostki lekcyjne" class="normal-input spaced-t spaced-l-l">
 </app-dropdown>
+
+<h3 class="form-request spaced-t">Wybierz przydział</h3>
+<app-dropdown [(ngModel)]="newSchedule.assignment" name="assignment" [data]="assignments" description="Przydział"
+  class="normal-input spaced-t spaced-l-l"></app-dropdown>

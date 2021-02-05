@@ -7,6 +7,7 @@ interface StudyStudents {
 
 export type ScheduleActivities = {
   enabled: boolean;
+  hours: number;
   online: boolean;
   classroom: string[];
 };
@@ -36,6 +37,7 @@ export interface Subject {
   schedule: SubjectSchedule;
   teachers: SubjectTeachers[];
   eligibility: boolean;
+  rate: number
 }
 
 export interface SubjectAPI extends Subject {
