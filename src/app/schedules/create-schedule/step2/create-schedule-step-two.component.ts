@@ -37,16 +37,21 @@ export class CreateScheduleStepTwoComponent implements OnInit {
     private classRoomsService: ClassRoomService,
     private schedulesService: SchedulesService,
     private router: Router,
-  ) { }
+  ) { 
+    
+  }
 
   ngOnInit(): void {
+    this.subjectsService.postAssignments(this.newSchedule.assignment).subscribe();
     this.studyFieldService.getStudyFields().subscribe(
       q => this.studyFields = q,
       () => { },
       () => {
         this.newSchedule.numberOfSemesters = this.studyFields.filter(q => q.id == this.newSchedule.studyFieldID)[0].numberOfSemesters;
       });
-    this.processData()
+      setTimeout(() => {
+        this.processData()
+      }, 100);
   }
 
   async processData() {
@@ -93,6 +98,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
   }
 
   async prepareSubjects() {
+
     await this.subjectsService.getAsyncSubjects().then(allSubjects => {
       let teachers = [];
       allSubjects.filter(a => {
@@ -102,6 +108,8 @@ export class CreateScheduleStepTwoComponent implements OnInit {
         let exe = 1;
         let lab = 1;
         let sem = 1;
+
+        if(q.teachers.length != 0) {
 
         q.teachers.forEach(w => {
 
@@ -145,6 +153,7 @@ export class CreateScheduleStepTwoComponent implements OnInit {
             });
           }
         });
+        }
       });
 
       const teacherAvailability = teachers.map(q => {

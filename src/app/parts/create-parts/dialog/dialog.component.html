@@ -1,43 +1,59 @@
-<h3 class="form-request spaced-b">Przydziel Przedmiot</h3>
+<h3 class="form-request spaced-b">Przydziel Przedmiot ({{data.name}})</h3>
 
 <div class="spaced-l-l spaced-t center-row">
-    <app-dropdown [(ngModel)]="newSubject" name="subjects" 
+    <app-dropdown [(ngModel)]="newSubject" (ngModelChange)="addSubject()" name="subjects" 
       class="long-input" [data]="subjects" value="" display="name" 
       description="Nazwa przedmiotu"></app-dropdown>
 
+      <div class="center-row spaced-l-s" *ngIf='newSubjectTeacher'>
 
-      <!-- <div class="center-row spaced-l-s">
         <mat-checkbox class="spaced-l-l" color="primary" name="lectures" 
-          [(ngModel)]="newSubjectTeacher.lecturesEnable" 
-          [disabled]="!newSubject.schedule.lectures.enabled">W</mat-checkbox>
-        <app-input *ngIf="newSubjectTeacher.lecturesEnable" type="number"
+          [(ngModel)]="newSubjectTeacher.lecturesEnable"
+          [disabled]="!newSubject.schedule.lectures.enabled">W</mat-checkbox> 
+        <!-- <app-input *ngIf="newSubjectTeacher.lecturesEnable" type="number"
           [(ngModel)]="newSubjectTeacher.lecturesHours" name="lecturesHours"  
           placeholder="1" class="micro-input spaced-l" description="Ilość grup" 
-          [min]="1" required></app-input>
-    
+          [min]="1" required></app-input> -->
+        <app-dropdown *ngIf="newSubjectTeacher.lecturesEnable" [(ngModel)]="newSubjectTeacher.lecturesHours" name="lectGroups" 
+          class="spaced-l-s tiny-input" [data]="lectGroups" value="" display=""
+          description="Ilość grup"></app-dropdown>
+          
         <mat-checkbox class="spaced-l-l" color="primary" name="exercises" 
           [(ngModel)]="newSubjectTeacher.exerciseEnable"
           [disabled]="!newSubject.schedule.exercise.enabled">Ć</mat-checkbox>
-        <app-input *ngIf="newSubjectTeacher.exerciseEnable" type="number"
+        <!-- <app-input *ngIf="newSubjectTeacher.exerciseEnable" type="number"
           [(ngModel)]="newSubjectTeacher.exerciseHours" name="exerciseHours"  
           placeholder="4" class="micro-input spaced-l" description="Ilość grup" 
-          [min]="1" required></app-input>
+          [min]="1" required></app-input> -->
+          <app-dropdown *ngIf="newSubjectTeacher.exerciseEnable" [(ngModel)]="newSubjectTeacher.exerciseHours" name="excerGroups" 
+          class="spaced-l-s tiny-input" [data]="excerGroups" value="" display=""
+          description="Ilość grup"></app-dropdown>
           
         <mat-checkbox class="spaced-l-l" color="primary" name="laboratories" 
           [(ngModel)]="newSubjectTeacher.laboratoriesEnable"
           [disabled]="!newSubject.schedule.laboratories.enabled">L</mat-checkbox>
-        <app-input *ngIf="newSubjectTeacher.laboratoriesEnable" type="number"
+        <!-- <app-input *ngIf="newSubjectTeacher.laboratoriesEnable" type="number"
           [(ngModel)]="newSubjectTeacher.laboratoriesHours" name="laboratoriesHours"  
           placeholder="8" class="micro-input spaced-l" description="Ilość grup" 
-          [min]="1" required></app-input>
+          [min]="1" required></app-input> -->
+        <app-dropdown *ngIf="newSubjectTeacher.laboratoriesEnable" [(ngModel)]="newSubjectTeacher.laboratoriesHours" name="labGroups" 
+          class="spaced-l-s tiny-input" [data]="labGroups" value="" display=""
+          description="Ilość grup"></app-dropdown>
     
         <mat-checkbox class="spaced-l-l" color="primary" name="seminars" 
           [(ngModel)]="newSubjectTeacher.seminarsEnable"
           [disabled]="!newSubject.schedule.seminars.enabled">S</mat-checkbox>
-        <app-input *ngIf="newSubjectTeacher.seminarsEnable" type="number"
+        <!-- <app-input *ngIf="newSubjectTeacher.seminarsEnable" type="number"
           [(ngModel)]="newSubjectTeacher.seminarsHours" name="seminarsHours"  
           placeholder="4" class="micro-input spaced-l" description="Ilość grup" 
-          [min]="1" required></app-input>
-        </div> -->
-        <span class="a-text-button spaced-l primary-color clickable weight-500">Dodaj</span>
+          [min]="1" required></app-input> -->
+          <app-dropdown *ngIf="newSubjectTeacher.seminarsEnable" [(ngModel)]="newSubjectTeacher.seminarsHours" name="semGroups" 
+          class="spaced-l-s tiny-input" [data]="semGroups" value="" display=""
+          description="Ilość grup"></app-dropdown>
+        </div>
+
+        <span  class="a-text-button spaced-l clickable weight-500">Anuluj</span>
+        <span  class="a-text-button spaced-l primary-color clickable weight-500" (click)="addToTeacher()">Dodaj</span>
       </div>
+
+      

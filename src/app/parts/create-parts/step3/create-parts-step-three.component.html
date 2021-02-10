@@ -1,14 +1,41 @@
-<h3 class="form-request spaced-b">Przydziel przedmioty</h3>
+<h3 class="form-request spaced-b">Przydziel przedmioty ({{newPart.name}})</h3>
 
 <div class="sub-content">
-<div class="spaced-t" *ngIf="listItems$ | async as listItems">
-    <div *ngFor="let item of listItems" class="center-row list-row w-80">
-        <span class="spaced-l-s light-color">{{ item.titleID | title }}</span>
-        <span class="spaced-l weight-500">{{ item.name }}</span>
-        <div class="space"></div>
-        <span class="spaced-l weight-500">0 / {{ item.hours }}</span>
-        <a (click)="openDialog()" class="spaced-l-s primary-color clickable weight-500">Przydziel przedmiot</a>
-        <span class="material-icons clickable green-color">info</span>
+
+    <div class="spaced-t" *ngIf="listItems$ | async as listItems">
+        <div class="center-row list-row w-80">
+            <div class="space"></div>
+            <span class="kolumny weight-500">| I st Z |</span>
+            <span class="kolumny weight-500">| I st L |</span>
+            <span class="kolumny weight-500">| II st Z |</span>
+            <span class="kolumny weight-500">| II st L |</span>
+            <span class="kolumny weight-500">| I nst Z |</span>
+            <span class="kolumny weight-500">| I nst L |</span>
+            <span class="kolumny weight-500">| II nst Z |</span>
+            <span class="kolumny weight-500">| II nst L |</span>
+            <span class="kolumnyAll weight-500">| Ogółem |</span>
+            <span class="kolumnyPrzydziel weight-500">Przydziel przedmiot</span>
+            <span class="weight-500">INFO</span>
+              
+        </div>
     </div>
-</div>
+
+    <div class="spaced-t" *ngIf="listItems$ | async as listItems">
+        <div *ngFor="let item of listItems" class="center-row list-row w-80">
+            <span class="spaced-l-s light-color">{{ item.titleID | title }}</span>
+            <span class="spaced-l weight-500">{{ item.name }}</span>
+            <div class="space"></div>
+            <span class="kolumnyL weight-400"> {{item.hoursByType.hoursIstZ}} </span>
+            <span class="kolumnyL weight-400"> {{item.hoursByType.hoursIstL}} </span>
+            <span class="kolumnyL weight-400"> {{item.hoursByType.hoursIIstZ}} </span>
+            <span class="kolumnyL weight-400"> {{item.hoursByType.hoursIIstL}} </span>
+            <span class="kolumnyL weight-400"> {{item.hoursByType.hoursInstZ}} </span>
+            <span class="kolumnyL weight-400"> {{item.hoursByType.hoursInstL}} </span>
+            <span class="kolumnyL weight-400"> {{item.hoursByType.hoursIInstZ}} </span>
+            <span class="kolumnyL weight-400"> {{item.hoursByType.hoursIInstL}} </span>
+            <span class="kolumnyAll weight-400"> {{item.hoursByType.hoursCurr}} / {{ item.hours }}</span>
+            <a (click)="openDialog(item.id, item.name)" class="kolumnyPrzydziel primary-color clickable weight-500">Przydziel przedmiot</a>
+            <a (click)="openDialogInfo(item.id, item.name)" class="kolumnyInfo material-icons clickable green-color">info</a>
+        </div>
+    </div>
 </div>

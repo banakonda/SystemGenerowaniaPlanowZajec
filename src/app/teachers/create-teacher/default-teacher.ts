@@ -7,6 +7,17 @@ export function newTeacher(): Teacher {
     name: '',
     email: '@pk.edu.pl',
     hours: 0,
+    hoursByType: {
+      hoursCurr: 0,
+      hoursIstZ: 0,
+      hoursIstL: 0, 
+      hoursIIstL: 0,
+      hoursIIstZ: 0,
+      hoursInstZ: 0,
+      hoursInstL: 0,
+      hoursIInstZ: 0,
+      hoursIInstL: 0,
+    },
     studyFieldId: '1',
     availability: {
       oneWeek: true,

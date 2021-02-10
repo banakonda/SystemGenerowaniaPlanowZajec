@@ -17,12 +17,13 @@ export class PartsService {
     const url = `${this.baseUrl}/${id}`;
     return this.httpClient.get<AssignmentAPI>(url);
   }
-  createAssignment(teacher: Assignment): Observable<Assignment> {
-    return this.httpClient.post<Assignment>(this.baseUrl, teacher, this.requestOptions);
+  createAssignment(assignment: Assignment): Observable<Assignment> {
+    console.log(assignment);
+    return this.httpClient.post<Assignment>(this.baseUrl, assignment, this.requestOptions);
   }
-  editAssignment(teacher: AssignmentAPI): Observable<AssignmentAPI> {
-    const url = `${this.baseUrl}/${teacher.id}`;
-    return this.httpClient.put<AssignmentAPI>(url, teacher, this.requestOptions);
+  editAssignment(assignment: AssignmentAPI): Observable<AssignmentAPI> {
+    const url = `${this.baseUrl}/${assignment.id}`;
+    return this.httpClient.put<AssignmentAPI>(url, assignment, this.requestOptions);
   }
   deleteAssignment(id: string): Observable<{}> {
     const url = `${this.baseUrl}/${id}`;

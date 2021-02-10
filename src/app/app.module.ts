@@ -49,6 +49,7 @@ import { EditFieldComponent } from './study-field/create-field/edit-field.compon
 import { EditTeacherComponent } from './teachers/create-teacher/edit-teacher.component';
 import { EditClassRoomComponent } from './class-rooms/create-class-room/edit-class-room.component';
 import { EditSubjectComponent } from './subjects/create-subject/edit-subject.component';
+import { EditPartComponent } from './parts/create-parts/edit-part.component';
 import { CommonModule } from '@angular/common';
 import { TitlePipe } from './data/title.pipe';
 import { GeneratedScheduleComponent } from './schedules/schedule/create-schedule-step-three.component';
@@ -59,6 +60,7 @@ import { CreatePartsStepOneComponent } from './parts/create-parts/step1/create-p
 import { CreatePartsStepTwoComponent } from './parts/create-parts/step2/create-parts-step-two.component';
 import { CreatePartsStepThreeComponent } from './parts/create-parts/step3/create-parts-step-three.component';
 import { DialogComponent } from './parts/create-parts/dialog/dialog.component';
+import { DialogInfoComponent } from './parts/create-parts/dialog-info/dialog-info.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +99,7 @@ import { DialogComponent } from './parts/create-parts/dialog/dialog.component';
     EditTeacherComponent,
     EditClassRoomComponent,
     EditSubjectComponent,
+    EditPartComponent,
     GeneratedScheduleComponent,
     LessonComponent,
     TitlePipe,
@@ -106,6 +109,7 @@ import { DialogComponent } from './parts/create-parts/dialog/dialog.component';
     CreatePartsStepTwoComponent,
     CreatePartsStepThreeComponent,
     DialogComponent,
+    DialogInfoComponent,
   ],
   imports: [
     BrowserModule,

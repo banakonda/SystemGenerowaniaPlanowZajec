@@ -11,10 +11,8 @@
       <div *ngFor="let item of listItems">
         <div class="center-row list-row w-80">
           <span class="spaced-l-s weight-500">{{ item.name }} </span>
-          <span class="light-color spaced-l">({{ item.degree }} stopień, {{item.numberOfSemesters}} semestrów,
-            <span *ngIf="item.fullTime === 1">stacjonarne</span>
-            <span *ngIf="item.fullTime === 2">niestacjonarne</span> 
-            <span *ngIf="item.erasmus === 1">, erasmus</span>)
+          <span class="light-color spaced-l">( {{ item.degree }} stopień, {{item.numberOfSemesters}} semestrów,
+            {{item.fullTime === 1 ? "stacjonarne" : "niestacjonarne"}}{{item.erasmus === 1 ? ", erasmus " : " "}})
           </span>
           <div class="space"></div>
           <span class="material-icons red-color clickable" (click)="deleteStudyField(item.id)">delete_forever</span>

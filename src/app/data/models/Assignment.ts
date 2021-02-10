@@ -1,13 +1,16 @@
 export interface TeacherAssignments {
     teacherId: string,
-    subjectId: string,
-    group: number;
+    subjectName: string,
+    lecturesGroups: number,
+    exerciseGroups: number,
+    laboratoriesGroups: number,
+    seminarsGroups: number,
 }
 
 export interface Assignment {
     name: string;
     ifWinter: boolean,
-    groups: [][],
+    groups: [][][],
     assignments: TeacherAssignments[];
 }
   

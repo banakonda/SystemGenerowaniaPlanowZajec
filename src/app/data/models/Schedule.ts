@@ -3,6 +3,7 @@ export interface Schedule {
   studyFieldId: string;
   ifWinter: boolean,
   lessonWidth: number,
+  assignment: number;
   numberOfSemester: number,
   classroomsData: string[][][],
   teachersData: ScheduleTeachers[][][],

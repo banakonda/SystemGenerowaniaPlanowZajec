@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Assignment } from 'src/app/data/models/Assignment';
 import { StudyFieldAPI } from '../../../data/models/StudyField';
 import { StudyFieldService } from '../../../study-field/study-field.service';
 
@@ -9,11 +10,13 @@ import { StudyFieldService } from '../../../study-field/study-field.service';
   styleUrls: ['./create-parts-step-two.component.scss']
 })
 
-export class CreatePartsStepTwoComponent {
+export class CreatePartsStepTwoComponent implements OnInit {
 
+  @Input() newPart: Assignment;
+  
   listItems$: Observable<StudyFieldAPI[]>;
   zmienna: any[] = [];
-  zmienna2: any[][] = [];
+  zmienna2: any[][][] = [];
 
   constructor(
     private studyFieldService: StudyFieldService,
@@ -29,11 +32,15 @@ export class CreatePartsStepTwoComponent {
       for(let item of this.zmienna) {
         let tab = []
         tab.length = item
-        tab.fill(0)
-        this.zmienna2.push(tab)
+        tab.fill([1, 8])
+        this.newPart.groups.push(tab)
       }
-      console.log(this.zmienna2)
     }, 100);
+    //console.log(this.newPart.groups);
+  }
+
+  ngOnInit(): void {
+    console.log(this.newPart.name);
   }
 }
 

@@ -4,6 +4,7 @@ import { ClassRoomsComponent } from './class-rooms/class-rooms.component';
 import { CreateClassRoomComponent } from './class-rooms/create-class-room/create-class-room.component';
 import { EditClassRoomComponent } from './class-rooms/create-class-room/edit-class-room.component';
 import { PartsComponent } from './parts/parts.component';
+import { EditPartComponent } from './parts/create-parts/edit-part.component';
 import { CreatePartsComponent } from './parts/create-parts/create-parts.component';
 import { CreateScheduleComponent } from './schedules/create-schedule/create-schedule.component';
 import { GeneratedScheduleComponent } from './schedules/schedule/create-schedule-step-three.component';
@@ -37,7 +38,7 @@ const routes: Routes = [
 
   { path: 'parts', component: PartsComponent },
   { path: 'create-parts', component: CreatePartsComponent },
-  { path: 'edit-pats/:id', component: EditTeacherComponent },
+  { path: 'edit-part/:id', component: EditPartComponent },
 
   { path: 'schedules', component: SchedulesComponent },
   { path: 'create-schedule', component: CreateScheduleComponent },

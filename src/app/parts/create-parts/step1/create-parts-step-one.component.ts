@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AssignmentAPI } from 'src/app/data/models/Assignment';
+import { AssignmentAPI, Assignment } from 'src/app/data/models/Assignment';
 import { PartsService } from 'src/app/parts/parts.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { PartsService } from 'src/app/parts/parts.service';
 })
 export class CreatePartsStepOneComponent implements OnInit {
 
-  @Input() newPart: any;
+  @Input() newPart: Assignment;
 
   constructor() { }
 

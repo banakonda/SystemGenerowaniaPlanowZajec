@@ -22,6 +22,7 @@ export class SchedulesService {
     return this.httpClient.get<any>(url).toPromise();
   }
   createSchedule(schedule: any): Observable<any> {
+    console.log(schedule);
     return this.httpClient.post<any>(this.baseUrl, schedule, this.requestOptions);
   }
   deleteSchedule(id: string): Observable<{}> {

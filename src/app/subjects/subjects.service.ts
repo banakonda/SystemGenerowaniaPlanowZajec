@@ -30,6 +30,12 @@ export class SubjectsService {
     return this.httpClient.delete(url);
   }
 
+  postAssignments(id: any): Observable<any> {
+    console.log("Tu gites")
+    const url = `${this.baseUrl}/assign`;
+    return this.httpClient.post<any>(url, id, this.requestOptions);
+  }
+
   async getAsyncSubjects() {
     return this.httpClient.get<SubjectAPI[]>(this.baseUrl).toPromise();
   }

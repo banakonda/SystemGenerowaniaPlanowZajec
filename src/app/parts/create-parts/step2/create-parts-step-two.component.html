@@ -1,22 +1,23 @@
-<h3 class="form-request spaced-b">Określ ilość grup</h3>
+<h3 class="form-request spaced-b">Określ ilość grup ({{newPart.name}})</h3>
 
 
 <div class="spaced-t" *ngIf="listItems$ | async as listItems">
   <div *ngFor="let item of listItems; index as i">
-    <div class="center-row list-row w-80">
-      <div class="spaced-l-s weight-500">{{ item.name }}</div>
-
-          <div *ngFor="let item2 of zmienna2[i]; index as j">
-            <div class="spaced-l-s weight-100">Sem {{j+1}}
-              <app-input class="tiny-input spaced-l-l" name="rate" description="gr. wykładowe" 
-              placeholder="1" required></app-input>
-              <app-input class="tiny-input spaced-l-l" name="rate" description="gr. laboratoryjne" 
-              placeholder="1" required></app-input>
+      <div class="studyfield center-row list-row w-80">
+        <div class="spaced-l-s weight-500"><span class="weight-400">Kierunek: </span>{{ item.name }}</div>
+      </div>
+          <div *ngFor="let item2 of newPart.groups[i]; index as j">
+            <div class="semesters spaced-l-s weight-400">Semestr {{j+1}}
+              <span class="groups">gr. wykładowe: 
+                <app-input [(ngModel)]="item2[0]" class="tiny-input spaced-l-l" [name]="group0+'i'+'j'" 
+                placeholder="1" required></app-input>
+              </span>
+              <span class="groups">gr. laboratoryjne: 
+                <app-input [(ngModel)]="item2[1]" class="tiny-input spaced-l-l" [name]="group1+'i'+'j'" 
+                placeholder="1" required></app-input>
+              </span>
             </div>
           </div>
-
-      <div class="space"></div>
-
-    </div>
+        <div class="space"></div>
   </div>
 </div>

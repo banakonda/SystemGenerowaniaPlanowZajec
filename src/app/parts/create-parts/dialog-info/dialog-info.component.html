@@ -1,0 +1,18 @@
+<h3 class="form-request spaced-b">Przydzielone Przedmioty ({{data.name}})</h3>
+
+<div *ngFor="let item of assignments; index as i">
+    <div *ngIf="item.teacherId === data.id">
+        <div class="center-row list-row w-400">       
+            <div class="spaced-l-s weight-500">{{ item.subjectName }}</div>
+            <div class="space"></div>
+            <div class="spaced-l-l weight-400" [ngClass]="data.groups[0][data.semesters[i]-1][0] >= item.lecturesGroups ? '' : 'red'">W: {{ item.lecturesGroups }}</div>
+            <div class="spaced-l-l weight-400" [ngClass]="(data.groups[0][data.semesters[i]-1][1] / 2) + 1 >= item.exerciseGroups ? '' : 'red'">Ć: {{ item.exerciseGroups }}</div>
+            <div class="spaced-l-l weight-400" [ngClass]="data.groups[0][data.semesters[i]-1][1] >= item.laboratoriesGroups ? '' : 'red'">L: {{ item.laboratoriesGroups }}</div>
+            <div class="spaced-l-l weight-400" [ngClass]="(data.groups[0][data.semesters[i]-1][1] / 2) + 1>= item.seminarsGroups ? '' : 'red'">S: {{ item.seminarsGroups }}</div>
+            <span (click)="deleteSubject(i)" class="spaced-l-l material-icons clickable red-color">delete_forever</span>
+        </div>
+    </div>
+</div>
+<!-- <div ng-class="apt.name.length >= 15 ? 'col-md-12' : (apt.name.length >= 10 ? 'col-md-6' : 'col-md-4')">
+    ...
+</div> -->

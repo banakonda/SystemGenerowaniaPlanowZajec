@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AssignmentAPI } from 'src/app/data/models/Assignment';
+import { PartsService } from 'src/app/parts/parts.service';
 import { StudyFieldAPI } from 'src/app/data/models/StudyField';
 import { StudyFieldService } from 'src/app/study-field/study-field.service';
 
@@ -9,13 +11,20 @@ import { StudyFieldService } from 'src/app/study-field/study-field.service';
 export class CreateScheduleStepOneComponent implements OnInit {
   @Input() newSchedule: any;
   studyFields: StudyFieldAPI[];
+  assignments: AssignmentAPI[];
   semesterTypes = [{ id: 1, name: 'Zimowy' }, { id: 2, name: 'Letni' }];
-  assignments = [{ id: 1, name: 'Przydział 1' }, { id: 2, name: 'Przydział 2' }];
   lessonWidth = [2, 3];
 
   constructor(
     private studyFieldService: StudyFieldService,
-  ) { }
+    private partsService: PartsService,
+  ) { 
+    this.partsService.getAssignments().subscribe(
+      assignments => {
+        this.assignments = assignments;
+      },
+      () => { });
+  }
 
   ngOnInit(): void {
     this.studyFieldService.getStudyFields().subscribe(fields => this.studyFields = fields,
