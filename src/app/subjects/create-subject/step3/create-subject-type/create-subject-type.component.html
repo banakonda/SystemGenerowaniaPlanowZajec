@@ -18,10 +18,25 @@
         Online</mat-radio-button>
       <mat-radio-button color="primary" class="spaced-t spaced-b-s" 
         [value]="false">W jednej z sal</mat-radio-button>
-      <app-input *ngIf="!type.online" [ngModel]="class" 
+      <!-- <app-input *ngIf="!type.online" [ngModel]="class" 
         (ngModelChange)="changeModel($event)" [name]="name+'Class'"
         description="Numery sal" placeholder="135, 144, D1/15" 
-        class="normal-input spaced-l-l" required></app-input>
+        class="normal-input spaced-l-l" required></app-input> -->
+        <div *ngIf="!type.online" class="spaced-l-l spaced-t center-row">
+          <app-dropdown [(ngModel)]="selectedClassroom" name="name+'Class'" 
+          class="tiny-input" [data]="classrooms" value="" display="name" 
+          description="Numery sal" required></app-dropdown>
+          <span class="a-text-button spaced-l primary-color clickable weight-500" (click)="addClass()">Dodaj</span>
+        </div>
+
+        <div class="center-row spaced-l-l spaced-t-l">
+          <div class="spaced-l-l center-row list-row" *ngFor="let classroom of type.classroom; let i=index">
+            <span>{{ classroom}}</span>
+            <span class="spaced-l-s"></span>
+            <span class="red-color clickable weight-500" (click)="deleteClassroom(i)">Usuń</span>
+          </div>
+        </div>
+
     </mat-radio-group>
   </div>
 </div>

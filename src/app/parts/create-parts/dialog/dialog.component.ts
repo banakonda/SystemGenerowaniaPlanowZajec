@@ -50,8 +50,8 @@ export class DialogComponent implements OnInit {
     this.newSubjectTeacher.subjectName = this.newSubject.name;
     this.newSubjectTeacher.lecturesHours = +this.data.groups[0][this.newSubject.students.semester-1][0];
     this.newSubjectTeacher.laboratoriesHours = +this.data.groups[0][this.newSubject.students.semester-1][1];
-    this.newSubjectTeacher.exerciseHours = +(this.data.groups[0][this.newSubject.students.semester-1][1] / 2).toFixed();
-    this.newSubjectTeacher.seminarsHours = +(this.data.groups[0][this.newSubject.students.semester-1][1] / 2).toFixed();
+    this.newSubjectTeacher.exerciseHours = +this.data.groups[0][this.newSubject.students.semester-1][1];
+    this.newSubjectTeacher.seminarsHours = +this.data.groups[0][this.newSubject.students.semester-1][1];
 
     this.lectGroups = Array.from({length: this.newSubjectTeacher.lecturesHours}, (_, i) => i + 1);
     console.log(this.lectGroups);

@@ -10,6 +10,7 @@ export interface HoursByType {
     hoursInstL: number;
     hoursIInstZ: number;
     hoursIInstL: number;
+    hoursErasmus: number;
 }
 
 export interface Teacher {

@@ -17,6 +17,7 @@ export function newTeacher(): Teacher {
       hoursInstL: 0,
       hoursIInstZ: 0,
       hoursIInstL: 0,
+      hoursErasmus: 0,
     },
     studyFieldId: '1',
     availability: {

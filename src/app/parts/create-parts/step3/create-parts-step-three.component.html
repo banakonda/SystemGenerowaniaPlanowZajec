@@ -13,6 +13,7 @@
             <span class="kolumny weight-500">| I nst L |</span>
             <span class="kolumny weight-500">| II nst Z |</span>
             <span class="kolumny weight-500">| II nst L |</span>
+            <span class="kolumny weight-500">| E |</span>
             <span class="kolumnyAll weight-500">| Ogółem |</span>
             <span class="kolumnyPrzydziel weight-500">Przydziel przedmiot</span>
             <span class="weight-500">INFO</span>
@@ -33,6 +34,7 @@
             <span class="kolumnyL weight-400"> {{item.hoursByType.hoursInstL}} </span>
             <span class="kolumnyL weight-400"> {{item.hoursByType.hoursIInstZ}} </span>
             <span class="kolumnyL weight-400"> {{item.hoursByType.hoursIInstL}} </span>
+            <span class="kolumnyL weight-400"> {{item.hoursByType.hoursErasmus}} </span>
             <span class="kolumnyAll weight-400"> {{item.hoursByType.hoursCurr}} / {{ item.hours }}</span>
             <a (click)="openDialog(item.id, item.name)" class="kolumnyPrzydziel primary-color clickable weight-500">Przydziel przedmiot</a>
             <a (click)="openDialogInfo(item.id, item.name)" class="kolumnyInfo material-icons clickable green-color">info</a>

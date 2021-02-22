@@ -11,6 +11,7 @@ import { Assignment, TeacherAssignments } from 'src/app/data/models/Assignment';
 import { NumberValueAccessor } from '@angular/forms';
 import { SubjectAPI, Subject} from '../../../data/models/Subject';
 import { SubjectsService } from '../../../subjects/subjects.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-create-parts-step-three',
@@ -52,6 +53,27 @@ export class CreatePartsStepThreeComponent implements OnInit {
       },
       () => { });
     console.log(this.newPart.name);
+
+    setTimeout(() => {
+
+      if(this.newPart.assignments.length > 0) {
+
+        for (var i = 0; i < this.newPart.assignments.length; i++) {
+  
+          console.log(this.newPart.assignments[i].subjectName);
+  
+          this.subjects.forEach(element => {
+            if(element.name === this.newPart.assignments[i].subjectName) {
+              this.groupOfSemesters.push(element.students.semester);
+            }
+          });
+          
+        }
+        console.log(this.groupOfSemesters);
+      }
+      
+    }, 100);
+
   }
 
   openDialog(id: string, name: string) {
@@ -131,6 +153,5 @@ export class CreatePartsStepThreeComponent implements OnInit {
     });
 
   }
-
 
 }

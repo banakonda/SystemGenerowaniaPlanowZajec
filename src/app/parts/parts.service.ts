@@ -31,5 +31,6 @@ export class PartsService {
   }
   async getAsyncAssignment() {
     return this.httpClient.get<AssignmentAPI[]>(this.baseUrl).toPromise();
+  
   }
 }

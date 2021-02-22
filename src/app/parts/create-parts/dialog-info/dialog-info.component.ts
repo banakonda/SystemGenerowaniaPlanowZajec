@@ -31,6 +31,7 @@ export class DialogInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.assignments = this.data.assignments;
+    console.log(this.data.assignments);
     console.log("grupy" + this.data.groups)
     console.log("semestry" + this.data.semesters)
   }
