@@ -11,16 +11,9 @@ import { ScheduleActivities } from 'src/app/data/models/Subject';
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
 })
 export class CreateSubjectTypeComponent {
-  type: ScheduleActivities;
-  class: string = "";
-  hours: number = 0;
   classrooms: ClassRoomAPI[];
   selectedClassroom: ClassRoomAPI;
-  @Input() set sType(value: ScheduleActivities) {
-    this.type = value;
-    this.hours = value.hours;
-    this.class = value.classroom.join(", ");
-  }
+  @Input() sType: ScheduleActivities;
   @Input() typeName: string = "";
   @Input() name: string;
 
@@ -35,25 +28,25 @@ export class CreateSubjectTypeComponent {
       },
       () => { });
 
-      setTimeout( () => console.log(this.classrooms), 100 
+      setInterval( () => console.log(this.sType), 2000 
       )
       
   }
 
   changeModel(value: string) {
-    if (this.type.enabled && value)
-      this.type.classroom = value.replace(' ', '').split(',');
+    if (this.sType.enabled && value)
+      this.sType.classroom = value.replace(' ', '').split(',');
   }
 
   addClass(): void {
-    if (this.type.enabled) {
-      if(!this.type.classroom.find(elem => elem === this.selectedClassroom.name)) {
-        this.type.classroom.push(this.selectedClassroom.name)
+    if (this.sType.enabled) {
+      if(!this.sType.classroom.find(elem => elem === this.selectedClassroom.name)) {
+        this.sType.classroom.push(this.selectedClassroom.name)
       } 
     }
   }
 
   deleteClassroom(id: number): void {
-    this.type.classroom.splice(id, 1);
+    this.sType.classroom.splice(id, 1);
   }
 }

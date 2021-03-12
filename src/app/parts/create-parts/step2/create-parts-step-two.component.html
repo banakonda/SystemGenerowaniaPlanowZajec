@@ -9,11 +9,11 @@
           <div *ngFor="let item2 of newPart.groups[i]; index as j">
             <div class="semesters spaced-l-s weight-400">Semestr {{j+1}}
               <span class="groups">gr. wykładowe: 
-                <app-input [(ngModel)]="item2[0]" class="tiny-input spaced-l-l" [name]="group0+'i'+'j'" 
+                <app-input [(ngModel)]="newPart.groups[i][j][0]" class="tiny-input spaced-l-l" [name]="i+'g0'+j" 
                 placeholder="1" required></app-input>
               </span>
               <span class="groups">gr. laboratoryjne: 
-                <app-input [(ngModel)]="item2[1]" class="tiny-input spaced-l-l" [name]="group1+'i'+'j'" 
+                <app-input [(ngModel)]="newPart.groups[i][j][1]" class="tiny-input spaced-l-l" [name]="i+'g1'+j" 
                 placeholder="1" required></app-input>
               </span>
             </div>

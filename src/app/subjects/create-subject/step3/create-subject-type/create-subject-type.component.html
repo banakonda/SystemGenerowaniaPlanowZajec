@@ -1,18 +1,16 @@
 <div class="checkbox-label">
   <div class="center-row">
-    <mat-checkbox [(ngModel)]="type.enabled" [name]="name"
+    <mat-checkbox [(ngModel)]="sType.enabled" [name]="name"
       color="primary" class="example-margin" >
       <span class="spaced-l-s">{{ typeName }}</span>
     </mat-checkbox>
   </div>
 
 
-  <div class="spaced-l-l column" *ngIf="type.enabled">
+  <div class="spaced-l-l column" *ngIf="sType.enabled">
 
-    <app-input [(ngModel)]="type.hours" class="tiny-input column spaced-t spaced-l-l spaced-b" name="hours+'TypeClass'" description="Ilość godzin"
-    placeholder="30" required></app-input>
-
-    <mat-radio-group [(ngModel)]="type.online" [name]="name+'TypeClass'"
+    <app-input [(ngModel)]="sType.hours" class="tiny-input column spaced-t spaced-l-l spaced-b" [name]="name+'TypeClassK'" description="Ilość godzin" placeholder="30" required></app-input>
+    <mat-radio-group [(ngModel)]="sType.online" [name]="name+'TypeClass'"
       class="column spaced-t spaced-l-l spaced-b">
       <mat-radio-button color="primary" [value]="true">
         Online</mat-radio-button>
@@ -22,7 +20,7 @@
         (ngModelChange)="changeModel($event)" [name]="name+'Class'"
         description="Numery sal" placeholder="135, 144, D1/15" 
         class="normal-input spaced-l-l" required></app-input> -->
-        <div *ngIf="!type.online" class="spaced-l-l spaced-t center-row">
+        <div *ngIf="!sType.online" class="spaced-l-l spaced-t center-row">
           <app-dropdown [(ngModel)]="selectedClassroom" name="name+'Class'" 
           class="tiny-input" [data]="classrooms" value="" display="name" 
           description="Numery sal" required></app-dropdown>
@@ -30,7 +28,7 @@
         </div>
 
         <div class="center-row spaced-l-l spaced-t-l">
-          <div class="spaced-l-l center-row list-row" *ngFor="let classroom of type.classroom; let i=index">
+          <div class="spaced-l-l center-row list-row" *ngFor="let classroom of sType.classroom; let i=index">
             <span>{{ classroom}}</span>
             <span class="spaced-l-s"></span>
             <span class="red-color clickable weight-500" (click)="deleteClassroom(i)">Usuń</span>

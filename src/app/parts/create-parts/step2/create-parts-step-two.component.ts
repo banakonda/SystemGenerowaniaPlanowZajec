@@ -32,7 +32,7 @@ export class CreatePartsStepTwoComponent implements OnInit {
       for(let item of this.zmienna) {
         let tab = []
         tab.length = item
-        tab.fill([1, 8])
+        tab.fill(["1", "8"])
         this.newPart.groups.push(tab)
       }
     }, 100);
@@ -41,6 +41,7 @@ export class CreatePartsStepTwoComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.newPart.name);
+    console.log(this.newPart.groups)
   }
 }
 
